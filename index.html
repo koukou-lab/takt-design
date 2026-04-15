@@ -4,8 +4,78 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>タクト設計 | 一級建築士事務所 - 沖縄県那覇市</title>
-<meta name="description" content="沖縄県那覇市の一級建築士事務所タクト設計。住宅・店舗・公共施設の設計監理を手がけています。">
+<meta name="description" content="沖縄県那覇市の一級建築士事務所タクト設計。一級建築士・羽地敏博が、住宅・店舗・公共施設の設計監理を手がけます。沖縄の気候風土を熟知した設計で、快適で長く愛される空間をご提案。無料相談受付中。">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="タクト設計 | 一級建築士事務所 - 沖縄県那覇市">
+<meta property="og:description" content="沖縄県那覇市を拠点に、住宅・店舗・公共施設の設計監理を手がける一級建築士事務所。沖縄の気候風土を活かした建築をご提案します。">
+<meta property="og:url" content="https://takt-design.jp/">
+<meta property="og:image" content="https://takt-design.jp/takt-design-office.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="タクト設計">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="タクト設計 | 一級建築士事務所 - 沖縄県那覇市">
+<meta name="twitter:description" content="沖縄県那覇市を拠点に、住宅・店舗・公共施設の設計監理を手がける一級建築士事務所。">
+<meta name="twitter:image" content="https://takt-design.jp/takt-design-office.png">
+
+<link rel="canonical" href="https://takt-design.jp/">
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%238B7355'/><text x='16' y='22' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='bold' fill='white'>T</text></svg>">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- JSON-LD 構造化データ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "一級建築士事務所タクト設計",
+  "alternateName": "タクト設計",
+  "description": "沖縄県那覇市を拠点に、住宅・店舗・公共施設の設計監理を手がける一級建築士事務所",
+  "url": "https://takt-design.jp/",
+  "image": "https://takt-design.jp/takt-design-office.png",
+  "telephone": "098-860-1227",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "銘苅３丁目１９−１",
+    "addressLocality": "那覇市",
+    "addressRegion": "沖縄県",
+    "postalCode": "900-0004",
+    "addressCountry": "JP"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 26.232147,
+    "longitude": 127.7009807
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "羽地敏博",
+    "jobTitle": "一級建築士"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "沖縄県"
+  },
+  "serviceType": ["住宅設計", "店舗・商業施設設計", "設計監理", "リノベーション"]
+}
+</script>
+
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -21,6 +91,7 @@
     --white: #FFFFFF;
     --border: #D4CFC7;
     --hero-overlay: rgba(30, 28, 25, 0.45);
+    --transition: 0.3s ease;
   }
 
   html { scroll-behavior: smooth; font-size: 16px; }
@@ -32,6 +103,28 @@
     line-height: 1.8;
     font-weight: 300;
     overflow-x: hidden;
+  }
+
+  /* ===== ACCESSIBILITY ===== */
+  .skip-nav {
+    position: fixed;
+    top: -100%;
+    left: 1rem;
+    z-index: 9999;
+    background: var(--accent);
+    color: var(--white);
+    padding: 0.6rem 1.2rem;
+    border-radius: 0 0 6px 6px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-nav:focus { top: 0; }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 
   /* ===== NAV ===== */
@@ -47,7 +140,7 @@
   }
 
   nav.scrolled {
-    background: rgba(245, 242, 237, 0.92);
+    background: rgba(245, 242, 237, 0.96);
     backdrop-filter: blur(16px);
     box-shadow: 0 1px 0 var(--border);
   }
@@ -76,12 +169,14 @@
     text-decoration: none;
     color: rgba(255,255,255,0.85);
     font-weight: 400;
-    transition: color 0.3s;
+    transition: color var(--transition);
     text-transform: uppercase;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
   }
 
   nav.scrolled .nav-links a { color: var(--text-light); }
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover { color: var(--accent); border-color: var(--accent); }
 
   .nav-hamburger {
     display: none;
@@ -89,14 +184,31 @@
     gap: 5px;
     cursor: pointer;
     z-index: 1001;
+    padding: 4px;
+    background: none;
+    border: none;
   }
   .nav-hamburger span {
+    display: block;
     width: 24px;
     height: 1.5px;
     background: var(--white);
-    transition: background 0.5s;
+    transition: background 0.5s, transform 0.3s, opacity 0.3s;
   }
   nav.scrolled .nav-hamburger span { background: var(--text); }
+  nav.menu-open .nav-hamburger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  nav.menu-open .nav-hamburger span:nth-child(2) { opacity: 0; }
+  nav.menu-open .nav-hamburger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(2px);
+  }
+  nav.menu-open ~ .nav-overlay { display: block; }
 
   /* ===== HERO ===== */
   .hero {
@@ -119,7 +231,12 @@
     background-size: cover;
     background-position: center 38%;
     filter: brightness(0.8);
-    transform: scale(1.04);
+    animation: kenBurns 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes kenBurns {
+    from { transform: scale(1.0); }
+    to   { transform: scale(1.06); }
   }
 
   .hero::after {
@@ -143,9 +260,7 @@
     padding: 6rem 0 4rem;
   }
 
-  .hero-copy {
-    max-width: 720px;
-  }
+  .hero-copy { max-width: 720px; }
 
   .hero-content .label {
     font-size: 0.72rem;
@@ -209,12 +324,16 @@
     font-size: 0.8rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    transition: transform 0.3s, background 0.3s, border-color 0.3s;
+    transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
   }
 
   .hero-btn.primary {
     background: var(--accent-soft);
     color: var(--bg-deep);
+  }
+  .hero-btn.primary:hover {
+    background: #c4ad92;
+    box-shadow: 0 8px 24px rgba(183,157,126,0.4);
   }
 
   .hero-btn.secondary {
@@ -223,10 +342,12 @@
     background: rgba(255,255,255,0.06);
     backdrop-filter: blur(10px);
   }
-
-  .hero-btn:hover {
-    transform: translateY(-2px);
+  .hero-btn.secondary:hover {
+    border-color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.1);
   }
+
+  .hero-btn:hover { transform: translateY(-2px); }
 
   .hero-panel {
     padding: 1.6rem;
@@ -289,6 +410,7 @@
     font-size: 0.65rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
+    text-decoration: none;
   }
 
   .hero-scroll::after {
@@ -300,15 +422,15 @@
   }
 
   @keyframes scrollLine {
-    0% { transform: scaleY(0); transform-origin: top; }
-    50% { transform: scaleY(1); transform-origin: top; }
-    51% { transform: scaleY(1); transform-origin: bottom; }
+    0%   { transform: scaleY(0); transform-origin: top; }
+    50%  { transform: scaleY(1); transform-origin: top; }
+    51%  { transform: scaleY(1); transform-origin: bottom; }
     100% { transform: scaleY(0); transform-origin: bottom; }
   }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   /* ===== SECTIONS ===== */
@@ -334,6 +456,67 @@
     margin-bottom: 2rem;
   }
 
+  /* ===== INTRO BAND ===== */
+  .intro-band {
+    margin-top: -4.5rem;
+    position: relative;
+    z-index: 3;
+    padding: 0 3rem;
+  }
+
+  .intro-band-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .intro-card {
+    background: rgba(255,255,255,0.95);
+    border: 1px solid rgba(212, 207, 199, 0.9);
+    border-radius: 18px;
+    padding: 1.4rem 1.5rem;
+    box-shadow: 0 22px 60px rgba(33, 28, 23, 0.08);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .intro-card-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.2rem;
+  }
+
+  .intro-card-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--white);
+    fill: none;
+  }
+
+  .intro-card strong {
+    display: block;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin-bottom: 0.35rem;
+  }
+
+  .intro-card span {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-light);
+    line-height: 1.8;
+  }
+
   /* ===== ABOUT ===== */
   .about {
     max-width: 1200px;
@@ -349,6 +532,36 @@
     font-size: 0.92rem;
     margin-bottom: 1.5rem;
     line-height: 2;
+  }
+
+  .about-credentials {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .credential-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.38rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.76rem;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
+    background: var(--white);
+  }
+
+  .credential-badge svg {
+    width: 13px;
+    height: 13px;
+    stroke: var(--accent);
+    fill: none;
+    flex-shrink: 0;
   }
 
   .about-visual {
@@ -385,13 +598,14 @@
     bottom: 1.2rem; left: 1.2rem;
     width: 52%;
     height: 34%;
-    background: rgba(33, 28, 23, 0.72);
+    background: rgba(33, 28, 23, 0.82);
     color: var(--white);
     padding: 1.4rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     gap: 0.35rem;
+    border-radius: 8px;
   }
 
   .about-visual .block-2 strong {
@@ -415,48 +629,8 @@
     opacity: 0.8;
   }
 
-  .intro-band {
-    margin-top: -4.5rem;
-    position: relative;
-    z-index: 3;
-    padding: 0 3rem;
-  }
-
-  .intro-band-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-
-  .intro-card {
-    background: rgba(255,255,255,0.9);
-    border: 1px solid rgba(212, 207, 199, 0.9);
-    border-radius: 18px;
-    padding: 1.35rem 1.4rem;
-    box-shadow: 0 22px 60px rgba(33, 28, 23, 0.08);
-  }
-
-  .intro-card strong {
-    display: block;
-    font-family: 'Noto Serif JP', serif;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-bottom: 0.4rem;
-  }
-
-  .intro-card span {
-    display: block;
-    font-size: 0.82rem;
-    color: var(--text-light);
-    line-height: 1.8;
-  }
-
   /* ===== SERVICES ===== */
-  #services {
-    background: var(--bg-warm);
-  }
+  #services { background: var(--bg-warm); }
 
   .services-inner {
     max-width: 1200px;
@@ -473,7 +647,7 @@
   .service-card {
     background: var(--white);
     padding: 2.5rem 2rem;
-    border-radius: 6px;
+    border-radius: 10px;
     position: relative;
     overflow: hidden;
     transition: transform 0.4s, box-shadow 0.4s;
@@ -481,7 +655,7 @@
 
   .service-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
   }
 
   .service-card::before {
@@ -498,13 +672,33 @@
 
   .service-card:hover::before { transform: scaleX(1); }
 
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #f0ebe2, #e5ddd2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+  }
+
+  .service-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
   .service-number {
+    position: absolute;
+    top: 1.2rem; right: 1.5rem;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.8rem;
+    font-size: 2.2rem;
     font-weight: 300;
     color: var(--border);
     line-height: 1;
-    margin-bottom: 1.2rem;
   }
 
   .service-card h3 {
@@ -518,6 +712,22 @@
     font-size: 0.85rem;
     color: var(--text-light);
     line-height: 1.9;
+  }
+
+  .service-tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1.2rem;
+  }
+
+  .service-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    background: var(--bg-warm);
+    border-radius: 999px;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
   }
 
   /* ===== PHILOSOPHY ===== */
@@ -577,54 +787,100 @@
   .work-item {
     position: relative;
     aspect-ratio: 4/3;
-    border-radius: 4px;
+    border-radius: 6px;
     overflow: hidden;
     cursor: pointer;
+    display: block;
+    text-decoration: none;
   }
 
   .work-item .work-bg {
     width: 100%;
     height: 100%;
-    transition: transform 0.6s;
-  }
-
-  .work-item img.work-bg {
+    transition: transform 0.6s ease;
     display: block;
     object-fit: cover;
   }
 
-  .work-item:hover .work-bg { transform: scale(1.05); }
+  .work-item:hover .work-bg { transform: scale(1.06); }
 
-  .work-item .work-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 60%);
-    display: flex;
-    align-items: flex-end;
-    padding: 1.5rem;
-    opacity: 0;
-    transition: opacity 0.4s;
+  /* Works items without photos — architectural gradient placeholders */
+  .work-item .work-placeholder {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
   }
 
-  .work-item:hover .work-overlay { opacity: 1; }
+  .work-item:hover .work-placeholder { transform: scale(1.04); }
 
-  .work-overlay span {
+  .work-1-bg { background: linear-gradient(145deg, #6B6054 0%, #8B7B68 50%, #5A5048 100%); }
+  .work-2-bg { background: linear-gradient(145deg, #4D6057 0%, #6B8078 50%, #3D504A 100%); }
+  .work-3-bg { background: linear-gradient(145deg, #4A5368 0%, #647288 50%, #3A4258 100%); }
+  .work-4-bg { background: linear-gradient(145deg, #684A48 0%, #886260 50%, #583A38 100%); }
+  .work-5-bg { background: linear-gradient(145deg, #4A6068 0%, #607880 50%, #3A5058 100%); }
+  .work-6-bg { background: linear-gradient(145deg, #68604A 0%, #887A60 50%, #585038 100%); }
+
+  /* Subtle grid pattern overlay for work placeholders */
+  .work-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .work-info {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 1.2rem 1.5rem 1.2rem;
+    background: linear-gradient(0deg, rgba(0,0,0,0.72) 0%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .work-info-category {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .work-info-title {
     font-family: 'Noto Serif JP', serif;
     font-size: 0.9rem;
     font-weight: 300;
     letter-spacing: 0.05em;
+    color: var(--white);
   }
 
-  .work-1 .work-bg { background: linear-gradient(135deg, #6f7b64, #56614d); }
-  .work-2 .work-bg { background: linear-gradient(135deg, #7A8B73, #5A6B52); }
-  .work-3 .work-bg { background: linear-gradient(135deg, #73788B, #525A6B); }
-  .work-4 .work-bg { background: linear-gradient(135deg, #8B7A73, #6B5A52); }
-  .work-5 .work-bg { background: linear-gradient(135deg, #73858B, #52656B); }
-  .work-6 .work-bg { background: linear-gradient(135deg, #8B8573, #6B6552); }
+  .work-hover-detail {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .work-hover-detail span {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.6);
+    padding: 0.45rem 1.1rem;
+    border-radius: 999px;
+  }
+
+  .work-item:hover .work-hover-detail { opacity: 1; }
 
   .works-note {
     margin-top: 1rem;
-    color: rgba(255,255,255,0.65);
+    color: rgba(255,255,255,0.55);
     font-size: 0.82rem;
     letter-spacing: 0.03em;
   }
@@ -635,9 +891,7 @@
     margin: 0 auto;
   }
 
-  .flow-steps {
-    margin-top: 3rem;
-  }
+  .flow-steps { margin-top: 3rem; }
 
   .flow-step {
     display: flex;
@@ -645,6 +899,7 @@
     padding: 2rem 0;
     border-bottom: 1px solid var(--border);
     align-items: flex-start;
+    position: relative;
   }
 
   .flow-step:last-child { border-bottom: none; }
@@ -672,10 +927,19 @@
     line-height: 1.9;
   }
 
-  /* ===== CONTACT ===== */
-  #contact {
-    background: var(--bg-warm);
+  .flow-tag {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.68rem;
+    padding: 0.18rem 0.65rem;
+    background: #f0ebe2;
+    border-radius: 999px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
   }
+
+  /* ===== CONTACT ===== */
+  #contact { background: var(--bg-warm); }
 
   .contact-inner {
     max-width: 1000px;
@@ -692,9 +956,7 @@
     margin-bottom: 1.5rem;
   }
 
-  .contact-detail {
-    margin-bottom: 2rem;
-  }
+  .contact-detail { margin-bottom: 2rem; }
 
   .contact-detail .detail-label {
     font-size: 0.7rem;
@@ -715,11 +977,12 @@
     color: var(--text);
     text-decoration: none;
     border-bottom: 1px solid var(--border);
-    transition: border-color 0.3s;
+    transition: border-color var(--transition), color var(--transition);
   }
 
-  .contact-detail a:hover { border-color: var(--accent); }
+  .contact-detail a:hover { color: var(--accent); border-color: var(--accent); }
 
+  /* Form */
   .contact-form label {
     display: block;
     font-size: 0.7rem;
@@ -730,8 +993,15 @@
     font-weight: 500;
   }
 
+  .contact-form .required-mark {
+    color: #c0392b;
+    margin-left: 0.3rem;
+    font-size: 0.65rem;
+  }
+
   .contact-form input,
-  .contact-form textarea {
+  .contact-form textarea,
+  .contact-form select {
     width: 100%;
     padding: 0.8rem 0;
     border: none;
@@ -742,8 +1012,10 @@
     color: var(--text);
     margin-bottom: 1.8rem;
     outline: none;
-    transition: border-color 0.3s;
+    transition: border-color var(--transition);
     font-weight: 300;
+    border-radius: 0;
+    appearance: none;
   }
 
   .contact-form input:focus,
@@ -751,65 +1023,127 @@
     border-color: var(--accent);
   }
 
+  .contact-form input.error,
+  .contact-form textarea.error {
+    border-color: #c0392b;
+  }
+
+  .field-error {
+    display: none;
+    font-size: 0.72rem;
+    color: #c0392b;
+    margin-top: -1.4rem;
+    margin-bottom: 1.4rem;
+  }
+
   .contact-form textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 110px;
+  }
+
+  .contact-form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .contact-privacy {
+    font-size: 0.72rem;
+    color: var(--text-light);
+    line-height: 1.6;
   }
 
   .contact-btn {
-    display: inline-block;
-    padding: 0.9rem 3rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 2.5rem;
     background: var(--accent);
     color: var(--white);
     border: none;
     font-family: 'Noto Sans JP', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     letter-spacing: 0.15em;
     cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-    border-radius: 2px;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    border-radius: 4px;
     font-weight: 400;
+    white-space: nowrap;
   }
 
   .contact-btn:hover {
     background: var(--accent-dark);
     transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(107,90,66,0.25);
+  }
+
+  .contact-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .contact-btn svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+    transition: transform var(--transition);
+  }
+
+  .contact-btn:not(:disabled):hover svg { transform: translateX(3px); }
+
+  /* Spinner */
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .btn-spinner {
+    width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: var(--white);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: none;
+  }
+  .contact-btn.loading .btn-spinner { display: block; }
+  .contact-btn.loading .btn-arrow { display: none; }
+
+  /* Success/Error states */
+  .form-result {
+    display: none;
+    padding: 1.2rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    margin-top: 1rem;
+    line-height: 1.8;
+  }
+
+  .form-result.success {
+    background: #f0f7f0;
+    border: 1px solid #b8dcb8;
+    color: #2d6a2d;
+  }
+
+  .form-result.error {
+    background: #fdf2f2;
+    border: 1px solid #f5c6c6;
+    color: #8b2020;
   }
 
   /* ===== MAP ===== */
   .map-section {
     padding: 0;
-    height: 400px;
-    background: var(--bg-warm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 420px;
     position: relative;
     overflow: hidden;
   }
 
-  .map-placeholder {
+  .map-section iframe {
     width: 100%;
     height: 100%;
-    background:
-      linear-gradient(135deg, #d5cec4, #c4bdb3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-  }
-
-  .map-placeholder svg {
-    width: 40px;
-    height: 40px;
-    opacity: 0.4;
-  }
-
-  .map-placeholder span {
-    font-size: 0.8rem;
-    color: var(--text-light);
-    letter-spacing: 0.1em;
+    border: 0;
+    display: block;
+    filter: saturate(0.85);
   }
 
   /* ===== FOOTER ===== */
@@ -822,9 +1156,10 @@
   .footer-inner {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: start;
   }
 
   .footer-brand {
@@ -838,29 +1173,60 @@
 
   .footer-sub {
     font-size: 0.75rem;
-    line-height: 1.8;
+    line-height: 1.9;
+  }
+
+  .footer-sub a {
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    transition: color var(--transition), border-color var(--transition);
+  }
+  .footer-sub a:hover { color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.4); }
+
+  .footer-registration {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.28);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .footer-nav h4 {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 0.2rem;
   }
 
   .footer-links {
     display: flex;
-    gap: 2rem;
+    flex-direction: column;
+    gap: 0.6rem;
     list-style: none;
   }
 
   .footer-links a {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.4);
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
     text-decoration: none;
-    letter-spacing: 0.1em;
-    transition: color 0.3s;
+    letter-spacing: 0.06em;
+    transition: color var(--transition);
   }
 
-  .footer-links a:hover { color: rgba(255,255,255,0.7); }
+  .footer-links a:hover { color: rgba(255,255,255,0.8); }
 
   .footer-copy {
     text-align: center;
     font-size: 0.68rem;
-    color: rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.22);
     margin-top: 3rem;
     padding-top: 1.5rem;
     border-top: 1px solid rgba(255,255,255,0.06);
@@ -871,7 +1237,7 @@
   .reveal {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.8s, transform 0.8s;
+    transition: opacity 0.8s ease, transform 0.8s ease;
   }
 
   .reveal.visible {
@@ -879,14 +1245,51 @@
     transform: translateY(0);
   }
 
+  /* ===== BACK TO TOP ===== */
+  .back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 500;
+    width: 46px;
+    height: 46px;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s, transform 0.4s, background var(--transition);
+    pointer-events: none;
+    box-shadow: 0 4px 16px rgba(139,115,85,0.3);
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .back-to-top:hover { background: var(--accent-dark); }
+
+  .back-to-top svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--white);
+    fill: none;
+  }
+
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links {
       position: fixed;
-      top: 0;
-      right: 0;
-      width: min(80vw, 320px);
+      top: 0; right: 0;
+      width: min(80vw, 300px);
       height: 100vh;
       background: rgba(245, 242, 237, 0.98);
       backdrop-filter: blur(16px);
@@ -896,18 +1299,15 @@
       transform: translateX(100%);
       transition: transform 0.35s ease;
       box-shadow: -10px 0 30px rgba(0,0,0,0.08);
+      z-index: 1000;
     }
     nav.menu-open .nav-links { transform: translateX(0); }
     .nav-hamburger { display: flex; }
+    .nav-links a { color: var(--text-light); font-size: 0.9rem; padding: 0.3rem 0; }
 
-    section { padding: 4rem 1.5rem; }
+    section { padding: 5rem 1.5rem; }
 
-    .hero {
-      min-height: 760px;
-      height: auto;
-      padding-top: 6rem;
-    }
-
+    .hero { min-height: 760px; height: auto; padding-top: 6rem; }
     .hero-content {
       width: calc(100% - 3rem);
       grid-template-columns: 1fr;
@@ -916,90 +1316,61 @@
       padding: 4rem 0 3rem;
     }
 
-    .intro-band {
-      margin-top: -2rem;
-      padding: 0 1.5rem;
-    }
+    .intro-band { margin-top: -2rem; padding: 0 1.5rem; }
+    .intro-band-inner { grid-template-columns: 1fr; }
 
-    .intro-band-inner {
-      grid-template-columns: 1fr;
-    }
-
-    .about {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-
+    .about { grid-template-columns: 1fr; gap: 3rem; }
     .about-visual { height: 280px; }
+    .about-visual .block-2 { width: calc(100% - 2.4rem); height: auto; min-height: 100px; }
 
-    .about-visual .block-2 {
-      width: calc(100% - 2.4rem);
-      height: auto;
-      min-height: 110px;
-    }
+    .services-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .works-grid { grid-template-columns: 1fr 1fr; }
 
-    .services-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    .works-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .contact-inner {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
     .flow-step { gap: 1.5rem; }
 
-    .footer-inner {
-      flex-direction: column;
-      gap: 2rem;
-    }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-nav { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-nav h4 { display: none; }
+    .footer-links { flex-direction: row; flex-wrap: wrap; gap: 0.6rem 1.4rem; }
   }
 
   @media (max-width: 600px) {
-    .hero-content {
-      width: calc(100% - 2rem);
-      padding: 3rem 0 2.5rem;
-    }
-
-    .hero-actions {
-      flex-direction: column;
-    }
-
-    .hero-btn {
-      width: 100%;
-    }
-
-    .works-grid {
-      grid-template-columns: 1fr;
-    }
+    .hero-content { width: calc(100% - 2rem); padding: 3rem 0 2.5rem; }
+    .hero-actions { flex-direction: column; }
+    .hero-btn { width: 100%; }
+    .works-grid { grid-template-columns: 1fr; }
+    .back-to-top { bottom: 1.2rem; right: 1.2rem; }
+    .contact-form-footer { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
 <body>
 
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-nav">メインコンテンツへスキップ</a>
+
 <!-- NAV -->
-<nav id="navbar">
-  <a href="#" class="nav-logo">TAKT DESIGN</a>
-  <ul class="nav-links">
+<nav id="navbar" role="navigation" aria-label="メインナビゲーション">
+  <a href="#top" class="nav-logo" aria-label="タクト設計 トップへ">TAKT DESIGN</a>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#about">事務所紹介</a></li>
     <li><a href="#services">業務内容</a></li>
     <li><a href="#works">実績</a></li>
     <li><a href="#flow">ご依頼の流れ</a></li>
     <li><a href="#contact">お問い合わせ</a></li>
   </ul>
-  <div class="nav-hamburger" id="navToggle">
+  <button class="nav-hamburger" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="navLinks">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<main id="main-content">
 
 <!-- HERO -->
-<section class="hero" id="top">
-  <div class="hero-bg"></div>
+<section class="hero" id="top" aria-label="ヒーローセクション">
+  <div class="hero-bg" role="img" aria-label="タクト設計事務所外観"></div>
   <div class="hero-content">
     <div class="hero-copy">
       <p class="label">一級建築士事務所</p>
@@ -1014,7 +1385,7 @@
         <a class="hero-btn secondary" href="#works">実績を見る</a>
       </div>
     </div>
-    <aside class="hero-panel">
+    <aside class="hero-panel" aria-label="設計の特徴">
       <div class="hero-panel-title">Design Focus</div>
       <ul>
         <li><strong>沖縄の気候に応える設計</strong><span>日射・通風・陰影を活かす計画</span></li>
@@ -1023,22 +1394,38 @@
       </ul>
     </aside>
   </div>
-  <div class="hero-scroll">scroll</div>
+  <a href="#about" class="hero-scroll" aria-label="下へスクロール">scroll</a>
 </section>
 
-<section class="intro-band">
+<!-- INTRO BAND -->
+<section class="intro-band" aria-label="特徴紹介">
   <div class="intro-band-inner">
     <div class="intro-card reveal">
-      <strong>沖縄に根ざした設計</strong>
-      <span>地域の風土と暮らし方を踏まえ、過ごしやすさと美しさを両立します。</span>
+      <div class="intro-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+      </div>
+      <div>
+        <strong>沖縄に根ざした設計</strong>
+        <span>地域の風土と暮らし方を踏まえ、過ごしやすさと美しさを両立します。</span>
+      </div>
     </div>
     <div class="intro-card reveal">
-      <strong>一級建築士による一貫対応</strong>
-      <span>初回相談から設計監理まで、意図がぶれない体制で進めます。</span>
+      <div class="intro-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div>
+        <strong>一級建築士による一貫対応</strong>
+        <span>初回相談から設計監理まで、意図がぶれない体制で進めます。</span>
+      </div>
     </div>
     <div class="intro-card reveal">
-      <strong>相談しやすい設計事務所</strong>
-      <span>新築、改修、用途変更、事業計画の相談まで幅広く対応します。</span>
+      <div class="intro-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <div>
+        <strong>相談しやすい設計事務所</strong>
+        <span>新築、改修、用途変更、事業計画の相談まで幅広く対応します。</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1056,14 +1443,29 @@
         「タクト」とは、指揮者が振る指揮棒のこと。お客様の想いを汲み取り、沖縄の豊かな自然環境と調和する建築を、確かな技術と丁寧な対話で形にしていきます。
       </p>
       <p>
-        亜熱帯の気候風土を熟知した設計で、快適で長く愛される空間をご提案いたします。
+        亜熱帯の気候風土を熟知した設計で、快適で長く愛される空間をご提案いたします。一級建築士・羽地敏博が、お客様一人ひとりの想いに向き合い、土地の個性を活かした建築を丁寧に設計します。
       </p>
-      <p>
-        一級建築士・羽地敏博が、お客様一人ひとりの想いに向き合い、土地の個性を活かした建築を丁寧に設計します。
-      </p>
+      <div class="about-credentials">
+        <span class="credential-badge">
+          <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+          一級建築士事務所登録
+        </span>
+        <span class="credential-badge">
+          <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+          新築・リノベーション対応
+        </span>
+        <span class="credential-badge">
+          <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+          無料初回相談
+        </span>
+        <span class="credential-badge">
+          <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+          沖縄県内全域対応
+        </span>
+      </div>
     </div>
     <div class="about-visual reveal">
-      <img src="takt-design-office.png" alt="タクト設計の設計事務所外観">
+      <img src="takt-design-office.png" alt="タクト設計の設計事務所外観" loading="lazy">
       <div class="block block-1"></div>
       <div class="block block-2">
         <strong>TAKT DESIGN OFFICE</strong>
@@ -1075,10 +1477,10 @@
 </section>
 
 <!-- PHILOSOPHY -->
-<section>
+<section aria-labelledby="philosophy-heading">
   <div class="philosophy reveal">
     <span class="section-label">Philosophy</span>
-    <h2 class="section-title">設計理念</h2>
+    <h2 class="section-title" id="philosophy-heading">設計理念</h2>
     <div class="philosophy-quote">
       暮らしの中に、<br>
       沖縄の自然と時間が<br>
@@ -1091,117 +1493,170 @@
 </section>
 
 <!-- SERVICES -->
-<section id="services">
+<section id="services" aria-labelledby="services-heading">
   <div class="services-inner">
     <div class="reveal">
       <span class="section-label">Services</span>
-      <h2 class="section-title">業務内容</h2>
+      <h2 class="section-title" id="services-heading">業務内容</h2>
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
-        <div class="service-number">01</div>
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </div>
+        <span class="service-number">01</span>
         <h3>住宅設計</h3>
         <p>沖縄の気候風土に適した住宅を設計します。RC造・木造・鉄骨造など、敷地条件やご要望に最適な構造をご提案。新築からリノベーションまで対応いたします。</p>
+        <div class="service-tag-list">
+          <span class="service-tag">新築</span>
+          <span class="service-tag">リノベーション</span>
+          <span class="service-tag">RC造・木造</span>
+          <span class="service-tag">二世帯住宅</span>
+        </div>
       </div>
       <div class="service-card reveal">
-        <div class="service-number">02</div>
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <span class="service-number">02</span>
         <h3>店舗・商業施設設計</h3>
         <p>飲食店、物販店、オフィスなど、事業のコンセプトを空間として表現します。集客力と機能性を兼ね備えた設計で、お客様のビジネスを支えます。</p>
+        <div class="service-tag-list">
+          <span class="service-tag">飲食店</span>
+          <span class="service-tag">物販・物販</span>
+          <span class="service-tag">オフィス</span>
+          <span class="service-tag">用途変更</span>
+        </div>
       </div>
       <div class="service-card reveal">
-        <div class="service-number">03</div>
-        <h3>設計監理</h3>
-        <p>設計図通りに施工が行われているか、品質・工程・コストを管理します。お客様に代わって現場をチェックし、安心の建築をお届けします。</p>
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V10l8-8 8 8v10"/><path d="M9 20v-5h6v5"/></svg>
+        </div>
+        <span class="service-number">03</span>
+        <h3>設計監理・公共施設</h3>
+        <p>設計図通りに施工が行われているか、品質・工程・コストを管理します。公共施設や福祉施設など、規模を問わず対応。お客様に代わって現場をチェックします。</p>
+        <div class="service-tag-list">
+          <span class="service-tag">工事監理</span>
+          <span class="service-tag">公共施設</span>
+          <span class="service-tag">確認申請</span>
+          <span class="service-tag">事業計画</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- WORKS -->
-<section id="works">
+<section id="works" aria-labelledby="works-heading">
   <div class="works-inner">
     <div class="reveal">
       <span class="section-label">Works</span>
-      <h2 class="section-title">設計実績</h2>
+      <h2 class="section-title" id="works-heading">設計実績</h2>
       <p class="works-note">掲載実績は一部です。用途や規模に応じた事例は、お打ち合わせ時にご案内しています。</p>
     </div>
     <div class="works-grid">
       <div class="work-item work-1 reveal">
-        <img class="work-bg" src="takt-design-office.png" alt="タクト設計の設計事務所">
-        <div class="work-overlay"><span>タクト設計オフィス ― 那覇市</span></div>
+        <img class="work-bg" src="takt-design-office.png" alt="タクト設計オフィス外観" loading="lazy">
+        <div class="work-info">
+          <span class="work-info-category">Office</span>
+          <span class="work-info-title">タクト設計オフィス ― 那覇市</span>
+        </div>
+        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
       </div>
       <div class="work-item work-2 reveal">
-        <div class="work-bg"></div>
-        <div class="work-overlay"><span>T邸 ― 浦添市</span></div>
+        <div class="work-placeholder work-2-bg"></div>
+        <div class="work-info">
+          <span class="work-info-category">Residence</span>
+          <span class="work-info-title">T邸 ― 浦添市</span>
+        </div>
+        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
       </div>
       <div class="work-item work-3 reveal">
-        <div class="work-bg"></div>
-        <div class="work-overlay"><span>カフェ S ― 北谷町</span></div>
+        <div class="work-placeholder work-3-bg"></div>
+        <div class="work-info">
+          <span class="work-info-category">Café</span>
+          <span class="work-info-title">カフェ S ― 北谷町</span>
+        </div>
+        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
       </div>
       <div class="work-item work-4 reveal">
-        <div class="work-bg"></div>
-        <div class="work-overlay"><span>M邸 ― 宜野湾市</span></div>
+        <div class="work-placeholder work-4-bg"></div>
+        <div class="work-info">
+          <span class="work-info-category">Residence</span>
+          <span class="work-info-title">M邸 ― 宜野湾市</span>
+        </div>
+        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
       </div>
       <div class="work-item work-5 reveal">
-        <div class="work-bg"></div>
-        <div class="work-overlay"><span>オフィス K ― 那覇市</span></div>
+        <div class="work-placeholder work-5-bg"></div>
+        <div class="work-info">
+          <span class="work-info-category">Office</span>
+          <span class="work-info-title">オフィス K ― 那覇市</span>
+        </div>
+        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
       </div>
       <div class="work-item work-6 reveal">
-        <div class="work-bg"></div>
-        <div class="work-overlay"><span>Y邸 ― 南城市</span></div>
+        <div class="work-placeholder work-6-bg"></div>
+        <div class="work-info">
+          <span class="work-info-category">Residence</span>
+          <span class="work-info-title">Y邸 ― 南城市</span>
+        </div>
+        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FLOW -->
-<section id="flow">
+<section id="flow" aria-labelledby="flow-heading">
   <div class="flow-inner">
     <div class="reveal">
       <span class="section-label">Flow</span>
-      <h2 class="section-title">ご依頼の流れ</h2>
+      <h2 class="section-title" id="flow-heading">ご依頼の流れ</h2>
     </div>
     <div class="flow-steps">
       <div class="flow-step reveal">
-        <div class="flow-step-num">01</div>
+        <div class="flow-step-num" aria-hidden="true">01</div>
         <div>
           <h3>お問い合わせ・ご相談</h3>
           <p>まずはお電話またはお問い合わせフォームからご連絡ください。ご相談は無料です。建築に関するお悩みやご要望をお聞かせください。</p>
+          <span class="flow-tag">無料相談</span>
         </div>
       </div>
       <div class="flow-step reveal">
-        <div class="flow-step-num">02</div>
+        <div class="flow-step-num" aria-hidden="true">02</div>
         <div>
           <h3>ヒアリング・敷地調査</h3>
           <p>ご家族の暮らし方やご予算、敷地の条件を丁寧にお伺いし、現地調査を行います。</p>
         </div>
       </div>
       <div class="flow-step reveal">
-        <div class="flow-step-num">03</div>
+        <div class="flow-step-num" aria-hidden="true">03</div>
         <div>
           <h3>基本設計・プラン提案</h3>
           <p>ヒアリング内容をもとに、間取りや外観のプランをご提案。納得いただけるまで何度でも打ち合わせを重ねます。</p>
         </div>
       </div>
       <div class="flow-step reveal">
-        <div class="flow-step-num">04</div>
+        <div class="flow-step-num" aria-hidden="true">04</div>
         <div>
           <h3>実施設計・確認申請</h3>
           <p>詳細な設計図面を作成し、建築確認申請の手続きを行います。</p>
         </div>
       </div>
       <div class="flow-step reveal">
-        <div class="flow-step-num">05</div>
+        <div class="flow-step-num" aria-hidden="true">05</div>
         <div>
           <h3>施工・工事監理</h3>
           <p>信頼できる施工会社と連携し、設計意図が現場に正確に反映されるよう監理を行います。</p>
         </div>
       </div>
       <div class="flow-step reveal">
-        <div class="flow-step-num">06</div>
+        <div class="flow-step-num" aria-hidden="true">06</div>
         <div>
           <h3>竣工・お引き渡し</h3>
           <p>完成検査を経て、お引き渡し。その後もメンテナンスや増改築のご相談に対応いたします。</p>
+          <span class="flow-tag">アフターフォロー</span>
         </div>
       </div>
     </div>
@@ -1209,11 +1664,11 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" aria-labelledby="contact-heading">
   <div class="contact-inner">
     <div class="contact-info reveal">
       <span class="section-label">Contact</span>
-      <h2 class="section-title">お問い合わせ</h2>
+      <h2 class="section-title" id="contact-heading">お問い合わせ</h2>
       <h3>まずはお気軽にご相談ください</h3>
 
       <div class="contact-detail">
@@ -1251,94 +1706,244 @@
     </div>
 
     <div class="contact-form reveal">
-      <form>
-        <label for="name">お名前</label>
-        <input type="text" id="name" name="name" placeholder="比嘉 太郎">
+      <!--
+        お問い合わせフォームの送信先設定:
+        1. https://formspree.io でアカウント作成・フォーム登録
+        2. 下記 action の "YOUR_FORM_ID" を取得したIDに置き換えてください
+        例: action="https://formspree.io/f/xpzgwqzb"
+      -->
+      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <input type="hidden" name="_language" value="ja">
+        <!-- ハニーポット（スパム対策）-->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-        <label for="email">メールアドレス</label>
-        <input type="email" id="email" name="email" placeholder="example@mail.com">
+        <label for="name">お名前<span class="required-mark" aria-label="必須">*</span></label>
+        <input type="text" id="name" name="name" placeholder="比嘉 太郎" required autocomplete="name">
+        <span class="field-error" id="nameError" role="alert">お名前を入力してください</span>
+
+        <label for="email">メールアドレス<span class="required-mark" aria-label="必須">*</span></label>
+        <input type="email" id="email" name="email" placeholder="example@mail.com" required autocomplete="email">
+        <span class="field-error" id="emailError" role="alert">正しいメールアドレスを入力してください</span>
 
         <label for="phone">電話番号</label>
-        <input type="tel" id="phone" name="phone" placeholder="090-0000-0000">
+        <input type="tel" id="phone" name="phone" placeholder="098-000-0000" autocomplete="tel">
 
-        <label for="message">ご相談内容</label>
-        <textarea id="message" name="message" placeholder="ご相談内容をお書きください"></textarea>
+        <label for="message">ご相談内容<span class="required-mark" aria-label="必須">*</span></label>
+        <textarea id="message" name="message" placeholder="ご相談内容をお書きください（例：那覇市内で住宅の新築を検討しています）" required></textarea>
+        <span class="field-error" id="messageError" role="alert">ご相談内容を入力してください</span>
 
-        <button type="submit" class="contact-btn">送信する</button>
+        <div class="contact-form-footer">
+          <p class="contact-privacy">送信いただいた情報は、お問い合わせへの<br>返答のみに使用します。</p>
+          <button type="submit" class="contact-btn" id="submitBtn">
+            <div class="btn-spinner" aria-hidden="true"></div>
+            <svg class="btn-arrow" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+            送信する
+          </button>
+        </div>
+
+        <div class="form-result" id="formResult" role="alert" aria-live="polite"></div>
       </form>
     </div>
   </div>
 </section>
 
-<!-- MAP PLACEHOLDER -->
-<div class="map-section">
-  <div class="map-placeholder">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/>
-    </svg>
-    <span>沖縄県那覇市銘苅３丁目１９−１</span>
-    <span style="font-size:0.7rem; opacity:0.6;">※実装時にGoogle Mapsを埋め込みます</span>
-  </div>
+</main>
+
+<!-- MAP -->
+<div class="map-section" aria-label="事務所の地図">
+  <iframe
+    src="https://maps.google.com/maps?q=26.232147,127.7009807&hl=ja&z=16&output=embed"
+    title="一級建築士事務所タクト設計の地図 — 沖縄県那覇市銘苅３丁目１９−１"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen>
+  </iframe>
 </div>
 
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <div class="footer-inner">
     <div>
       <div class="footer-brand">TAKT DESIGN</div>
       <div class="footer-sub">
         一級建築士事務所タクト設計<br>
-        沖縄県那覇市銘苅３丁目１９−１<br>
-        TEL 098-860-1227
+        〒900-0004 沖縄県那覇市銘苅３丁目１９−１<br>
+        TEL <a href="tel:098-860-1227">098-860-1227</a><br>
+        月〜金 9:00 ― 18:00（土日祝は事前予約にて対応）
+        <span class="footer-registration">沖縄県知事登録 一級建築士事務所</span>
       </div>
     </div>
-    <ul class="footer-links">
-      <li><a href="#about">事務所紹介</a></li>
-      <li><a href="#services">業務内容</a></li>
-      <li><a href="#works">実績</a></li>
-      <li><a href="#contact">お問い合わせ</a></li>
-    </ul>
+    <nav class="footer-nav" aria-label="フッターナビゲーション">
+      <h4>Navigation</h4>
+      <ul class="footer-links">
+        <li><a href="#about">事務所紹介</a></li>
+        <li><a href="#services">業務内容</a></li>
+        <li><a href="#works">実績</a></li>
+        <li><a href="#flow">ご依頼の流れ</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
   </div>
   <div class="footer-copy">&copy; 2026 一級建築士事務所タクト設計 All Rights Reserved.</div>
 </footer>
 
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" aria-label="ページ上部へ戻る">
+  <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="18,15 12,9 6,15"/></svg>
+</button>
+
 <script>
-  // Navbar scroll effect
+  /* ===== NAVBAR ===== */
   const nav = document.getElementById('navbar');
   const navToggle = document.getElementById('navToggle');
+  const navOverlay = document.getElementById('navOverlay');
+
+  function closeMenu() {
+    nav.classList.remove('menu-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 80);
   });
 
   navToggle.addEventListener('click', () => {
-    nav.classList.toggle('menu-open');
+    const isOpen = nav.classList.toggle('menu-open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 
-  // Reveal on scroll
-  const revealEls = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
+  navOverlay.addEventListener('click', closeMenu);
 
-  revealEls.forEach(el => observer.observe(el));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeMenu();
+  });
 
-  // Smooth scroll for nav links
+  /* ===== SMOOTH SCROLL ===== */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (href === '#') return;
       e.preventDefault();
-      const target = document.querySelector(a.getAttribute('href'));
+      closeMenu();
+      const target = document.querySelector(href);
       if (target) {
-        nav.classList.remove('menu-open');
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const offset = nav.offsetHeight + 8;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
       }
     });
+  });
+
+  /* ===== REVEAL ON SCROLL ===== */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  /* ===== BACK TO TOP ===== */
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 500);
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ===== CONTACT FORM ===== */
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formResult = document.getElementById('formResult');
+
+  function showFieldError(fieldId, errorId, show) {
+    const field = document.getElementById(fieldId);
+    const error = document.getElementById(errorId);
+    if (show) {
+      field.classList.add('error');
+      error.style.display = 'block';
+    } else {
+      field.classList.remove('error');
+      error.style.display = 'none';
+    }
+  }
+
+  function validateForm() {
+    let valid = true;
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name) { showFieldError('name', 'nameError', true); valid = false; }
+    else { showFieldError('name', 'nameError', false); }
+
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRe.test(email)) { showFieldError('email', 'emailError', true); valid = false; }
+    else { showFieldError('email', 'emailError', false); }
+
+    if (!message) { showFieldError('message', 'messageError', true); valid = false; }
+    else { showFieldError('message', 'messageError', false); }
+
+    return valid;
+  }
+
+  ['name', 'email', 'message'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+      const errorId = id + 'Error';
+      showFieldError(id, errorId, false);
+    });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    // Formspree IDが未設定の場合は仮の成功表示
+    const action = form.getAttribute('action');
+    if (!action || action.includes('YOUR_FORM_ID')) {
+      formResult.className = 'form-result success';
+      formResult.innerHTML = '✓ &nbsp;お問い合わせありがとうございます。<br>担当者より2営業日以内にご連絡いたします。<br><small style="opacity:0.7">※送信先の設定（Formspree）が完了すると実際にメールが届きます。</small>';
+      formResult.style.display = 'block';
+      form.reset();
+      return;
+    }
+
+    submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
+    formResult.style.display = 'none';
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch(action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        formResult.className = 'form-result success';
+        formResult.innerHTML = '✓ &nbsp;お問い合わせありがとうございます。<br>担当者より2営業日以内にご連絡いたします。';
+        form.reset();
+      } else {
+        const json = await res.json().catch(() => ({}));
+        const msg = json.errors ? json.errors.map(e => e.message).join(', ') : '送信に失敗しました';
+        formResult.className = 'form-result error';
+        formResult.innerHTML = '送信に失敗しました。お手数ですが、お電話（098-860-1227）にてご連絡ください。';
+        console.error(msg);
+      }
+    } catch {
+      formResult.className = 'form-result error';
+      formResult.innerHTML = '通信エラーが発生しました。お手数ですが、お電話（098-860-1227）にてご連絡ください。';
+    } finally {
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+      formResult.style.display = 'block';
+      formResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   });
 </script>
 
