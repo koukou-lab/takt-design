@@ -14,16 +14,11 @@
 <meta property="og:image" content="https://takt-design.jp/takt-design-office.png">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:site_name" content="タクト設計">
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="タクト設計 | 一級建築士事務所 - 沖縄県那覇市">
 <meta name="twitter:description" content="沖縄県那覇市を拠点に、住宅・店舗・公共施設の設計監理を手がける一級建築士事務所。">
 <meta name="twitter:image" content="https://takt-design.jp/takt-design-office.png">
-
 <link rel="canonical" href="https://takt-design.jp/">
-
-<!-- Favicon -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%238B7355'/><text x='16' y='22' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='bold' fill='white'>T</text></svg>">
 
 <!-- Fonts -->
@@ -31,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
 
-<!-- JSON-LD 構造化データ -->
+<!-- JSON-LD -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -50,29 +45,10 @@
     "postalCode": "900-0004",
     "addressCountry": "JP"
   },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 26.232147,
-    "longitude": 127.7009807
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "09:00",
-      "closes": "18:00"
-    }
-  ],
-  "founder": {
-    "@type": "Person",
-    "name": "羽地敏博",
-    "jobTitle": "一級建築士"
-  },
-  "areaServed": {
-    "@type": "AdministrativeArea",
-    "name": "沖縄県"
-  },
-  "serviceType": ["住宅設計", "店舗・商業施設設計", "設計監理", "リノベーション"]
+  "geo": { "@type": "GeoCoordinates", "latitude": 26.232147, "longitude": 127.7009807 },
+  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" }],
+  "founder": { "@type": "Person", "name": "羽地敏博", "jobTitle": "一級建築士" },
+  "areaServed": { "@type": "AdministrativeArea", "name": "沖縄県" }
 }
 </script>
 
@@ -90,7 +66,6 @@
     --accent-soft: #B79D7E;
     --white: #FFFFFF;
     --border: #D4CFC7;
-    --hero-overlay: rgba(30, 28, 25, 0.45);
     --transition: 0.3s ease;
   }
 
@@ -108,8 +83,7 @@
   /* ===== ACCESSIBILITY ===== */
   .skip-nav {
     position: fixed;
-    top: -100%;
-    left: 1rem;
+    top: -100%; left: 1rem;
     z-index: 9999;
     background: var(--accent);
     color: var(--white);
@@ -120,63 +94,109 @@
     transition: top 0.2s;
   }
   .skip-nav:focus { top: 0; }
-
-  :focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 2px;
-  }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
   /* ===== NAV ===== */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 1000;
-    padding: 1.2rem 3rem;
+    padding: 1.1rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background 0.5s, backdrop-filter 0.5s, box-shadow 0.5s;
+    /* auto-hide: translate up when .hidden */
+    transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s, transform 0.4s, padding 0.4s;
+  }
+
+  nav.hidden {
+    transform: translateY(-100%);
   }
 
   nav.scrolled {
     background: rgba(245, 242, 237, 0.96);
     backdrop-filter: blur(16px);
     box-shadow: 0 1px 0 var(--border);
+    padding: 0.8rem 3rem;
   }
 
+  /* Logo — タクト設計 as Japanese primary */
   .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
     color: var(--white);
     text-decoration: none;
-    transition: color 0.5s;
+    transition: color 0.4s;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
   }
-
+  .nav-logo-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    opacity: 0.65;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
   nav.scrolled .nav-logo { color: var(--text); }
+
+  /* Nav right group: links + lang toggle */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
 
   .nav-links {
     display: flex;
-    gap: 2.2rem;
+    gap: 2rem;
     list-style: none;
   }
 
   .nav-links a {
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
+    font-size: 0.76rem;
+    letter-spacing: 0.1em;
     text-decoration: none;
     color: rgba(255,255,255,0.85);
     font-weight: 400;
     transition: color var(--transition);
-    text-transform: uppercase;
     padding-bottom: 2px;
     border-bottom: 1px solid transparent;
   }
-
   nav.scrolled .nav-links a { color: var(--text-light); }
   .nav-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* Language toggle */
+  .lang-toggle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.7);
+    background: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 3px;
+    padding: 0.28rem 0.7rem;
+    cursor: pointer;
+    transition: color var(--transition), border-color var(--transition), background var(--transition);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .lang-toggle:hover {
+    color: var(--white);
+    border-color: rgba(255,255,255,0.7);
+  }
+  nav.scrolled .lang-toggle {
+    color: var(--text-light);
+    border-color: var(--border);
+  }
+  nav.scrolled .lang-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
 
   .nav-hamburger {
     display: none;
@@ -244,7 +264,7 @@
     position: absolute;
     inset: auto 0 0;
     height: 34%;
-    background: linear-gradient(180deg, rgba(33, 28, 23, 0), rgba(33, 28, 23, 0.72));
+    background: linear-gradient(180deg, rgba(33,28,23,0), rgba(33,28,23,0.72));
     z-index: 1;
   }
 
@@ -266,40 +286,54 @@
     font-size: 0.72rem;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.4rem;
     opacity: 0;
     animation: fadeUp 1s 0.3s forwards;
     font-weight: 400;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.65);
   }
 
+  /* タクト設計 as primary h1 */
   .hero-content h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(2.6rem, 6.5vw, 5rem);
     font-weight: 300;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.22em;
     line-height: 1.2;
     opacity: 0;
     animation: fadeUp 1.2s 0.6s forwards;
   }
 
+  .hero-content .hero-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    font-weight: 300;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-top: 0.7rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.85s forwards;
+    color: rgba(255,255,255,0.5);
+  }
+
   .hero-content .subtitle {
     font-family: 'Noto Serif JP', serif;
-    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+    font-size: clamp(0.9rem, 1.6vw, 1.05rem);
     font-weight: 300;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     margin-top: 1.2rem;
     opacity: 0;
-    animation: fadeUp 1s 0.9s forwards;
+    animation: fadeUp 1s 0.95s forwards;
     color: rgba(255,255,255,0.8);
   }
 
   .hero-description {
     max-width: 620px;
     margin-top: 1.4rem;
-    color: rgba(255,255,255,0.78);
-    font-size: 0.95rem;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.92rem;
     letter-spacing: 0.03em;
+    line-height: 2;
     opacity: 0;
     animation: fadeUp 1s 1.05s forwards;
   }
@@ -326,117 +360,68 @@
     text-transform: uppercase;
     transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
   }
-
-  .hero-btn.primary {
-    background: var(--accent-soft);
-    color: var(--bg-deep);
-  }
-  .hero-btn.primary:hover {
-    background: #c4ad92;
-    box-shadow: 0 8px 24px rgba(183,157,126,0.4);
-  }
-
-  .hero-btn.secondary {
-    color: var(--white);
-    border: 1px solid rgba(255,255,255,0.45);
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(10px);
-  }
-  .hero-btn.secondary:hover {
-    border-color: rgba(255,255,255,0.7);
-    background: rgba(255,255,255,0.1);
-  }
-
+  .hero-btn.primary { background: var(--accent-soft); color: var(--bg-deep); }
+  .hero-btn.primary:hover { background: #c4ad92; box-shadow: 0 8px 24px rgba(183,157,126,0.4); }
+  .hero-btn.secondary { color: var(--white); border: 1px solid rgba(255,255,255,0.45); background: rgba(255,255,255,0.06); backdrop-filter: blur(10px); }
+  .hero-btn.secondary:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.1); }
   .hero-btn:hover { transform: translateY(-2px); }
 
   .hero-panel {
     padding: 1.6rem;
     border: 1px solid rgba(255,255,255,0.14);
-    background: rgba(15, 14, 12, 0.34);
+    background: rgba(15,14,12,0.34);
     backdrop-filter: blur(14px);
     border-radius: 18px;
     opacity: 0;
     animation: fadeUp 1s 1.25s forwards;
   }
-
   .hero-panel-title {
     font-size: 0.72rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.62);
+    color: rgba(255,255,255,0.55);
     margin-bottom: 1rem;
   }
-
-  .hero-panel ul {
-    list-style: none;
-    display: grid;
-    gap: 0.9rem;
-  }
-
-  .hero-panel li {
-    padding-bottom: 0.9rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .hero-panel li:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-
-  .hero-panel strong {
-    display: block;
-    font-family: 'Noto Serif JP', serif;
-    font-size: 0.95rem;
-    font-weight: 400;
-    margin-bottom: 0.2rem;
-  }
-
-  .hero-panel span {
-    color: rgba(255,255,255,0.66);
-    font-size: 0.84rem;
-  }
+  .hero-panel ul { list-style: none; display: grid; gap: 0.9rem; }
+  .hero-panel li { padding-bottom: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .hero-panel li:last-child { padding-bottom: 0; border-bottom: none; }
+  .hero-panel strong { display: block; font-family: 'Noto Serif JP', serif; font-size: 0.95rem; font-weight: 400; margin-bottom: 0.2rem; }
+  .hero-panel span { color: rgba(255,255,255,0.6); font-size: 0.84rem; }
 
   .hero-scroll {
     position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
+    bottom: 2.5rem; left: 50%;
     transform: translateX(-50%);
     z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    color: rgba(255,255,255,0.5);
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.45);
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     text-decoration: none;
   }
-
   .hero-scroll::after {
     content: '';
-    width: 1px;
-    height: 40px;
-    background: rgba(255,255,255,0.3);
+    width: 1px; height: 40px;
+    background: rgba(255,255,255,0.28);
     animation: scrollLine 2s infinite;
   }
-
   @keyframes scrollLine {
     0%   { transform: scaleY(0); transform-origin: top; }
     50%  { transform: scaleY(1); transform-origin: top; }
     51%  { transform: scaleY(1); transform-origin: bottom; }
     100% { transform: scaleY(0); transform-origin: bottom; }
   }
-
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(30px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
   /* ===== SECTIONS ===== */
-  section {
-    padding: 7rem 3rem;
-  }
+  section { padding: 7rem 3rem; }
 
   .section-label {
     font-family: 'Cormorant Garamond', serif;
@@ -457,82 +442,34 @@
   }
 
   /* ===== INTRO BAND ===== */
-  .intro-band {
-    margin-top: -4.5rem;
-    position: relative;
-    z-index: 3;
-    padding: 0 3rem;
-  }
-
-  .intro-band-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
+  .intro-band { margin-top: -4.5rem; position: relative; z-index: 3; padding: 0 3rem; }
+  .intro-band-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
 
   .intro-card {
     background: rgba(255,255,255,0.95);
-    border: 1px solid rgba(212, 207, 199, 0.9);
+    border: 1px solid rgba(212,207,199,0.9);
     border-radius: 18px;
     padding: 1.4rem 1.5rem;
-    box-shadow: 0 22px 60px rgba(33, 28, 23, 0.08);
+    box-shadow: 0 22px 60px rgba(33,28,23,0.08);
     display: flex;
     gap: 1rem;
     align-items: flex-start;
   }
-
   .intro-card-icon {
     flex-shrink: 0;
-    width: 36px;
-    height: 36px;
+    width: 36px; height: 36px;
     border-radius: 8px;
     background: linear-gradient(135deg, var(--accent-soft), var(--accent));
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     margin-top: 0.2rem;
   }
-
-  .intro-card-icon svg {
-    width: 18px;
-    height: 18px;
-    stroke: var(--white);
-    fill: none;
-  }
-
-  .intro-card strong {
-    display: block;
-    font-family: 'Noto Serif JP', serif;
-    font-size: 0.95rem;
-    font-weight: 400;
-    margin-bottom: 0.35rem;
-  }
-
-  .intro-card span {
-    display: block;
-    font-size: 0.82rem;
-    color: var(--text-light);
-    line-height: 1.8;
-  }
+  .intro-card-icon svg { width: 18px; height: 18px; stroke: var(--white); fill: none; }
+  .intro-card strong { display: block; font-family: 'Noto Serif JP', serif; font-size: 0.95rem; font-weight: 400; margin-bottom: 0.35rem; }
+  .intro-card span { display: block; font-size: 0.82rem; color: var(--text-light); line-height: 1.8; }
 
   /* ===== ABOUT ===== */
-  .about {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-
-  .about-text p {
-    color: var(--text-light);
-    font-size: 0.92rem;
-    margin-bottom: 1.5rem;
-    line-height: 2;
-  }
+  .about { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-text p { color: var(--text-light); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 2; }
 
   .about-credentials {
     margin-top: 2.5rem;
@@ -542,7 +479,6 @@
     flex-wrap: wrap;
     gap: 0.6rem;
   }
-
   .credential-badge {
     display: inline-flex;
     align-items: center;
@@ -555,50 +491,18 @@
     letter-spacing: 0.04em;
     background: var(--white);
   }
+  .credential-badge svg { width: 13px; height: 13px; stroke: var(--accent); fill: none; flex-shrink: 0; }
 
-  .credential-badge svg {
-    width: 13px;
-    height: 13px;
-    stroke: var(--accent);
-    fill: none;
-    flex-shrink: 0;
-  }
+  .about-visual { position: relative; height: 480px; border-radius: 18px; overflow: hidden; background: #d7cfc4; }
+  .about-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; filter: saturate(0.92); }
 
-  .about-visual {
-    position: relative;
-    height: 480px;
-    border-radius: 18px;
-    overflow: hidden;
-    background: #d7cfc4;
-  }
-
-  .about-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 35%;
-    filter: saturate(0.92);
-  }
-
-  .about-visual .block {
-    position: absolute;
-    border-radius: 4px;
-  }
-
-  .about-visual .block-1 {
-    top: 1.2rem; right: 1.2rem;
-    width: 64%;
-    height: 58%;
-    background: linear-gradient(145deg, rgba(155, 139, 115, 0.28), rgba(122, 107, 85, 0.05));
-    border: 1px solid rgba(255,255,255,0.24);
-    backdrop-filter: blur(8px);
-  }
+  /* block-1（モザイク）は削除 */
 
   .about-visual .block-2 {
+    position: absolute;
     bottom: 1.2rem; left: 1.2rem;
-    width: 52%;
-    height: 34%;
-    background: rgba(33, 28, 23, 0.82);
+    width: 52%; height: auto;
+    background: rgba(33,28,23,0.82);
     color: var(--white);
     padding: 1.4rem;
     display: flex;
@@ -607,42 +511,15 @@
     gap: 0.35rem;
     border-radius: 8px;
   }
+  .about-visual .block-2 strong { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 400; }
+  .about-visual .block-2 span { font-size: 0.82rem; color: rgba(255,255,255,0.7); }
 
-  .about-visual .block-2 strong {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 1rem;
-    font-weight: 400;
-  }
-
-  .about-visual .block-2 span {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.7);
-  }
-
-  .about-visual .line-accent {
-    position: absolute;
-    top: 1.8rem;
-    left: 1.8rem;
-    width: 90px;
-    height: 1px;
-    background: rgba(255,255,255,0.85);
-    opacity: 0.8;
-  }
+  .about-visual .line-accent { position: absolute; top: 1.8rem; left: 1.8rem; width: 90px; height: 1px; background: rgba(255,255,255,0.85); opacity: 0.8; }
 
   /* ===== SERVICES ===== */
   #services { background: var(--bg-warm); }
-
-  .services-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-    margin-top: 3rem;
-  }
+  .services-inner { max-width: 1200px; margin: 0 auto; }
+  .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2.5rem; margin-top: 3rem; }
 
   .service-card {
     background: var(--white);
@@ -652,91 +529,33 @@
     overflow: hidden;
     transition: transform 0.4s, box-shadow 0.4s;
   }
-
-  .service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-  }
-
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
   .service-card::before {
     content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 3px;
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 3px;
     background: linear-gradient(90deg, var(--accent), var(--accent-dark));
-    transform: scaleX(0);
-    transform-origin: left;
+    transform: scaleX(0); transform-origin: left;
     transition: transform 0.5s;
   }
-
   .service-card:hover::before { transform: scaleX(1); }
 
   .service-icon {
-    width: 52px;
-    height: 52px;
+    width: 52px; height: 52px;
     border-radius: 14px;
     background: linear-gradient(135deg, #f0ebe2, #e5ddd2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     margin-bottom: 1.4rem;
   }
-
-  .service-icon svg {
-    width: 26px;
-    height: 26px;
-    stroke: var(--accent);
-    fill: none;
-    stroke-width: 1.5;
-  }
-
-  .service-number {
-    position: absolute;
-    top: 1.2rem; right: 1.5rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem;
-    font-weight: 300;
-    color: var(--border);
-    line-height: 1;
-  }
-
-  .service-card h3 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin-bottom: 1rem;
-  }
-
-  .service-card p {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    line-height: 1.9;
-  }
-
-  .service-tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 1.2rem;
-  }
-
-  .service-tag {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
-    background: var(--bg-warm);
-    border-radius: 999px;
-    color: var(--text-light);
-    letter-spacing: 0.04em;
-  }
+  .service-icon svg { width: 26px; height: 26px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+  .service-number { position: absolute; top: 1.2rem; right: 1.5rem; font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--border); line-height: 1; }
+  .service-card h3 { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 1rem; }
+  .service-card p { font-size: 0.85rem; color: var(--text-light); line-height: 1.9; }
+  .service-tag-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.2rem; }
+  .service-tag { font-size: 0.7rem; padding: 0.2rem 0.6rem; background: var(--bg-warm); border-radius: 999px; color: var(--text-light); letter-spacing: 0.04em; }
 
   /* ===== PHILOSOPHY ===== */
-  .philosophy {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
+  .philosophy { max-width: 800px; margin: 0 auto; text-align: center; }
   .philosophy-quote {
     font-family: 'Noto Serif JP', serif;
     font-size: clamp(1.3rem, 2.5vw, 1.8rem);
@@ -744,45 +563,16 @@
     line-height: 2;
     color: var(--text);
     margin: 2rem 0;
-    position: relative;
   }
-
-  .philosophy-quote::before {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 1px;
-    background: var(--accent);
-    margin: 0 auto 2.5rem;
-  }
-
-  .philosophy p {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    line-height: 2;
-    margin-top: 2rem;
-  }
+  .philosophy-quote::before { content: ''; display: block; width: 50px; height: 1px; background: var(--accent); margin: 0 auto 2.5rem; }
+  .philosophy p { color: var(--text-light); font-size: 0.9rem; line-height: 2; margin-top: 2rem; }
 
   /* ===== WORKS ===== */
-  #works {
-    background: #2C2820;
-    color: var(--white);
-  }
-
+  #works { background: #2C2820; color: var(--white); }
   #works .section-label { color: #BDB0A0; }
   #works .section-title { color: var(--white); }
-
-  .works-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .works-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
+  .works-inner { max-width: 1200px; margin: 0 auto; }
+  .works-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
 
   .work-item {
     position: relative;
@@ -793,542 +583,176 @@
     display: block;
     text-decoration: none;
   }
-
-  .work-item .work-bg {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s ease;
-    display: block;
-    object-fit: cover;
-  }
-
+  .work-item .work-bg { width: 100%; height: 100%; transition: transform 0.6s ease; display: block; object-fit: cover; }
   .work-item:hover .work-bg { transform: scale(1.06); }
-
-  /* Works items without photos — architectural gradient placeholders */
-  .work-item .work-placeholder {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s ease;
-  }
-
+  .work-item .work-placeholder { width: 100%; height: 100%; transition: transform 0.6s ease; }
   .work-item:hover .work-placeholder { transform: scale(1.04); }
-
-  .work-1-bg { background: linear-gradient(145deg, #6B6054 0%, #8B7B68 50%, #5A5048 100%); }
-  .work-2-bg { background: linear-gradient(145deg, #4D6057 0%, #6B8078 50%, #3D504A 100%); }
-  .work-3-bg { background: linear-gradient(145deg, #4A5368 0%, #647288 50%, #3A4258 100%); }
-  .work-4-bg { background: linear-gradient(145deg, #684A48 0%, #886260 50%, #583A38 100%); }
-  .work-5-bg { background: linear-gradient(145deg, #4A6068 0%, #607880 50%, #3A5058 100%); }
-  .work-6-bg { background: linear-gradient(145deg, #68604A 0%, #887A60 50%, #585038 100%); }
-
-  /* Subtle grid pattern overlay for work placeholders */
-  .work-placeholder::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 30px 30px;
-  }
+  .work-1-bg { background: linear-gradient(145deg, #6B6054, #8B7B68, #5A5048); }
+  .work-2-bg { background: linear-gradient(145deg, #4D6057, #6B8078, #3D504A); }
+  .work-3-bg { background: linear-gradient(145deg, #4A5368, #647288, #3A4258); }
+  .work-4-bg { background: linear-gradient(145deg, #684A48, #886260, #583A38); }
+  .work-5-bg { background: linear-gradient(145deg, #4A6068, #607880, #3A5058); }
+  .work-6-bg { background: linear-gradient(145deg, #68604A, #887A60, #585038); }
 
   .work-info {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    padding: 1.2rem 1.5rem 1.2rem;
-    background: linear-gradient(0deg, rgba(0,0,0,0.72) 0%, transparent 100%);
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(0deg, rgba(0,0,0,0.72), transparent);
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
   }
-
-  .work-info-category {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-  }
-
-  .work-info-title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 0.9rem;
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    color: var(--white);
-  }
+  .work-info-category { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  .work-info-title { font-family: 'Noto Serif JP', serif; font-size: 0.9rem; font-weight: 300; letter-spacing: 0.05em; color: var(--white); }
 
   .work-hover-detail {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.4s;
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.4s;
   }
-
   .work-hover-detail span {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--white);
-    border: 1px solid rgba(255,255,255,0.6);
-    padding: 0.45rem 1.1rem;
-    border-radius: 999px;
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--white); border: 1px solid rgba(255,255,255,0.6);
+    padding: 0.45rem 1.1rem; border-radius: 999px;
   }
-
   .work-item:hover .work-hover-detail { opacity: 1; }
-
-  .works-note {
-    margin-top: 1rem;
-    color: rgba(255,255,255,0.55);
-    font-size: 0.82rem;
-    letter-spacing: 0.03em;
-  }
+  .works-note { margin-top: 1rem; color: rgba(255,255,255,0.5); font-size: 0.82rem; }
 
   /* ===== FLOW ===== */
-  .flow-inner {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
+  .flow-inner { max-width: 900px; margin: 0 auto; }
   .flow-steps { margin-top: 3rem; }
-
-  .flow-step {
-    display: flex;
-    gap: 2.5rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--border);
-    align-items: flex-start;
-    position: relative;
-  }
-
+  .flow-step { display: flex; gap: 2.5rem; padding: 2rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
   .flow-step:last-child { border-bottom: none; }
-
-  .flow-step-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.4rem;
-    font-weight: 300;
-    color: var(--accent);
-    min-width: 60px;
-    line-height: 1;
-    padding-top: 0.2rem;
-  }
-
-  .flow-step h3 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-bottom: 0.6rem;
-  }
-
-  .flow-step p {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    line-height: 1.9;
-  }
-
-  .flow-tag {
-    display: inline-block;
-    margin-top: 0.6rem;
-    font-size: 0.68rem;
-    padding: 0.18rem 0.65rem;
-    background: #f0ebe2;
-    border-radius: 999px;
-    color: var(--accent);
-    letter-spacing: 0.06em;
-  }
+  .flow-step-num { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; color: var(--accent); min-width: 60px; line-height: 1; padding-top: 0.2rem; }
+  .flow-step h3 { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 400; margin-bottom: 0.6rem; }
+  .flow-step p { font-size: 0.85rem; color: var(--text-light); line-height: 1.9; }
+  .flow-tag { display: inline-block; margin-top: 0.6rem; font-size: 0.68rem; padding: 0.18rem 0.65rem; background: #f0ebe2; border-radius: 999px; color: var(--accent); letter-spacing: 0.06em; }
 
   /* ===== CONTACT ===== */
   #contact { background: var(--bg-warm); }
-
-  .contact-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-  }
-
-  .contact-info h3 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-bottom: 1.5rem;
-  }
-
+  .contact-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+  .contact-info h3 { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 400; margin-bottom: 1.5rem; }
   .contact-detail { margin-bottom: 2rem; }
-
-  .contact-detail .detail-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.4rem;
-    font-weight: 500;
-  }
-
-  .contact-detail .detail-value {
-    font-size: 0.92rem;
-    color: var(--text);
-    line-height: 1.8;
-  }
-
-  .contact-detail a {
-    color: var(--text);
-    text-decoration: none;
-    border-bottom: 1px solid var(--border);
-    transition: border-color var(--transition), color var(--transition);
-  }
-
+  .contact-detail .detail-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; font-weight: 500; }
+  .contact-detail .detail-value { font-size: 0.92rem; color: var(--text); line-height: 1.8; }
+  .contact-detail a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); transition: border-color var(--transition), color var(--transition); }
   .contact-detail a:hover { color: var(--accent); border-color: var(--accent); }
 
-  /* Form */
-  .contact-form label {
-    display: block;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.4rem;
-    font-weight: 500;
-  }
-
-  .contact-form .required-mark {
-    color: #c0392b;
-    margin-left: 0.3rem;
-    font-size: 0.65rem;
-  }
-
-  .contact-form input,
-  .contact-form textarea,
-  .contact-form select {
-    width: 100%;
-    padding: 0.8rem 0;
-    border: none;
-    border-bottom: 1px solid var(--border);
+  .contact-form label { display: block; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; font-weight: 500; }
+  .contact-form .required-mark { color: #c0392b; margin-left: 0.3rem; font-size: 0.65rem; }
+  .contact-form input, .contact-form textarea {
+    width: 100%; padding: 0.8rem 0;
+    border: none; border-bottom: 1px solid var(--border);
     background: transparent;
     font-family: 'Noto Sans JP', sans-serif;
-    font-size: 0.9rem;
-    color: var(--text);
-    margin-bottom: 1.8rem;
-    outline: none;
+    font-size: 0.9rem; color: var(--text);
+    margin-bottom: 1.8rem; outline: none;
     transition: border-color var(--transition);
-    font-weight: 300;
-    border-radius: 0;
-    appearance: none;
+    font-weight: 300; border-radius: 0; appearance: none;
   }
-
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    border-color: var(--accent);
-  }
-
-  .contact-form input.error,
-  .contact-form textarea.error {
-    border-color: #c0392b;
-  }
-
-  .field-error {
-    display: none;
-    font-size: 0.72rem;
-    color: #c0392b;
-    margin-top: -1.4rem;
-    margin-bottom: 1.4rem;
-  }
-
-  .contact-form textarea {
-    resize: vertical;
-    min-height: 110px;
-  }
-
-  .contact-form-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-  }
-
-  .contact-privacy {
-    font-size: 0.72rem;
-    color: var(--text-light);
-    line-height: 1.6;
-  }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); }
+  .contact-form input.error, .contact-form textarea.error { border-color: #c0392b; }
+  .field-error { display: none; font-size: 0.72rem; color: #c0392b; margin-top: -1.4rem; margin-bottom: 1.4rem; }
+  .contact-form textarea { resize: vertical; min-height: 110px; }
+  .contact-form-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+  .contact-privacy { font-size: 0.72rem; color: var(--text-light); line-height: 1.6; }
 
   .contact-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
+    display: inline-flex; align-items: center; gap: 0.6rem;
     padding: 0.9rem 2.5rem;
-    background: var(--accent);
-    color: var(--white);
-    border: none;
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 0.82rem;
-    letter-spacing: 0.15em;
+    background: var(--accent); color: var(--white);
+    border: none; font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.82rem; letter-spacing: 0.15em;
     cursor: pointer;
     transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-    border-radius: 4px;
-    font-weight: 400;
-    white-space: nowrap;
+    border-radius: 4px; font-weight: 400; white-space: nowrap;
   }
-
-  .contact-btn:hover {
-    background: var(--accent-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(107,90,66,0.25);
-  }
-
-  .contact-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-  }
-
-  .contact-btn svg {
-    width: 16px;
-    height: 16px;
-    stroke: currentColor;
-    fill: none;
-    transition: transform var(--transition);
-  }
-
+  .contact-btn:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(107,90,66,0.25); }
+  .contact-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .contact-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; transition: transform var(--transition); }
   .contact-btn:not(:disabled):hover svg { transform: translateX(3px); }
 
-  /* Spinner */
   @keyframes spin { to { transform: rotate(360deg); } }
-  .btn-spinner {
-    width: 14px; height: 14px;
-    border: 2px solid rgba(255,255,255,0.3);
-    border-top-color: var(--white);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    display: none;
-  }
+  .btn-spinner { width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.3); border-top-color: var(--white); border-radius: 50%; animation: spin 0.7s linear infinite; display: none; }
   .contact-btn.loading .btn-spinner { display: block; }
   .contact-btn.loading .btn-arrow { display: none; }
 
-  /* Success/Error states */
-  .form-result {
-    display: none;
-    padding: 1.2rem 1.5rem;
-    border-radius: 8px;
-    font-size: 0.88rem;
-    margin-top: 1rem;
-    line-height: 1.8;
-  }
-
-  .form-result.success {
-    background: #f0f7f0;
-    border: 1px solid #b8dcb8;
-    color: #2d6a2d;
-  }
-
-  .form-result.error {
-    background: #fdf2f2;
-    border: 1px solid #f5c6c6;
-    color: #8b2020;
-  }
+  .form-result { display: none; padding: 1.2rem 1.5rem; border-radius: 8px; font-size: 0.88rem; margin-top: 1rem; line-height: 1.8; }
+  .form-result.success { background: #f0f7f0; border: 1px solid #b8dcb8; color: #2d6a2d; }
+  .form-result.error { background: #fdf2f2; border: 1px solid #f5c6c6; color: #8b2020; }
 
   /* ===== MAP ===== */
-  .map-section {
-    padding: 0;
-    height: 420px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .map-section iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    display: block;
-    filter: saturate(0.85);
-  }
+  .map-section { padding: 0; height: 420px; position: relative; overflow: hidden; }
+  .map-section iframe { width: 100%; height: 100%; border: 0; display: block; filter: saturate(0.85); }
 
   /* ===== FOOTER ===== */
-  footer {
-    background: #1E1C19;
-    color: rgba(255,255,255,0.5);
-    padding: 4rem 3rem 2rem;
-  }
-
-  .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 3rem;
-    align-items: start;
-  }
-
-  .footer-brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 400;
-    letter-spacing: 0.15em;
-    color: rgba(255,255,255,0.8);
-    margin-bottom: 1rem;
-  }
-
-  .footer-sub {
-    font-size: 0.75rem;
-    line-height: 1.9;
-  }
-
-  .footer-sub a {
-    color: rgba(255,255,255,0.45);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-    transition: color var(--transition), border-color var(--transition);
-  }
+  footer { background: #1E1C19; color: rgba(255,255,255,0.5); padding: 4rem 3rem 2rem; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: start; }
+  .footer-brand { font-family: 'Noto Serif JP', serif; font-size: 1.15rem; font-weight: 400; letter-spacing: 0.18em; color: rgba(255,255,255,0.8); margin-bottom: 0.3rem; }
+  .footer-brand-en { font-family: 'Cormorant Garamond', serif; font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1rem; display: block; }
+  .footer-sub { font-size: 0.75rem; line-height: 1.9; }
+  .footer-sub a { color: rgba(255,255,255,0.45); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.15); transition: color var(--transition), border-color var(--transition); }
   .footer-sub a:hover { color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.4); }
-
-  .footer-registration {
-    display: inline-block;
-    margin-top: 0.8rem;
-    font-size: 0.7rem;
-    color: rgba(255,255,255,0.28);
-    letter-spacing: 0.04em;
-  }
-
-  .footer-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-  }
-
-  .footer-nav h4 {
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 0.2rem;
-  }
-
-  .footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    list-style: none;
-  }
-
-  .footer-links a {
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.45);
-    text-decoration: none;
-    letter-spacing: 0.06em;
-    transition: color var(--transition);
-  }
-
+  .footer-registration { display: inline-block; margin-top: 0.8rem; font-size: 0.7rem; color: rgba(255,255,255,0.28); letter-spacing: 0.04em; }
+  .footer-nav { display: flex; flex-direction: column; gap: 0.85rem; }
+  .footer-nav h4 { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.2rem; }
+  .footer-links { display: flex; flex-direction: column; gap: 0.6rem; list-style: none; }
+  .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.45); text-decoration: none; letter-spacing: 0.06em; transition: color var(--transition); }
   .footer-links a:hover { color: rgba(255,255,255,0.8); }
-
-  .footer-copy {
-    text-align: center;
-    font-size: 0.68rem;
-    color: rgba(255,255,255,0.22);
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    letter-spacing: 0.1em;
-  }
+  .footer-copy { text-align: center; font-size: 0.68rem; color: rgba(255,255,255,0.22); margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); letter-spacing: 0.1em; }
 
   /* ===== ANIMATIONS ===== */
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* ===== BACK TO TOP ===== */
   .back-to-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 500;
-    width: 46px;
-    height: 46px;
-    background: var(--accent);
-    color: var(--white);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(12px);
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 500;
+    width: 46px; height: 46px;
+    background: var(--accent); color: var(--white);
+    border: none; border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transform: translateY(12px);
     transition: opacity 0.4s, transform 0.4s, background var(--transition);
     pointer-events: none;
     box-shadow: 0 4px 16px rgba(139,115,85,0.3);
   }
-
-  .back-to-top.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
+  .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
   .back-to-top:hover { background: var(--accent-dark); }
-
-  .back-to-top svg {
-    width: 18px;
-    height: 18px;
-    stroke: var(--white);
-    fill: none;
-  }
+  .back-to-top svg { width: 18px; height: 18px; stroke: var(--white); fill: none; }
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
+    nav.scrolled { padding: 0.7rem 1.5rem; }
     .nav-links {
-      position: fixed;
-      top: 0; right: 0;
-      width: min(80vw, 300px);
-      height: 100vh;
-      background: rgba(245, 242, 237, 0.98);
-      backdrop-filter: blur(16px);
-      display: flex;
-      flex-direction: column;
+      position: fixed; top: 0; right: 0;
+      width: min(80vw, 300px); height: 100vh;
+      background: rgba(245,242,237,0.98); backdrop-filter: blur(16px);
+      display: flex; flex-direction: column;
       padding: 6rem 1.5rem 2rem;
-      transform: translateX(100%);
-      transition: transform 0.35s ease;
-      box-shadow: -10px 0 30px rgba(0,0,0,0.08);
-      z-index: 1000;
+      transform: translateX(100%); transition: transform 0.35s ease;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.08); z-index: 1000;
     }
     nav.menu-open .nav-links { transform: translateX(0); }
     .nav-hamburger { display: flex; }
     .nav-links a { color: var(--text-light); font-size: 0.9rem; padding: 0.3rem 0; }
+    .lang-toggle { display: none; } /* モバイルはメニュー内に表示 */
+    .nav-links .lang-toggle-mobile { display: block; margin-top: 1.5rem; color: var(--text-light); font-size: 0.9rem; border-color: var(--border); }
 
     section { padding: 5rem 1.5rem; }
-
     .hero { min-height: 760px; height: auto; padding-top: 6rem; }
-    .hero-content {
-      width: calc(100% - 3rem);
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      align-items: start;
-      padding: 4rem 0 3rem;
-    }
-
+    .hero-content { width: calc(100% - 3rem); grid-template-columns: 1fr; gap: 1.5rem; align-items: start; padding: 4rem 0 3rem; }
     .intro-band { margin-top: -2rem; padding: 0 1.5rem; }
     .intro-band-inner { grid-template-columns: 1fr; }
-
     .about { grid-template-columns: 1fr; gap: 3rem; }
     .about-visual { height: 280px; }
-    .about-visual .block-2 { width: calc(100% - 2.4rem); height: auto; min-height: 100px; }
-
+    .about-visual .block-2 { width: calc(100% - 2.4rem); }
     .services-grid { grid-template-columns: 1fr; gap: 1.5rem; }
     .works-grid { grid-template-columns: 1fr 1fr; }
-
     .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
     .flow-step { gap: 1.5rem; }
-
     .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
     .footer-nav { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
     .footer-nav h4 { display: none; }
@@ -1347,22 +771,31 @@
 </head>
 <body>
 
-<!-- Skip Navigation -->
 <a href="#main-content" class="skip-nav">メインコンテンツへスキップ</a>
 
 <!-- NAV -->
 <nav id="navbar" role="navigation" aria-label="メインナビゲーション">
-  <a href="#top" class="nav-logo" aria-label="タクト設計 トップへ">TAKT DESIGN</a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#about">事務所紹介</a></li>
-    <li><a href="#services">業務内容</a></li>
-    <li><a href="#works">実績</a></li>
-    <li><a href="#flow">ご依頼の流れ</a></li>
-    <li><a href="#contact">お問い合わせ</a></li>
-  </ul>
-  <button class="nav-hamburger" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="navLinks">
-    <span></span><span></span><span></span>
-  </button>
+  <a href="#top" class="nav-logo" aria-label="タクト設計 トップへ">
+    <span data-i18n="nav-logo">タクト設計</span>
+    <span class="nav-logo-sub">TAKT DESIGN</span>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about"    data-i18n="nav-about">事務所紹介</a></li>
+      <li><a href="#services" data-i18n="nav-services">業務内容</a></li>
+      <li><a href="#works"    data-i18n="nav-works">実績</a></li>
+      <li><a href="#flow"     data-i18n="nav-flow">ご依頼の流れ</a></li>
+      <li><a href="#contact"  data-i18n="nav-contact">お問い合わせ</a></li>
+      <!-- モバイル用：メニュー内に言語切替 -->
+      <li style="display:none" id="langMobileItem">
+        <button class="lang-toggle" id="langToggleMobile" style="display:block; margin-top:1rem; background:none; border:1px solid var(--border); color:var(--text-light); font-family:Cormorant Garamond,serif; font-size:0.9rem; letter-spacing:0.2em; padding:0.4rem 1rem; cursor:pointer; border-radius:3px;">EN</button>
+      </li>
+    </ul>
+    <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
+    <button class="nav-hamburger" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 <div class="nav-overlay" id="navOverlay"></div>
 
@@ -1373,24 +806,24 @@
   <div class="hero-bg" role="img" aria-label="タクト設計事務所外観"></div>
   <div class="hero-content">
     <div class="hero-copy">
-      <p class="label">一級建築士事務所</p>
-      <h1>TAKT DESIGN</h1>
-      <p class="subtitle">タクト設計 ― 沖縄の風土に寄り添う建築</p>
-      <p class="hero-description">
-        住宅、店舗、公共施設まで。那覇を拠点に、光・風・敷地の個性を読み解きながら、
-        長く愛される建築を丁寧な対話と確かな設計監理でかたちにします。
+      <p class="label" data-i18n="hero-label">一級建築士事務所</p>
+      <h1 data-i18n="hero-h1">タクト設計</h1>
+      <p class="hero-en" data-i18n="hero-en">TAKT DESIGN — Architects</p>
+      <p class="subtitle" data-i18n="hero-subtitle">沖縄の風土に寄り添う建築</p>
+      <p class="hero-description" data-i18n="hero-desc">
+        住宅、店舗、公共施設まで。那覇を拠点に、光・風・敷地の個性を読み解きながら、長く愛される建築を丁寧な対話と確かな設計監理でかたちにします。
       </p>
       <div class="hero-actions">
-        <a class="hero-btn primary" href="#contact">無料相談をする</a>
-        <a class="hero-btn secondary" href="#works">実績を見る</a>
+        <a class="hero-btn primary" href="#contact" data-i18n="hero-btn-primary">無料相談をする</a>
+        <a class="hero-btn secondary" href="#works"  data-i18n="hero-btn-secondary">実績を見る</a>
       </div>
     </div>
     <aside class="hero-panel" aria-label="設計の特徴">
-      <div class="hero-panel-title">Design Focus</div>
+      <div class="hero-panel-title" data-i18n="hero-panel-title">Design Focus</div>
       <ul>
-        <li><strong>沖縄の気候に応える設計</strong><span>日射・通風・陰影を活かす計画</span></li>
-        <li><strong>対話を重ねるプロセス</strong><span>要望整理から完成後まで伴走</span></li>
-        <li><strong>住宅から施設まで対応</strong><span>用途と規模に応じた設計監理</span></li>
+        <li><strong data-i18n="hp1-title">沖縄の気候に応える設計</strong><span data-i18n="hp1-desc">日射・通風・陰影を活かす計画</span></li>
+        <li><strong data-i18n="hp2-title">対話を重ねるプロセス</strong><span data-i18n="hp2-desc">要望整理から完成後まで伴走</span></li>
+        <li><strong data-i18n="hp3-title">住宅から施設まで対応</strong><span data-i18n="hp3-desc">用途と規模に応じた設計監理</span></li>
       </ul>
     </aside>
   </div>
@@ -1398,15 +831,15 @@
 </section>
 
 <!-- INTRO BAND -->
-<section class="intro-band" aria-label="特徴紹介">
+<section class="intro-band">
   <div class="intro-band-inner">
     <div class="intro-card reveal">
       <div class="intro-card-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
       </div>
       <div>
-        <strong>沖縄に根ざした設計</strong>
-        <span>地域の風土と暮らし方を踏まえ、過ごしやすさと美しさを両立します。</span>
+        <strong data-i18n="ic1-title">沖縄に根ざした設計</strong>
+        <span data-i18n="ic1-desc">地域の風土と暮らし方を踏まえ、過ごしやすさと美しさを両立します。</span>
       </div>
     </div>
     <div class="intro-card reveal">
@@ -1414,8 +847,8 @@
         <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       </div>
       <div>
-        <strong>一級建築士による一貫対応</strong>
-        <span>初回相談から設計監理まで、意図がぶれない体制で進めます。</span>
+        <strong data-i18n="ic2-title">一級建築士による一貫対応</strong>
+        <span data-i18n="ic2-desc">初回相談から設計監理まで、意図がぶれない体制で進めます。</span>
       </div>
     </div>
     <div class="intro-card reveal">
@@ -1423,8 +856,8 @@
         <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       </div>
       <div>
-        <strong>相談しやすい設計事務所</strong>
-        <span>新築、改修、用途変更、事業計画の相談まで幅広く対応します。</span>
+        <strong data-i18n="ic3-title">相談しやすい設計事務所</strong>
+        <span data-i18n="ic3-desc">新築、改修、用途変更、事業計画の相談まで幅広く対応します。</span>
       </div>
     </div>
   </div>
@@ -1434,42 +867,23 @@
 <section id="about">
   <div class="about">
     <div class="about-text reveal">
-      <span class="section-label">About Us</span>
-      <h2 class="section-title">沖縄の光と風を<br>建築に込めて</h2>
-      <p>
-        一級建築士事務所タクト設計は、沖縄県那覇市を拠点に、住宅・店舗・公共施設など幅広い建築の設計監理を手がけています。
-      </p>
-      <p>
-        「タクト」とは、指揮者が振る指揮棒のこと。お客様の想いを汲み取り、沖縄の豊かな自然環境と調和する建築を、確かな技術と丁寧な対話で形にしていきます。
-      </p>
-      <p>
-        亜熱帯の気候風土を熟知した設計で、快適で長く愛される空間をご提案いたします。一級建築士・羽地敏博が、お客様一人ひとりの想いに向き合い、土地の個性を活かした建築を丁寧に設計します。
-      </p>
+      <span class="section-label" data-i18n="about-label">About Us</span>
+      <h2 class="section-title" data-i18n-html="about-title">沖縄の光と風を<br>建築に込めて</h2>
+      <p data-i18n="about-p1">一級建築士事務所タクト設計は、沖縄県那覇市を拠点に、住宅・店舗・公共施設など幅広い建築の設計監理を手がけています。</p>
+      <p data-i18n="about-p2">「タクト」とは、指揮者が振る指揮棒のこと。お客様の想いを汲み取り、沖縄の豊かな自然環境と調和する建築を、確かな技術と丁寧な対話で形にしていきます。</p>
+      <p data-i18n="about-p3">亜熱帯の気候風土を熟知した設計で、快適で長く愛される空間をご提案いたします。一級建築士・羽地敏博が、お客様一人ひとりの想いに向き合い、土地の個性を活かした建築を丁寧に設計します。</p>
       <div class="about-credentials">
-        <span class="credential-badge">
-          <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
-          一級建築士事務所登録
-        </span>
-        <span class="credential-badge">
-          <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
-          新築・リノベーション対応
-        </span>
-        <span class="credential-badge">
-          <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
-          無料初回相談
-        </span>
-        <span class="credential-badge">
-          <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
-          沖縄県内全域対応
-        </span>
+        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span data-i18n="badge1">一級建築士事務所登録</span></span>
+        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span data-i18n="badge2">新築・リノベーション対応</span></span>
+        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span data-i18n="badge3">無料初回相談</span></span>
+        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span data-i18n="badge4">沖縄県内全域対応</span></span>
       </div>
     </div>
     <div class="about-visual reveal">
       <img src="takt-design-office.png" alt="タクト設計の設計事務所外観" loading="lazy">
-      <div class="block block-1"></div>
-      <div class="block block-2">
-        <strong>TAKT DESIGN OFFICE</strong>
-        <span>那覇市銘苅を拠点に、住宅・店舗・公共施設の設計監理を行っています。</span>
+      <div class="block-2">
+        <strong data-i18n="about-block-title">タクト設計 事務所</strong>
+        <span data-i18n="about-block-desc">那覇市銘苅を拠点に、住宅・店舗・公共施設の設計監理を行っています。</span>
       </div>
       <div class="line-accent"></div>
     </div>
@@ -1477,27 +891,23 @@
 </section>
 
 <!-- PHILOSOPHY -->
-<section aria-labelledby="philosophy-heading">
+<section>
   <div class="philosophy reveal">
-    <span class="section-label">Philosophy</span>
-    <h2 class="section-title" id="philosophy-heading">設計理念</h2>
-    <div class="philosophy-quote">
-      暮らしの中に、<br>
-      沖縄の自然と時間が<br>
-      穏やかに流れる建築を。
+    <span class="section-label" data-i18n="phil-label">Philosophy</span>
+    <h2 class="section-title" data-i18n="phil-title">設計理念</h2>
+    <div class="philosophy-quote" data-i18n-html="phil-quote">
+      暮らしの中に、<br>沖縄の自然と時間が<br>穏やかに流れる建築を。
     </div>
-    <p>
-      私たちは、建築は風景の一部であると考えています。沖縄の強い日差し、心地よい風、豊かな緑――この土地の持つ力を活かし、住まう人の生活に寄り添いながら、美しく機能的な空間を設計します。構造の安全性、環境への配慮、そして細部にまで宿る美意識。すべてが調和した建築を目指しています。
-    </p>
+    <p data-i18n="phil-p">私たちは、建築は風景の一部であると考えています。沖縄の強い日差し、心地よい風、豊かな緑――この土地の持つ力を活かし、住まう人の生活に寄り添いながら、美しく機能的な空間を設計します。構造の安全性、環境への配慮、そして細部にまで宿る美意識。すべてが調和した建築を目指しています。</p>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services" aria-labelledby="services-heading">
+<section id="services">
   <div class="services-inner">
     <div class="reveal">
-      <span class="section-label">Services</span>
-      <h2 class="section-title" id="services-heading">業務内容</h2>
+      <span class="section-label" data-i18n="svc-label">Services</span>
+      <h2 class="section-title" data-i18n="svc-title">業務内容</h2>
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
@@ -1505,13 +915,13 @@
           <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
         </div>
         <span class="service-number">01</span>
-        <h3>住宅設計</h3>
-        <p>沖縄の気候風土に適した住宅を設計します。RC造・木造・鉄骨造など、敷地条件やご要望に最適な構造をご提案。新築からリノベーションまで対応いたします。</p>
+        <h3 data-i18n="svc1-title">住宅設計</h3>
+        <p data-i18n="svc1-desc">沖縄の気候風土に適した住宅を設計します。RC造・木造・鉄骨造など、敷地条件やご要望に最適な構造をご提案。新築からリノベーションまで対応いたします。</p>
         <div class="service-tag-list">
-          <span class="service-tag">新築</span>
-          <span class="service-tag">リノベーション</span>
-          <span class="service-tag">RC造・木造</span>
-          <span class="service-tag">二世帯住宅</span>
+          <span class="service-tag" data-i18n="svc1-t1">新築</span>
+          <span class="service-tag" data-i18n="svc1-t2">リノベーション</span>
+          <span class="service-tag" data-i18n="svc1-t3">RC造・木造</span>
+          <span class="service-tag" data-i18n="svc1-t4">二世帯住宅</span>
         </div>
       </div>
       <div class="service-card reveal">
@@ -1519,13 +929,13 @@
           <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
         </div>
         <span class="service-number">02</span>
-        <h3>店舗・商業施設設計</h3>
-        <p>飲食店、物販店、オフィスなど、事業のコンセプトを空間として表現します。集客力と機能性を兼ね備えた設計で、お客様のビジネスを支えます。</p>
+        <h3 data-i18n="svc2-title">店舗・商業施設設計</h3>
+        <p data-i18n="svc2-desc">飲食店、物販店、オフィスなど、事業のコンセプトを空間として表現します。集客力と機能性を兼ね備えた設計で、お客様のビジネスを支えます。</p>
         <div class="service-tag-list">
-          <span class="service-tag">飲食店</span>
-          <span class="service-tag">物販・物販</span>
-          <span class="service-tag">オフィス</span>
-          <span class="service-tag">用途変更</span>
+          <span class="service-tag" data-i18n="svc2-t1">飲食店</span>
+          <span class="service-tag" data-i18n="svc2-t2">物販</span>
+          <span class="service-tag" data-i18n="svc2-t3">オフィス</span>
+          <span class="service-tag" data-i18n="svc2-t4">用途変更</span>
         </div>
       </div>
       <div class="service-card reveal">
@@ -1533,13 +943,13 @@
           <svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V10l8-8 8 8v10"/><path d="M9 20v-5h6v5"/></svg>
         </div>
         <span class="service-number">03</span>
-        <h3>設計監理・公共施設</h3>
-        <p>設計図通りに施工が行われているか、品質・工程・コストを管理します。公共施設や福祉施設など、規模を問わず対応。お客様に代わって現場をチェックします。</p>
+        <h3 data-i18n="svc3-title">設計監理・公共施設</h3>
+        <p data-i18n="svc3-desc">設計図通りに施工が行われているか、品質・工程・コストを管理します。公共施設や福祉施設など、規模を問わず対応。お客様に代わって現場をチェックします。</p>
         <div class="service-tag-list">
-          <span class="service-tag">工事監理</span>
-          <span class="service-tag">公共施設</span>
-          <span class="service-tag">確認申請</span>
-          <span class="service-tag">事業計画</span>
+          <span class="service-tag" data-i18n="svc3-t1">工事監理</span>
+          <span class="service-tag" data-i18n="svc3-t2">公共施設</span>
+          <span class="service-tag" data-i18n="svc3-t3">確認申請</span>
+          <span class="service-tag" data-i18n="svc3-t4">事業計画</span>
         </div>
       </div>
     </div>
@@ -1547,116 +957,116 @@
 </section>
 
 <!-- WORKS -->
-<section id="works" aria-labelledby="works-heading">
+<section id="works">
   <div class="works-inner">
     <div class="reveal">
-      <span class="section-label">Works</span>
-      <h2 class="section-title" id="works-heading">設計実績</h2>
-      <p class="works-note">掲載実績は一部です。用途や規模に応じた事例は、お打ち合わせ時にご案内しています。</p>
+      <span class="section-label" data-i18n="works-label">Works</span>
+      <h2 class="section-title" data-i18n="works-title">設計実績</h2>
+      <p class="works-note" data-i18n="works-note">掲載実績は一部です。用途や規模に応じた事例は、お打ち合わせ時にご案内しています。</p>
     </div>
     <div class="works-grid">
-      <div class="work-item work-1 reveal">
+      <div class="work-item reveal">
         <img class="work-bg" src="takt-design-office.png" alt="タクト設計オフィス外観" loading="lazy">
         <div class="work-info">
           <span class="work-info-category">Office</span>
-          <span class="work-info-title">タクト設計オフィス ― 那覇市</span>
+          <span class="work-info-title" data-i18n="w1-title">タクト設計オフィス ― 那覇市</span>
         </div>
-        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
+        <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
       </div>
-      <div class="work-item work-2 reveal">
+      <div class="work-item reveal">
         <div class="work-placeholder work-2-bg"></div>
         <div class="work-info">
           <span class="work-info-category">Residence</span>
-          <span class="work-info-title">T邸 ― 浦添市</span>
+          <span class="work-info-title" data-i18n="w2-title">T邸 ― 浦添市</span>
         </div>
-        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
+        <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
       </div>
-      <div class="work-item work-3 reveal">
+      <div class="work-item reveal">
         <div class="work-placeholder work-3-bg"></div>
         <div class="work-info">
           <span class="work-info-category">Café</span>
-          <span class="work-info-title">カフェ S ― 北谷町</span>
+          <span class="work-info-title" data-i18n="w3-title">カフェ S ― 北谷町</span>
         </div>
-        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
+        <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
       </div>
-      <div class="work-item work-4 reveal">
+      <div class="work-item reveal">
         <div class="work-placeholder work-4-bg"></div>
         <div class="work-info">
           <span class="work-info-category">Residence</span>
-          <span class="work-info-title">M邸 ― 宜野湾市</span>
+          <span class="work-info-title" data-i18n="w4-title">M邸 ― 宜野湾市</span>
         </div>
-        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
+        <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
       </div>
-      <div class="work-item work-5 reveal">
+      <div class="work-item reveal">
         <div class="work-placeholder work-5-bg"></div>
         <div class="work-info">
           <span class="work-info-category">Office</span>
-          <span class="work-info-title">オフィス K ― 那覇市</span>
+          <span class="work-info-title" data-i18n="w5-title">オフィス K ― 那覇市</span>
         </div>
-        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
+        <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
       </div>
-      <div class="work-item work-6 reveal">
+      <div class="work-item reveal">
         <div class="work-placeholder work-6-bg"></div>
         <div class="work-info">
           <span class="work-info-category">Residence</span>
-          <span class="work-info-title">Y邸 ― 南城市</span>
+          <span class="work-info-title" data-i18n="w6-title">Y邸 ― 南城市</span>
         </div>
-        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
+        <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FLOW -->
-<section id="flow" aria-labelledby="flow-heading">
+<section id="flow">
   <div class="flow-inner">
     <div class="reveal">
-      <span class="section-label">Flow</span>
-      <h2 class="section-title" id="flow-heading">ご依頼の流れ</h2>
+      <span class="section-label" data-i18n="flow-label">Flow</span>
+      <h2 class="section-title" data-i18n="flow-title">ご依頼の流れ</h2>
     </div>
     <div class="flow-steps">
       <div class="flow-step reveal">
         <div class="flow-step-num" aria-hidden="true">01</div>
         <div>
-          <h3>お問い合わせ・ご相談</h3>
-          <p>まずはお電話またはお問い合わせフォームからご連絡ください。ご相談は無料です。建築に関するお悩みやご要望をお聞かせください。</p>
-          <span class="flow-tag">無料相談</span>
+          <h3 data-i18n="f1-title">お問い合わせ・ご相談</h3>
+          <p data-i18n="f1-desc">まずはお電話またはお問い合わせフォームからご連絡ください。ご相談は無料です。建築に関するお悩みやご要望をお聞かせください。</p>
+          <span class="flow-tag" data-i18n="f1-tag">無料相談</span>
         </div>
       </div>
       <div class="flow-step reveal">
         <div class="flow-step-num" aria-hidden="true">02</div>
         <div>
-          <h3>ヒアリング・敷地調査</h3>
-          <p>ご家族の暮らし方やご予算、敷地の条件を丁寧にお伺いし、現地調査を行います。</p>
+          <h3 data-i18n="f2-title">ヒアリング・敷地調査</h3>
+          <p data-i18n="f2-desc">ご家族の暮らし方やご予算、敷地の条件を丁寧にお伺いし、現地調査を行います。</p>
         </div>
       </div>
       <div class="flow-step reveal">
         <div class="flow-step-num" aria-hidden="true">03</div>
         <div>
-          <h3>基本設計・プラン提案</h3>
-          <p>ヒアリング内容をもとに、間取りや外観のプランをご提案。納得いただけるまで何度でも打ち合わせを重ねます。</p>
+          <h3 data-i18n="f3-title">基本設計・プラン提案</h3>
+          <p data-i18n="f3-desc">ヒアリング内容をもとに、間取りや外観のプランをご提案。納得いただけるまで何度でも打ち合わせを重ねます。</p>
         </div>
       </div>
       <div class="flow-step reveal">
         <div class="flow-step-num" aria-hidden="true">04</div>
         <div>
-          <h3>実施設計・確認申請</h3>
-          <p>詳細な設計図面を作成し、建築確認申請の手続きを行います。</p>
+          <h3 data-i18n="f4-title">実施設計・確認申請</h3>
+          <p data-i18n="f4-desc">詳細な設計図面を作成し、建築確認申請の手続きを行います。</p>
         </div>
       </div>
       <div class="flow-step reveal">
         <div class="flow-step-num" aria-hidden="true">05</div>
         <div>
-          <h3>施工・工事監理</h3>
-          <p>信頼できる施工会社と連携し、設計意図が現場に正確に反映されるよう監理を行います。</p>
+          <h3 data-i18n="f5-title">施工・工事監理</h3>
+          <p data-i18n="f5-desc">信頼できる施工会社と連携し、設計意図が現場に正確に反映されるよう監理を行います。</p>
         </div>
       </div>
       <div class="flow-step reveal">
         <div class="flow-step-num" aria-hidden="true">06</div>
         <div>
-          <h3>竣工・お引き渡し</h3>
-          <p>完成検査を経て、お引き渡し。その後もメンテナンスや増改築のご相談に対応いたします。</p>
-          <span class="flow-tag">アフターフォロー</span>
+          <h3 data-i18n="f6-title">竣工・お引き渡し</h3>
+          <p data-i18n="f6-desc">完成検査を経て、お引き渡し。その後もメンテナンスや増改築のご相談に対応いたします。</p>
+          <span class="flow-tag" data-i18n="f6-tag">アフターフォロー</span>
         </div>
       </div>
     </div>
@@ -1664,83 +1074,67 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" aria-labelledby="contact-heading">
+<section id="contact">
   <div class="contact-inner">
     <div class="contact-info reveal">
-      <span class="section-label">Contact</span>
-      <h2 class="section-title" id="contact-heading">お問い合わせ</h2>
-      <h3>まずはお気軽にご相談ください</h3>
+      <span class="section-label" data-i18n="ct-label">Contact</span>
+      <h2 class="section-title" data-i18n="ct-title">お問い合わせ</h2>
+      <h3 data-i18n="ct-sub">まずはお気軽にご相談ください</h3>
 
       <div class="contact-detail">
-        <div class="detail-label">Office</div>
-        <div class="detail-value">一級建築士事務所タクト設計</div>
+        <div class="detail-label" data-i18n="ct-office-label">Office</div>
+        <div class="detail-value" data-i18n="ct-office-val">一級建築士事務所タクト設計</div>
       </div>
-
       <div class="contact-detail">
-        <div class="detail-label">Architect</div>
-        <div class="detail-value">一級建築士　羽地敏博</div>
+        <div class="detail-label" data-i18n="ct-arch-label">Architect</div>
+        <div class="detail-value" data-i18n="ct-arch-val">一級建築士　羽地敏博</div>
       </div>
-
       <div class="contact-detail">
-        <div class="detail-label">Address</div>
-        <div class="detail-value">
-          〒900-0004<br>
-          沖縄県那覇市銘苅３丁目１９−１
-        </div>
+        <div class="detail-label" data-i18n="ct-addr-label">Address</div>
+        <div class="detail-value" data-i18n-html="ct-addr-val">〒900-0004<br>沖縄県那覇市銘苅３丁目１９−１</div>
       </div>
-
       <div class="contact-detail">
         <div class="detail-label">Tel</div>
-        <div class="detail-value">
-          <a href="tel:098-860-1227">098-860-1227</a>
-        </div>
+        <div class="detail-value"><a href="tel:098-860-1227">098-860-1227</a></div>
       </div>
-
       <div class="contact-detail">
-        <div class="detail-label">Business Hours</div>
-        <div class="detail-value">
-          月〜金 9:00 ― 18:00<br>
-          <span style="font-size:0.82rem; color:var(--text-light);">※土日祝は事前予約にて対応</span>
-        </div>
+        <div class="detail-label" data-i18n="ct-hours-label">Business Hours</div>
+        <div class="detail-value" data-i18n-html="ct-hours-val">月〜金 9:00 ― 18:00<br><span style="font-size:0.82rem;color:var(--text-light)">※土日祝は事前予約にて対応</span></div>
       </div>
     </div>
 
     <div class="contact-form reveal">
       <!--
-        お問い合わせフォームの送信先設定:
-        1. https://formspree.io でアカウント作成・フォーム登録
-        2. 下記 action の "YOUR_FORM_ID" を取得したIDに置き換えてください
-        例: action="https://formspree.io/f/xpzgwqzb"
+        送信先設定: https://formspree.io でフォームを登録し、
+        下記 action の "YOUR_FORM_ID" を取得したIDに置き換えてください
       -->
       <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
         <input type="hidden" name="_language" value="ja">
-        <!-- ハニーポット（スパム対策）-->
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-        <label for="name">お名前<span class="required-mark" aria-label="必須">*</span></label>
-        <input type="text" id="name" name="name" placeholder="比嘉 太郎" required autocomplete="name">
-        <span class="field-error" id="nameError" role="alert">お名前を入力してください</span>
+        <label for="name"><span data-i18n="lbl-name">お名前</span><span class="required-mark" aria-label="必須">*</span></label>
+        <input type="text" id="name" name="name" required autocomplete="name" data-i18n-placeholder="ph-name" placeholder="比嘉 太郎">
+        <span class="field-error" id="nameError" role="alert" data-i18n="err-name">お名前を入力してください</span>
 
-        <label for="email">メールアドレス<span class="required-mark" aria-label="必須">*</span></label>
-        <input type="email" id="email" name="email" placeholder="example@mail.com" required autocomplete="email">
-        <span class="field-error" id="emailError" role="alert">正しいメールアドレスを入力してください</span>
+        <label for="email"><span data-i18n="lbl-email">メールアドレス</span><span class="required-mark" aria-label="必須">*</span></label>
+        <input type="email" id="email" name="email" required autocomplete="email" placeholder="example@mail.com">
+        <span class="field-error" id="emailError" role="alert" data-i18n="err-email">正しいメールアドレスを入力してください</span>
 
-        <label for="phone">電話番号</label>
-        <input type="tel" id="phone" name="phone" placeholder="098-000-0000" autocomplete="tel">
+        <label for="phone"><span data-i18n="lbl-phone">電話番号</span></label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" data-i18n-placeholder="ph-phone" placeholder="098-000-0000">
 
-        <label for="message">ご相談内容<span class="required-mark" aria-label="必須">*</span></label>
-        <textarea id="message" name="message" placeholder="ご相談内容をお書きください（例：那覇市内で住宅の新築を検討しています）" required></textarea>
-        <span class="field-error" id="messageError" role="alert">ご相談内容を入力してください</span>
+        <label for="message"><span data-i18n="lbl-msg">ご相談内容</span><span class="required-mark" aria-label="必須">*</span></label>
+        <textarea id="message" name="message" required data-i18n-placeholder="ph-msg" placeholder="ご相談内容をお書きください（例：那覇市内で住宅の新築を検討しています）"></textarea>
+        <span class="field-error" id="messageError" role="alert" data-i18n="err-msg">ご相談内容を入力してください</span>
 
         <div class="contact-form-footer">
-          <p class="contact-privacy">送信いただいた情報は、お問い合わせへの<br>返答のみに使用します。</p>
+          <p class="contact-privacy" data-i18n="ct-privacy">送信いただいた情報は、お問い合わせへの返答のみに使用します。</p>
           <button type="submit" class="contact-btn" id="submitBtn">
             <div class="btn-spinner" aria-hidden="true"></div>
             <svg class="btn-arrow" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
-            送信する
+            <span data-i18n="btn-submit">送信する</span>
           </button>
         </div>
-
         <div class="form-result" id="formResult" role="alert" aria-live="polite"></div>
       </form>
     </div>
@@ -1764,23 +1158,24 @@
 <footer role="contentinfo">
   <div class="footer-inner">
     <div>
-      <div class="footer-brand">TAKT DESIGN</div>
+      <div class="footer-brand" data-i18n="footer-brand">タクト設計</div>
+      <span class="footer-brand-en">TAKT DESIGN</span>
       <div class="footer-sub">
-        一級建築士事務所タクト設計<br>
+        <span data-i18n="footer-office">一級建築士事務所タクト設計</span><br>
         〒900-0004 沖縄県那覇市銘苅３丁目１９−１<br>
         TEL <a href="tel:098-860-1227">098-860-1227</a><br>
-        月〜金 9:00 ― 18:00（土日祝は事前予約にて対応）
-        <span class="footer-registration">沖縄県知事登録 一級建築士事務所</span>
+        <span data-i18n="footer-hours">月〜金 9:00 ― 18:00（土日祝は事前予約にて対応）</span>
+        <span class="footer-registration" data-i18n="footer-reg">沖縄県知事登録 一級建築士事務所</span>
       </div>
     </div>
     <nav class="footer-nav" aria-label="フッターナビゲーション">
       <h4>Navigation</h4>
       <ul class="footer-links">
-        <li><a href="#about">事務所紹介</a></li>
-        <li><a href="#services">業務内容</a></li>
-        <li><a href="#works">実績</a></li>
-        <li><a href="#flow">ご依頼の流れ</a></li>
-        <li><a href="#contact">お問い合わせ</a></li>
+        <li><a href="#about"    data-i18n="nav-about">事務所紹介</a></li>
+        <li><a href="#services" data-i18n="nav-services">業務内容</a></li>
+        <li><a href="#works"    data-i18n="nav-works">実績</a></li>
+        <li><a href="#flow"     data-i18n="nav-flow">ご依頼の流れ</a></li>
+        <li><a href="#contact"  data-i18n="nav-contact">お問い合わせ</a></li>
       </ul>
     </nav>
   </div>
@@ -1793,158 +1188,310 @@
 </button>
 
 <script>
-  /* ===== NAVBAR ===== */
-  const nav = document.getElementById('navbar');
-  const navToggle = document.getElementById('navToggle');
-  const navOverlay = document.getElementById('navOverlay');
+/* ===== i18n ===== */
+const i18n = {
+  ja: {
+    'nav-logo':'タクト設計',
+    'nav-about':'事務所紹介','nav-services':'業務内容','nav-works':'実績','nav-flow':'ご依頼の流れ','nav-contact':'お問い合わせ',
+    'hero-label':'一級建築士事務所','hero-h1':'タクト設計','hero-en':'TAKT DESIGN — Architects',
+    'hero-subtitle':'沖縄の風土に寄り添う建築',
+    'hero-desc':'住宅、店舗、公共施設まで。那覇を拠点に、光・風・敷地の個性を読み解きながら、長く愛される建築を丁寧な対話と確かな設計監理でかたちにします。',
+    'hero-btn-primary':'無料相談をする','hero-btn-secondary':'実績を見る',
+    'hero-panel-title':'Design Focus',
+    'hp1-title':'沖縄の気候に応える設計','hp1-desc':'日射・通風・陰影を活かす計画',
+    'hp2-title':'対話を重ねるプロセス','hp2-desc':'要望整理から完成後まで伴走',
+    'hp3-title':'住宅から施設まで対応','hp3-desc':'用途と規模に応じた設計監理',
+    'ic1-title':'沖縄に根ざした設計','ic1-desc':'地域の風土と暮らし方を踏まえ、過ごしやすさと美しさを両立します。',
+    'ic2-title':'一級建築士による一貫対応','ic2-desc':'初回相談から設計監理まで、意図がぶれない体制で進めます。',
+    'ic3-title':'相談しやすい設計事務所','ic3-desc':'新築、改修、用途変更、事業計画の相談まで幅広く対応します。',
+    'about-label':'About Us','about-title':'沖縄の光と風を<br>建築に込めて',
+    'about-p1':'一級建築士事務所タクト設計は、沖縄県那覇市を拠点に、住宅・店舗・公共施設など幅広い建築の設計監理を手がけています。',
+    'about-p2':'「タクト」とは、指揮者が振る指揮棒のこと。お客様の想いを汲み取り、沖縄の豊かな自然環境と調和する建築を、確かな技術と丁寧な対話で形にしていきます。',
+    'about-p3':'亜熱帯の気候風土を熟知した設計で、快適で長く愛される空間をご提案いたします。一級建築士・羽地敏博が、お客様一人ひとりの想いに向き合い、土地の個性を活かした建築を丁寧に設計します。',
+    'badge1':'一級建築士事務所登録','badge2':'新築・リノベーション対応','badge3':'無料初回相談','badge4':'沖縄県内全域対応',
+    'about-block-title':'タクト設計 事務所','about-block-desc':'那覇市銘苅を拠点に、住宅・店舗・公共施設の設計監理を行っています。',
+    'phil-label':'Philosophy','phil-title':'設計理念',
+    'phil-quote':'暮らしの中に、<br>沖縄の自然と時間が<br>穏やかに流れる建築を。',
+    'phil-p':'私たちは、建築は風景の一部であると考えています。沖縄の強い日差し、心地よい風、豊かな緑――この土地の持つ力を活かし、住まう人の生活に寄り添いながら、美しく機能的な空間を設計します。構造の安全性、環境への配慮、そして細部にまで宿る美意識。すべてが調和した建築を目指しています。',
+    'svc-label':'Services','svc-title':'業務内容',
+    'svc1-title':'住宅設計','svc1-desc':'沖縄の気候風土に適した住宅を設計します。RC造・木造・鉄骨造など、敷地条件やご要望に最適な構造をご提案。新築からリノベーションまで対応いたします。',
+    'svc1-t1':'新築','svc1-t2':'リノベーション','svc1-t3':'RC造・木造','svc1-t4':'二世帯住宅',
+    'svc2-title':'店舗・商業施設設計','svc2-desc':'飲食店、物販店、オフィスなど、事業のコンセプトを空間として表現します。集客力と機能性を兼ね備えた設計で、お客様のビジネスを支えます。',
+    'svc2-t1':'飲食店','svc2-t2':'物販','svc2-t3':'オフィス','svc2-t4':'用途変更',
+    'svc3-title':'設計監理・公共施設','svc3-desc':'設計図通りに施工が行われているか、品質・工程・コストを管理します。公共施設や福祉施設など、規模を問わず対応。お客様に代わって現場をチェックします。',
+    'svc3-t1':'工事監理','svc3-t2':'公共施設','svc3-t3':'確認申請','svc3-t4':'事業計画',
+    'works-label':'Works','works-title':'設計実績','works-note':'掲載実績は一部です。用途や規模に応じた事例は、お打ち合わせ時にご案内しています。',
+    'w1-title':'タクト設計オフィス ― 那覇市','w2-title':'T邸 ― 浦添市','w3-title':'カフェ S ― 北谷町',
+    'w4-title':'M邸 ― 宜野湾市','w5-title':'オフィス K ― 那覇市','w6-title':'Y邸 ― 南城市',
+    'work-view':'View Project',
+    'flow-label':'Flow','flow-title':'ご依頼の流れ',
+    'f1-title':'お問い合わせ・ご相談','f1-desc':'まずはお電話またはお問い合わせフォームからご連絡ください。ご相談は無料です。建築に関するお悩みやご要望をお聞かせください。','f1-tag':'無料相談',
+    'f2-title':'ヒアリング・敷地調査','f2-desc':'ご家族の暮らし方やご予算、敷地の条件を丁寧にお伺いし、現地調査を行います。',
+    'f3-title':'基本設計・プラン提案','f3-desc':'ヒアリング内容をもとに、間取りや外観のプランをご提案。納得いただけるまで何度でも打ち合わせを重ねます。',
+    'f4-title':'実施設計・確認申請','f4-desc':'詳細な設計図面を作成し、建築確認申請の手続きを行います。',
+    'f5-title':'施工・工事監理','f5-desc':'信頼できる施工会社と連携し、設計意図が現場に正確に反映されるよう監理を行います。',
+    'f6-title':'竣工・お引き渡し','f6-desc':'完成検査を経て、お引き渡し。その後もメンテナンスや増改築のご相談に対応いたします。','f6-tag':'アフターフォロー',
+    'ct-label':'Contact','ct-title':'お問い合わせ','ct-sub':'まずはお気軽にご相談ください',
+    'ct-office-label':'Office','ct-office-val':'一級建築士事務所タクト設計',
+    'ct-arch-label':'Architect','ct-arch-val':'一級建築士　羽地敏博',
+    'ct-addr-label':'Address','ct-addr-val':'〒900-0004<br>沖縄県那覇市銘苅３丁目１９−１',
+    'ct-hours-label':'Business Hours','ct-hours-val':'月〜金 9:00 ― 18:00<br><span style="font-size:0.82rem;color:var(--text-light)">※土日祝は事前予約にて対応</span>',
+    'lbl-name':'お名前','lbl-email':'メールアドレス','lbl-phone':'電話番号','lbl-msg':'ご相談内容',
+    'ph-name':'比嘉 太郎','ph-phone':'098-000-0000','ph-msg':'ご相談内容をお書きください（例：那覇市内で住宅の新築を検討しています）',
+    'ct-privacy':'送信いただいた情報は、お問い合わせへの返答のみに使用します。',
+    'btn-submit':'送信する',
+    'err-name':'お名前を入力してください','err-email':'正しいメールアドレスを入力してください','err-msg':'ご相談内容を入力してください',
+    'success-msg':'✓ &nbsp;お問い合わせありがとうございます。<br>担当者より2営業日以内にご連絡いたします。',
+    'error-msg':'送信に失敗しました。お手数ですが、お電話（098-860-1227）にてご連絡ください。',
+    'footer-brand':'タクト設計','footer-office':'一級建築士事務所タクト設計',
+    'footer-hours':'月〜金 9:00 ― 18:00（土日祝は事前予約にて対応）',
+    'footer-reg':'沖縄県知事登録 一級建築士事務所',
+  },
+  en: {
+    'nav-logo':'タクト設計',
+    'nav-about':'About','nav-services':'Services','nav-works':'Works','nav-flow':'Process','nav-contact':'Contact',
+    'hero-label':'Licensed Architect Office — Okinawa','hero-h1':'タクト設計','hero-en':'TAKT DESIGN — Architects',
+    'hero-subtitle':'Architecture of Okinawa',
+    'hero-desc':'From residences to commercial spaces and public facilities. Based in Naha, we craft enduring architecture by reading the light, wind and character of each site — through careful dialogue and precise construction oversight.',
+    'hero-btn-primary':'Free Consultation','hero-btn-secondary':'View Works',
+    'hero-panel-title':'Design Focus',
+    'hp1-title':'Okinawa Climate Design','hp1-desc':'Planning with sun, wind and shade',
+    'hp2-title':'Dialogue-Driven Process','hp2-desc':'Brief to handover — by your side',
+    'hp3-title':'Homes to Public Buildings','hp3-desc':'Design & supervision at any scale',
+    'ic1-title':'Rooted in Okinawa','ic1-desc':'We balance livability and beauty through deep understanding of regional climate and lifestyle.',
+    'ic2-title':'End-to-End by a Licensed Architect','ic2-desc':'From initial consultation to construction oversight — consistent vision throughout.',
+    'ic3-title':'An Approachable Office','ic3-desc':'New builds, renovations, change of use, project planning — we cover it all.',
+    'about-label':'About Us','about-title':'Light and Wind of<br>Okinawa in Architecture',
+    'about-p1':'TAKT DESIGN is a licensed architectural firm based in Naha, Okinawa, specialising in residential, commercial and public building design and construction supervision.',
+    'about-p2':'"Takt" is the conductor\'s baton. We orchestrate your vision with Okinawa\'s rich natural environment — through technical expertise and thoughtful dialogue.',
+    'about-p3':'With deep knowledge of the subtropical climate, we propose comfortable spaces loved for generations. Principal architect Toshihiro Haneji gives personal attention to every client and every site.',
+    'badge1':'Registered Architect Office','badge2':'New Builds & Renovations','badge3':'Free Initial Consultation','badge4':'Serving All of Okinawa',
+    'about-block-title':'TAKT DESIGN Office','about-block-desc':'Based in Mekaru, Naha — residential, commercial and public building design.',
+    'phil-label':'Philosophy','phil-title':'Design Philosophy',
+    'phil-quote':'Architecture where the nature<br>and rhythms of Okinawa<br>flow gently through daily life.',
+    'phil-p':'We believe architecture is part of the landscape. Drawing on Okinawa\'s strong sunlight, gentle breezes and lush greenery, we design spaces that are beautiful, functional and in harmony with the lives of those who inhabit them — safety, environmental care and refined aesthetics in balance.',
+    'svc-label':'Services','svc-title':'Our Services',
+    'svc1-title':'Residential Design','svc1-desc':'We design homes suited to Okinawa\'s climate — RC, timber or steel frame, whichever best fits the site and your needs. New builds and renovations welcome.',
+    'svc1-t1':'New Build','svc1-t2':'Renovation','svc1-t3':'RC / Timber','svc1-t4':'Multi-generational',
+    'svc2-title':'Commercial Design','svc2-desc':'Restaurants, retail, offices — we translate your business concept into space. Designs that attract customers while delivering practical functionality.',
+    'svc2-t1':'Restaurant','svc2-t2':'Retail','svc2-t3':'Office','svc2-t4':'Change of Use',
+    'svc3-title':'Supervision & Public Buildings','svc3-desc':'We verify that work on site matches the design: quality, schedule and cost. We represent your interests at every stage of the build.',
+    'svc3-t1':'Site Supervision','svc3-t2':'Public Buildings','svc3-t3':'Building Permit','svc3-t4':'Project Planning',
+    'works-label':'Works','works-title':'Selected Projects','works-note':'A selection of our work is shown here. Further case studies are available on request.',
+    'w1-title':'TAKT DESIGN Office — Naha','w2-title':'Residence T — Urasoe','w3-title':'Café S — Chatan',
+    'w4-title':'Residence M — Ginowan','w5-title':'Office K — Naha','w6-title':'Residence Y — Nanjo',
+    'work-view':'View Project',
+    'flow-label':'Flow','flow-title':'How We Work',
+    'f1-title':'Enquiry & Consultation','f1-desc':'Contact us by phone or the enquiry form. Initial consultation is free. Tell us about your project and any questions you have.','f1-tag':'Free Consultation',
+    'f2-title':'Brief & Site Survey','f2-desc':'We take time to understand your lifestyle, budget and site conditions, and carry out a thorough site survey.',
+    'f3-title':'Schematic Design','f3-desc':'We present layout and exterior proposals based on the brief, and refine them through as many meetings as needed.',
+    'f4-title':'Design Development & Permit','f4-desc':'We prepare detailed drawings and handle all building permit applications.',
+    'f5-title':'Construction & Supervision','f5-desc':'Working with trusted contractors, we supervise the build to ensure design intent is faithfully realised on site.',
+    'f6-title':'Completion & Handover','f6-desc':'After final inspection we hand over the completed building. We remain available for maintenance and future alterations.','f6-tag':'After-sales Support',
+    'ct-label':'Contact','ct-title':'Get in Touch','ct-sub':'Feel free to reach out anytime',
+    'ct-office-label':'Office','ct-office-val':'TAKT DESIGN — Licensed Architect Office',
+    'ct-arch-label':'Architect','ct-arch-val':'Toshihiro Haneji, Architect',
+    'ct-addr-label':'Address','ct-addr-val':'3-19-1 Mekaru, Naha, Okinawa<br>900-0004 Japan',
+    'ct-hours-label':'Business Hours','ct-hours-val':'Mon–Fri 9:00–18:00<br><span style="font-size:0.82rem;color:var(--text-light)">Sat/Sun/Holidays by appointment</span>',
+    'lbl-name':'Your Name','lbl-email':'Email Address','lbl-phone':'Phone Number','lbl-msg':'Message',
+    'ph-name':'John Smith','ph-phone':'+81-98-000-0000','ph-msg':'e.g. I am considering building a new home in Naha.',
+    'ct-privacy':'Your information will only be used to respond to your enquiry.',
+    'btn-submit':'Send Message',
+    'err-name':'Please enter your name','err-email':'Please enter a valid email address','err-msg':'Please enter your message',
+    'success-msg':'✓ &nbsp;Thank you for your enquiry.<br>We will be in touch within 2 business days.',
+    'error-msg':'Submission failed. Please contact us by phone: 098-860-1227',
+    'footer-brand':'タクト設計','footer-office':'TAKT DESIGN — Licensed Architect Office',
+    'footer-hours':'Mon–Fri 9:00–18:00 (Sat/Sun/Holidays by appointment)',
+    'footer-reg':'Okinawa Governor Registered Architect Office',
+  }
+};
 
-  function closeMenu() {
-    nav.classList.remove('menu-open');
-    navToggle.setAttribute('aria-expanded', 'false');
+let currentLang = localStorage.getItem('lang') || 'ja';
+
+function applyLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'en' ? 'en' : 'ja';
+
+  // textContent
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang][key] !== undefined) el.textContent = i18n[lang][key];
+  });
+
+  // innerHTML (for <br> etc.)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (i18n[lang][key] !== undefined) el.innerHTML = i18n[lang][key];
+  });
+
+  // placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (i18n[lang][key] !== undefined) el.placeholder = i18n[lang][key];
+  });
+
+  // lang toggle labels
+  const label = lang === 'ja' ? 'EN' : 'JP';
+  document.getElementById('langToggle').textContent = label;
+  const mob = document.getElementById('langToggleMobile');
+  if (mob) mob.textContent = label;
+
+  // title & meta
+  if (lang === 'en') {
+    document.title = 'タクト設計 | Architect Office — Naha, Okinawa';
+  } else {
+    document.title = 'タクト設計 | 一級建築士事務所 - 沖縄県那覇市';
   }
 
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 80);
-  });
+  localStorage.setItem('lang', lang);
+}
 
-  navToggle.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('menu-open');
-    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
+/* ===== NAVBAR auto-hide ===== */
+const nav = document.getElementById('navbar');
+const navToggle = document.getElementById('navToggle');
+const navOverlay = document.getElementById('navOverlay');
+let lastScrollY = 0;
+let ticking = false;
 
-  navOverlay.addEventListener('click', closeMenu);
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      nav.classList.toggle('scrolled', y > 60);
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeMenu();
-  });
-
-  /* ===== SMOOTH SCROLL ===== */
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const href = a.getAttribute('href');
-      if (href === '#') return;
-      e.preventDefault();
-      closeMenu();
-      const target = document.querySelector(href);
-      if (target) {
-        const offset = nav.offsetHeight + 8;
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    });
-  });
-
-  /* ===== REVEAL ON SCROLL ===== */
-  const revealEls = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => revealObserver.observe(el));
-
-  /* ===== BACK TO TOP ===== */
-  const backToTop = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    backToTop.classList.toggle('visible', window.scrollY > 500);
-  });
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  /* ===== CONTACT FORM ===== */
-  const form = document.getElementById('contactForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const formResult = document.getElementById('formResult');
-
-  function showFieldError(fieldId, errorId, show) {
-    const field = document.getElementById(fieldId);
-    const error = document.getElementById(errorId);
-    if (show) {
-      field.classList.add('error');
-      error.style.display = 'block';
-    } else {
-      field.classList.remove('error');
-      error.style.display = 'none';
-    }
-  }
-
-  function validateForm() {
-    let valid = true;
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    if (!name) { showFieldError('name', 'nameError', true); valid = false; }
-    else { showFieldError('name', 'nameError', false); }
-
-    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRe.test(email)) { showFieldError('email', 'emailError', true); valid = false; }
-    else { showFieldError('email', 'emailError', false); }
-
-    if (!message) { showFieldError('message', 'messageError', true); valid = false; }
-    else { showFieldError('message', 'messageError', false); }
-
-    return valid;
-  }
-
-  ['name', 'email', 'message'].forEach(id => {
-    document.getElementById(id).addEventListener('input', () => {
-      const errorId = id + 'Error';
-      showFieldError(id, errorId, false);
-    });
-  });
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-
-    // Formspree IDが未設定の場合は仮の成功表示
-    const action = form.getAttribute('action');
-    if (!action || action.includes('YOUR_FORM_ID')) {
-      formResult.className = 'form-result success';
-      formResult.innerHTML = '✓ &nbsp;お問い合わせありがとうございます。<br>担当者より2営業日以内にご連絡いたします。<br><small style="opacity:0.7">※送信先の設定（Formspree）が完了すると実際にメールが届きます。</small>';
-      formResult.style.display = 'block';
-      form.reset();
-      return;
-    }
-
-    submitBtn.classList.add('loading');
-    submitBtn.disabled = true;
-    formResult.style.display = 'none';
-
-    try {
-      const data = new FormData(form);
-      const res = await fetch(action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok) {
-        formResult.className = 'form-result success';
-        formResult.innerHTML = '✓ &nbsp;お問い合わせありがとうございます。<br>担当者より2営業日以内にご連絡いたします。';
-        form.reset();
+      // hide on scroll down (past 200px), show on scroll up
+      if (y > 200) {
+        nav.classList.toggle('hidden', y > lastScrollY + 4);
       } else {
-        const json = await res.json().catch(() => ({}));
-        const msg = json.errors ? json.errors.map(e => e.message).join(', ') : '送信に失敗しました';
-        formResult.className = 'form-result error';
-        formResult.innerHTML = '送信に失敗しました。お手数ですが、お電話（098-860-1227）にてご連絡ください。';
-        console.error(msg);
+        nav.classList.remove('hidden');
       }
-    } catch {
-      formResult.className = 'form-result error';
-      formResult.innerHTML = '通信エラーが発生しました。お手数ですが、お電話（098-860-1227）にてご連絡ください。';
-    } finally {
-      submitBtn.classList.remove('loading');
-      submitBtn.disabled = false;
-      formResult.style.display = 'block';
-      formResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      lastScrollY = y;
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+function closeMenu() {
+  nav.classList.remove('menu-open');
+  navToggle.setAttribute('aria-expanded', 'false');
+}
+
+navToggle.addEventListener('click', () => {
+  const isOpen = nav.classList.toggle('menu-open');
+  navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  // show mobile lang item
+  const item = document.getElementById('langMobileItem');
+  if (item) item.style.display = isOpen ? 'block' : 'none';
+});
+
+navOverlay.addEventListener('click', closeMenu);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+/* ===== Language toggle ===== */
+function toggleLang() {
+  applyLang(currentLang === 'ja' ? 'en' : 'ja');
+}
+document.getElementById('langToggle').addEventListener('click', toggleLang);
+const langMob = document.getElementById('langToggleMobile');
+if (langMob) langMob.addEventListener('click', toggleLang);
+
+/* ===== SMOOTH SCROLL ===== */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href === '#') return;
+    e.preventDefault();
+    closeMenu();
+    const target = document.querySelector(href);
+    if (target) {
+      const offset = nav.offsetHeight + 8;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
     }
   });
+});
+
+/* ===== REVEAL ON SCROLL ===== */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+/* ===== BACK TO TOP ===== */
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > 500);
+}, { passive: true });
+backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* ===== CONTACT FORM ===== */
+const form = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const formResult = document.getElementById('formResult');
+
+function showFieldError(fieldId, errorId, show) {
+  document.getElementById(fieldId).classList.toggle('error', show);
+  document.getElementById(errorId).style.display = show ? 'block' : 'none';
+}
+
+function validateForm() {
+  let valid = true;
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  showFieldError('name', 'nameError', !name); if (!name) valid = false;
+  showFieldError('email', 'emailError', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)); if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) valid = false;
+  showFieldError('message', 'messageError', !message); if (!message) valid = false;
+  return valid;
+}
+
+['name','email','message'].forEach(id => {
+  document.getElementById(id).addEventListener('input', () => showFieldError(id, id+'Error', false));
+});
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (!validateForm()) return;
+  const action = form.getAttribute('action');
+  if (!action || action.includes('YOUR_FORM_ID')) {
+    formResult.className = 'form-result success';
+    formResult.innerHTML = i18n[currentLang]['success-msg'] + '<br><small style="opacity:0.7">※Formspree IDを設定すると実際にメールが届きます。</small>';
+    formResult.style.display = 'block';
+    form.reset(); return;
+  }
+  submitBtn.classList.add('loading');
+  submitBtn.disabled = true;
+  formResult.style.display = 'none';
+  try {
+    const res = await fetch(action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+    if (res.ok) {
+      formResult.className = 'form-result success';
+      formResult.innerHTML = i18n[currentLang]['success-msg'];
+      form.reset();
+    } else {
+      formResult.className = 'form-result error';
+      formResult.innerHTML = i18n[currentLang]['error-msg'];
+    }
+  } catch {
+    formResult.className = 'form-result error';
+    formResult.innerHTML = i18n[currentLang]['error-msg'];
+  } finally {
+    submitBtn.classList.remove('loading');
+    submitBtn.disabled = false;
+    formResult.style.display = 'block';
+    formResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+});
+
+/* ===== INIT ===== */
+applyLang(currentLang);
 </script>
 
 </body>
