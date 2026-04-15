@@ -80,155 +80,50 @@
     overflow-x: hidden;
   }
 
-  /* ===== ACCESSIBILITY ===== */
-  .skip-nav {
-    position: fixed;
-    top: -100%; left: 1rem;
-    z-index: 9999;
-    background: var(--accent);
-    color: var(--white);
-    padding: 0.6rem 1.2rem;
-    border-radius: 0 0 6px 6px;
-    font-size: 0.85rem;
-    text-decoration: none;
-    transition: top 0.2s;
-  }
-  .skip-nav:focus { top: 0; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
-  /* ===== NAV ===== */
-  nav {
+  /* ===== LANG BUTTON ===== */
+  .lang-btn-wrap {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 1.2rem;
+    right: 1.5rem;
     z-index: 1000;
-    padding: 1.1rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* auto-hide: translate up when .hidden */
-    transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s, transform 0.4s, padding 0.4s;
   }
 
-  nav.hidden {
-    transform: translateY(-100%);
-  }
-
-  nav.scrolled {
-    background: rgba(245, 242, 237, 0.96);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 1px 0 var(--border);
-    padding: 0.8rem 3rem;
-  }
-
-  /* Logo — タクト設計 as Japanese primary */
-  .nav-logo {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 1.15rem;
-    font-weight: 400;
-    letter-spacing: 0.18em;
-    color: var(--white);
-    text-decoration: none;
-    transition: color 0.4s;
-    display: flex;
-    flex-direction: column;
-    line-height: 1.3;
-  }
-  .nav-logo-sub {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    opacity: 0.65;
-    font-weight: 300;
-    text-transform: uppercase;
-  }
-  nav.scrolled .nav-logo { color: var(--text); }
-
-  /* Nav right group: links + lang toggle */
-  .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 0.76rem;
-    letter-spacing: 0.1em;
-    text-decoration: none;
-    color: rgba(255,255,255,0.85);
-    font-weight: 400;
-    transition: color var(--transition);
-    padding-bottom: 2px;
-    border-bottom: 1px solid transparent;
-  }
-  nav.scrolled .nav-links a { color: var(--text-light); }
-  .nav-links a:hover { color: var(--accent); border-color: var(--accent); }
-
-  /* Language toggle */
-  .lang-toggle {
+  .lang-btn {
     font-family: 'Cormorant Garamond', serif;
     font-size: 0.78rem;
     font-weight: 500;
-    letter-spacing: 0.2em;
-    color: rgba(255,255,255,0.7);
-    background: none;
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 3px;
-    padding: 0.28rem 0.7rem;
-    cursor: pointer;
-    transition: color var(--transition), border-color var(--transition), background var(--transition);
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    white-space: nowrap;
+    color: rgba(255,255,255,0.85);
+    background: rgba(0,0,0,0.22);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 3px;
+    padding: 0.32rem 0.85rem;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: color var(--transition), border-color var(--transition), background var(--transition);
   }
-  .lang-toggle:hover {
+
+  .lang-btn:hover {
     color: var(--white);
     border-color: rgba(255,255,255,0.7);
+    background: rgba(0,0,0,0.35);
   }
-  nav.scrolled .lang-toggle {
+
+  .lang-btn-wrap.on-light .lang-btn {
     color: var(--text-light);
+    background: rgba(245,242,237,0.9);
     border-color: var(--border);
+    backdrop-filter: blur(10px);
   }
-  nav.scrolled .lang-toggle:hover {
+
+  .lang-btn-wrap.on-light .lang-btn:hover {
     color: var(--accent);
     border-color: var(--accent);
+    background: rgba(245,242,237,1);
   }
-
-  .nav-hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    z-index: 1001;
-    padding: 4px;
-    background: none;
-    border: none;
-  }
-  .nav-hamburger span {
-    display: block;
-    width: 24px;
-    height: 1.5px;
-    background: var(--white);
-    transition: background 0.5s, transform 0.3s, opacity 0.3s;
-  }
-  nav.scrolled .nav-hamburger span { background: var(--text); }
-  nav.menu-open .nav-hamburger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  nav.menu-open .nav-hamburger span:nth-child(2) { opacity: 0; }
-  nav.menu-open .nav-hamburger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-  .nav-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 999;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(2px);
-  }
-  nav.menu-open ~ .nav-overlay { display: block; }
 
   /* ===== HERO ===== */
   .hero {
@@ -724,23 +619,6 @@
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    nav.scrolled { padding: 0.7rem 1.5rem; }
-    .nav-links {
-      position: fixed; top: 0; right: 0;
-      width: min(80vw, 300px); height: 100vh;
-      background: rgba(245,242,237,0.98); backdrop-filter: blur(16px);
-      display: flex; flex-direction: column;
-      padding: 6rem 1.5rem 2rem;
-      transform: translateX(100%); transition: transform 0.35s ease;
-      box-shadow: -10px 0 30px rgba(0,0,0,0.08); z-index: 1000;
-    }
-    nav.menu-open .nav-links { transform: translateX(0); }
-    .nav-hamburger { display: flex; }
-    .nav-links a { color: var(--text-light); font-size: 0.9rem; padding: 0.3rem 0; }
-    .lang-toggle { display: none; } /* モバイルはメニュー内に表示 */
-    .nav-links .lang-toggle-mobile { display: block; margin-top: 1.5rem; color: var(--text-light); font-size: 0.9rem; border-color: var(--border); }
-
     section { padding: 5rem 1.5rem; }
     .hero { min-height: 760px; height: auto; padding-top: 6rem; }
     .hero-content { width: calc(100% - 3rem); grid-template-columns: 1fr; gap: 1.5rem; align-items: start; padding: 4rem 0 3rem; }
@@ -771,33 +649,10 @@
 </head>
 <body>
 
-<a href="#main-content" class="skip-nav">メインコンテンツへスキップ</a>
-
-<!-- NAV -->
-<nav id="navbar" role="navigation" aria-label="メインナビゲーション">
-  <a href="#top" class="nav-logo" aria-label="タクト設計 トップへ">
-    <span data-i18n="nav-logo">タクト設計</span>
-    <span class="nav-logo-sub">TAKT DESIGN</span>
-  </a>
-  <div class="nav-right">
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#about"    data-i18n="nav-about">事務所紹介</a></li>
-      <li><a href="#services" data-i18n="nav-services">業務内容</a></li>
-      <li><a href="#works"    data-i18n="nav-works">実績</a></li>
-      <li><a href="#flow"     data-i18n="nav-flow">ご依頼の流れ</a></li>
-      <li><a href="#contact"  data-i18n="nav-contact">お問い合わせ</a></li>
-      <!-- モバイル用：メニュー内に言語切替 -->
-      <li style="display:none" id="langMobileItem">
-        <button class="lang-toggle" id="langToggleMobile" style="display:block; margin-top:1rem; background:none; border:1px solid var(--border); color:var(--text-light); font-family:Cormorant Garamond,serif; font-size:0.9rem; letter-spacing:0.2em; padding:0.4rem 1rem; cursor:pointer; border-radius:3px;">EN</button>
-      </li>
-    </ul>
-    <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
-    <button class="nav-hamburger" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="navLinks">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-<div class="nav-overlay" id="navOverlay"></div>
+<!-- LANG TOGGLE -->
+<div class="lang-btn-wrap" id="langWrap">
+  <button class="lang-btn" id="langToggle" aria-label="Switch language / 言語切替">EN</button>
+</div>
 
 <main id="main-content">
 
@@ -1346,69 +1201,28 @@ function applyLang(lang) {
   localStorage.setItem('lang', lang);
 }
 
-/* ===== NAVBAR auto-hide ===== */
-const nav = document.getElementById('navbar');
-const navToggle = document.getElementById('navToggle');
-const navOverlay = document.getElementById('navOverlay');
-let lastScrollY = 0;
-let ticking = false;
-
+/* ===== Lang button: switch style when not over hero ===== */
+const langWrap = document.getElementById('langWrap');
+const heroEl = document.querySelector('.hero');
 window.addEventListener('scroll', () => {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      const y = window.scrollY;
-      nav.classList.toggle('scrolled', y > 60);
-
-      // hide on scroll down (past 200px), show on scroll up
-      if (y > 200) {
-        nav.classList.toggle('hidden', y > lastScrollY + 4);
-      } else {
-        nav.classList.remove('hidden');
-      }
-      lastScrollY = y;
-      ticking = false;
-    });
-    ticking = true;
-  }
-});
-
-function closeMenu() {
-  nav.classList.remove('menu-open');
-  navToggle.setAttribute('aria-expanded', 'false');
-}
-
-navToggle.addEventListener('click', () => {
-  const isOpen = nav.classList.toggle('menu-open');
-  navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  // show mobile lang item
-  const item = document.getElementById('langMobileItem');
-  if (item) item.style.display = isOpen ? 'block' : 'none';
-});
-
-navOverlay.addEventListener('click', closeMenu);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  const heroBottom = heroEl ? heroEl.getBoundingClientRect().bottom : 0;
+  langWrap.classList.toggle('on-light', heroBottom < 60);
+}, { passive: true });
 
 /* ===== Language toggle ===== */
 function toggleLang() {
   applyLang(currentLang === 'ja' ? 'en' : 'ja');
 }
 document.getElementById('langToggle').addEventListener('click', toggleLang);
-const langMob = document.getElementById('langToggleMobile');
-if (langMob) langMob.addEventListener('click', toggleLang);
 
 /* ===== SMOOTH SCROLL ===== */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const href = a.getAttribute('href');
-    if (href === '#') return;
+    if (!href || href === '#') return;
     e.preventDefault();
-    closeMenu();
     const target = document.querySelector(href);
-    if (target) {
-      const offset = nav.offsetHeight + 8;
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
