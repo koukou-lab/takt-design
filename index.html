@@ -12,10 +12,12 @@
   :root {
     --bg: #F5F2ED;
     --bg-warm: #EDE8E0;
+    --bg-deep: #211c17;
     --text: #2C2C2C;
     --text-light: #6B6560;
     --accent: #8B7355;
     --accent-dark: #6B5A42;
+    --accent-soft: #B79D7E;
     --white: #FFFFFF;
     --border: #D4CFC7;
     --hero-overlay: rgba(30, 28, 25, 0.45);
@@ -112,19 +114,37 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(135deg, rgba(80,65,45,0.35), rgba(20,30,50,0.3)),
-      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900"><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%25" stop-color="%23567a9e"/><stop offset="60%25" stop-color="%23c4a882"/><stop offset="100%25" stop-color="%23e8cda8"/></linearGradient></defs><rect fill="url(%23sky)" width="1440" height="900"/><rect fill="%23333028" y="550" width="1440" height="350" opacity="0.6"/><rect fill="%23444038" x="100" y="380" width="300" height="170" rx="2"/><rect fill="%2352493c" x="120" y="360" width="260" height="20" rx="1"/><rect fill="%23555548" x="500" y="320" width="400" height="230" rx="2"/><rect fill="%2363594a" x="520" y="300" width="360" height="20" rx="1"/><rect fill="%23ddd8cc" x="540" y="370" width="80" height="120" opacity="0.4"/><rect fill="%23ddd8cc" x="660" y="370" width="80" height="80" opacity="0.3"/><rect fill="%23ddd8cc" x="780" y="360" width="60" height="100" opacity="0.25"/><rect fill="%23404538" x="1000" y="400" width="340" height="150" rx="2"/><rect fill="%234d5242" x="1020" y="380" width="300" height="20" rx="1"/><circle fill="%23e8c490" cx="1300" cy="180" r="60" opacity="0.7"/></svg>');
+      linear-gradient(120deg, rgba(18, 17, 15, 0.62), rgba(32, 28, 23, 0.18)),
+      url("タクト設計.PNG");
     background-size: cover;
-    background-position: center;
-    filter: brightness(0.85);
+    background-position: center 38%;
+    filter: brightness(0.8);
+    transform: scale(1.04);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 34%;
+    background: linear-gradient(180deg, rgba(33, 28, 23, 0), rgba(33, 28, 23, 0.72));
+    z-index: 1;
   }
 
   .hero-content {
     position: relative;
     z-index: 2;
-    text-align: center;
+    width: min(1180px, calc(100% - 4rem));
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 3rem;
+    align-items: end;
     color: var(--white);
-    padding: 0 2rem;
+    padding: 6rem 0 4rem;
+  }
+
+  .hero-copy {
+    max-width: 720px;
   }
 
   .hero-content .label {
@@ -150,13 +170,109 @@
 
   .hero-content .subtitle {
     font-family: 'Noto Serif JP', serif;
-    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
     font-weight: 300;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.12em;
     margin-top: 1.2rem;
     opacity: 0;
     animation: fadeUp 1s 0.9s forwards;
     color: rgba(255,255,255,0.8);
+  }
+
+  .hero-description {
+    max-width: 620px;
+    margin-top: 1.4rem;
+    color: rgba(255,255,255,0.78);
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    opacity: 0;
+    animation: fadeUp 1s 1.05s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    opacity: 0;
+    animation: fadeUp 1s 1.2s forwards;
+  }
+
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+    padding: 0.95rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: transform 0.3s, background 0.3s, border-color 0.3s;
+  }
+
+  .hero-btn.primary {
+    background: var(--accent-soft);
+    color: var(--bg-deep);
+  }
+
+  .hero-btn.secondary {
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.45);
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .hero-panel {
+    padding: 1.6rem;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(15, 14, 12, 0.34);
+    backdrop-filter: blur(14px);
+    border-radius: 18px;
+    opacity: 0;
+    animation: fadeUp 1s 1.25s forwards;
+  }
+
+  .hero-panel-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.62);
+    margin-bottom: 1rem;
+  }
+
+  .hero-panel ul {
+    list-style: none;
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .hero-panel li {
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .hero-panel li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .hero-panel strong {
+    display: block;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin-bottom: 0.2rem;
+  }
+
+  .hero-panel span {
+    color: rgba(255,255,255,0.66);
+    font-size: 0.84rem;
   }
 
   .hero-scroll {
@@ -238,6 +354,17 @@
   .about-visual {
     position: relative;
     height: 480px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #d7cfc4;
+  }
+
+  .about-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    filter: saturate(0.92);
   }
 
   .about-visual .block {
@@ -246,27 +373,84 @@
   }
 
   .about-visual .block-1 {
-    top: 0; right: 0;
-    width: 75%;
-    height: 65%;
-    background: linear-gradient(145deg, #9B8B73, #7A6B55);
+    top: 1.2rem; right: 1.2rem;
+    width: 64%;
+    height: 58%;
+    background: linear-gradient(145deg, rgba(155, 139, 115, 0.28), rgba(122, 107, 85, 0.05));
+    border: 1px solid rgba(255,255,255,0.24);
+    backdrop-filter: blur(8px);
   }
 
   .about-visual .block-2 {
-    bottom: 0; left: 0;
-    width: 60%;
-    height: 50%;
-    background: linear-gradient(145deg, #BDB0A0, #A39585);
+    bottom: 1.2rem; left: 1.2rem;
+    width: 52%;
+    height: 34%;
+    background: rgba(33, 28, 23, 0.72);
+    color: var(--white);
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.35rem;
+  }
+
+  .about-visual .block-2 strong {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .about-visual .block-2 span {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.7);
   }
 
   .about-visual .line-accent {
     position: absolute;
-    top: 50%;
-    left: 20%;
-    width: 60%;
+    top: 1.8rem;
+    left: 1.8rem;
+    width: 90px;
     height: 1px;
-    background: var(--accent);
-    opacity: 0.4;
+    background: rgba(255,255,255,0.85);
+    opacity: 0.8;
+  }
+
+  .intro-band {
+    margin-top: -4.5rem;
+    position: relative;
+    z-index: 3;
+    padding: 0 3rem;
+  }
+
+  .intro-band-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .intro-card {
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(212, 207, 199, 0.9);
+    border-radius: 18px;
+    padding: 1.35rem 1.4rem;
+    box-shadow: 0 22px 60px rgba(33, 28, 23, 0.08);
+  }
+
+  .intro-card strong {
+    display: block;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+  }
+
+  .intro-card span {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-light);
+    line-height: 1.8;
   }
 
   /* ===== SERVICES ===== */
@@ -404,6 +588,11 @@
     transition: transform 0.6s;
   }
 
+  .work-item img.work-bg {
+    display: block;
+    object-fit: cover;
+  }
+
   .work-item:hover .work-bg { transform: scale(1.05); }
 
   .work-item .work-overlay {
@@ -426,19 +615,19 @@
     letter-spacing: 0.05em;
   }
 
-  .work-1 .work-bg {
-    background:
-      linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.22)),
-      url("images/ひまわりっ童保育園.webp");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+  .work-1 .work-bg { background: linear-gradient(135deg, #6f7b64, #56614d); }
   .work-2 .work-bg { background: linear-gradient(135deg, #7A8B73, #5A6B52); }
   .work-3 .work-bg { background: linear-gradient(135deg, #73788B, #525A6B); }
   .work-4 .work-bg { background: linear-gradient(135deg, #8B7A73, #6B5A52); }
   .work-5 .work-bg { background: linear-gradient(135deg, #73858B, #52656B); }
   .work-6 .work-bg { background: linear-gradient(135deg, #8B8573, #6B6552); }
+
+  .works-note {
+    margin-top: 1rem;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+  }
 
   /* ===== FLOW ===== */
   .flow-inner {
@@ -693,10 +882,48 @@
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(80vw, 320px);
+      height: 100vh;
+      background: rgba(245, 242, 237, 0.98);
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      padding: 6rem 1.5rem 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s ease;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.08);
+    }
+    nav.menu-open .nav-links { transform: translateX(0); }
     .nav-hamburger { display: flex; }
 
     section { padding: 4rem 1.5rem; }
+
+    .hero {
+      min-height: 760px;
+      height: auto;
+      padding-top: 6rem;
+    }
+
+    .hero-content {
+      width: calc(100% - 3rem);
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      padding: 4rem 0 3rem;
+    }
+
+    .intro-band {
+      margin-top: -2rem;
+      padding: 0 1.5rem;
+    }
+
+    .intro-band-inner {
+      grid-template-columns: 1fr;
+    }
 
     .about {
       grid-template-columns: 1fr;
@@ -704,6 +931,12 @@
     }
 
     .about-visual { height: 280px; }
+
+    .about-visual .block-2 {
+      width: calc(100% - 2.4rem);
+      height: auto;
+      min-height: 110px;
+    }
 
     .services-grid {
       grid-template-columns: 1fr;
@@ -728,6 +961,19 @@
   }
 
   @media (max-width: 600px) {
+    .hero-content {
+      width: calc(100% - 2rem);
+      padding: 3rem 0 2.5rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .hero-btn {
+      width: 100%;
+    }
+
     .works-grid {
       grid-template-columns: 1fr;
     }
@@ -746,7 +992,7 @@
     <li><a href="#flow">ご依頼の流れ</a></li>
     <li><a href="#contact">お問い合わせ</a></li>
   </ul>
-  <div class="nav-hamburger" onclick="this.classList.toggle('active')">
+  <div class="nav-hamburger" id="navToggle">
     <span></span><span></span><span></span>
   </div>
 </nav>
@@ -755,11 +1001,46 @@
 <section class="hero" id="top">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <p class="label">一級建築士事務所</p>
-    <h1>TAKT DESIGN</h1>
-    <p class="subtitle">タクト設計 ― 沖縄の風土に寄り添う建築</p>
+    <div class="hero-copy">
+      <p class="label">一級建築士事務所</p>
+      <h1>TAKT DESIGN</h1>
+      <p class="subtitle">タクト設計 ― 沖縄の風土に寄り添う建築</p>
+      <p class="hero-description">
+        住宅、店舗、公共施設まで。那覇を拠点に、光・風・敷地の個性を読み解きながら、
+        長く愛される建築を丁寧な対話と確かな設計監理でかたちにします。
+      </p>
+      <div class="hero-actions">
+        <a class="hero-btn primary" href="#contact">無料相談をする</a>
+        <a class="hero-btn secondary" href="#works">実績を見る</a>
+      </div>
+    </div>
+    <aside class="hero-panel">
+      <div class="hero-panel-title">Design Focus</div>
+      <ul>
+        <li><strong>沖縄の気候に応える設計</strong><span>日射・通風・陰影を活かす計画</span></li>
+        <li><strong>対話を重ねるプロセス</strong><span>要望整理から完成後まで伴走</span></li>
+        <li><strong>住宅から施設まで対応</strong><span>用途と規模に応じた設計監理</span></li>
+      </ul>
+    </aside>
   </div>
   <div class="hero-scroll">scroll</div>
+</section>
+
+<section class="intro-band">
+  <div class="intro-band-inner">
+    <div class="intro-card reveal">
+      <strong>沖縄に根ざした設計</strong>
+      <span>地域の風土と暮らし方を踏まえ、過ごしやすさと美しさを両立します。</span>
+    </div>
+    <div class="intro-card reveal">
+      <strong>一級建築士による一貫対応</strong>
+      <span>初回相談から設計監理まで、意図がぶれない体制で進めます。</span>
+    </div>
+    <div class="intro-card reveal">
+      <strong>相談しやすい設計事務所</strong>
+      <span>新築、改修、用途変更、事業計画の相談まで幅広く対応します。</span>
+    </div>
+  </div>
 </section>
 
 <!-- ABOUT -->
@@ -782,8 +1063,12 @@
       </p>
     </div>
     <div class="about-visual reveal">
+      <img src="タクト設計.PNG" alt="タクト設計の設計事務所外観">
       <div class="block block-1"></div>
-      <div class="block block-2"></div>
+      <div class="block block-2">
+        <strong>TAKT DESIGN OFFICE</strong>
+        <span>那覇市銘苅を拠点に、住宅・店舗・公共施設の設計監理を行っています。</span>
+      </div>
       <div class="line-accent"></div>
     </div>
   </div>
@@ -838,11 +1123,12 @@
     <div class="reveal">
       <span class="section-label">Works</span>
       <h2 class="section-title">設計実績</h2>
+      <p class="works-note">掲載実績は一部です。用途や規模に応じた事例は、お打ち合わせ時にご案内しています。</p>
     </div>
     <div class="works-grid">
       <div class="work-item work-1 reveal">
-        <div class="work-bg"></div>
-        <div class="work-overlay"><span>ひまわりっ童保育園</span></div>
+        <img class="work-bg" src="タクト設計.PNG" alt="タクト設計の設計事務所">
+        <div class="work-overlay"><span>タクト設計オフィス ― 那覇市</span></div>
       </div>
       <div class="work-item work-2 reveal">
         <div class="work-bg"></div>
@@ -1019,8 +1305,13 @@
 <script>
   // Navbar scroll effect
   const nav = document.getElementById('navbar');
+  const navToggle = document.getElementById('navToggle');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 80);
+  });
+
+  navToggle.addEventListener('click', () => {
+    nav.classList.toggle('menu-open');
   });
 
   // Reveal on scroll
@@ -1044,6 +1335,7 @@
       e.preventDefault();
       const target = document.querySelector(a.getAttribute('href'));
       if (target) {
+        nav.classList.remove('menu-open');
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
