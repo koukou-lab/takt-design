@@ -514,6 +514,147 @@
   .work-item:hover .work-hover-detail { opacity: 1; }
   .works-note { margin-top: 1rem; color: rgba(255,255,255,0.5); font-size: 0.82rem; }
 
+  .works-archive {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+  .works-archive-group {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 1.4rem;
+    backdrop-filter: blur(8px);
+  }
+  .works-archive-group h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .works-archive-group ul {
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .works-archive-group li {
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .works-archive-group li:first-child {
+    padding-top: 0;
+    border-top: none;
+  }
+  .works-project {
+    display: block;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.94);
+    line-height: 1.7;
+  }
+  .works-meta {
+    display: block;
+    margin-top: 0.18rem;
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .work-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(18, 16, 14, 0.82);
+    backdrop-filter: blur(10px);
+  }
+  .work-modal.open { display: flex; }
+  .work-modal-dialog {
+    width: min(980px, 100%);
+    max-height: min(90vh, 920px);
+    overflow: auto;
+    background: #f6f2ec;
+    border-radius: 20px;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.3);
+    position: relative;
+  }
+  .work-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(33,28,23,0.84);
+    color: var(--white);
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    z-index: 2;
+  }
+  .work-modal-media {
+    aspect-ratio: 16/10;
+    background: linear-gradient(145deg, #6b6054, #8b7b68, #5a5048);
+    overflow: hidden;
+  }
+  .work-modal-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .work-modal-fallback {
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.82);
+    font-size: 0.92rem;
+    letter-spacing: 0.08em;
+  }
+  .work-modal-body {
+    padding: 2rem;
+    display: grid;
+    gap: 1.2rem;
+  }
+  .work-modal-category {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .work-modal-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .work-modal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .work-modal-chip {
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    background: #ebe4da;
+    color: var(--text-light);
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+  }
+  .work-modal-description {
+    color: var(--text-light);
+    font-size: 0.92rem;
+    line-height: 1.9;
+  }
+
   /* ===== FLOW ===== */
   .flow-inner { max-width: 900px; margin: 0 auto; }
   .flow-steps { margin-top: 3rem; }
@@ -629,6 +770,7 @@
     .about-visual .block-2 { width: calc(100% - 2.4rem); }
     .services-grid { grid-template-columns: 1fr; gap: 1.5rem; }
     .works-grid { grid-template-columns: 1fr 1fr; }
+    .works-archive { grid-template-columns: 1fr; }
     .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
     .flow-step { gap: 1.5rem; }
     .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
@@ -642,6 +784,8 @@
     .hero-actions { flex-direction: column; }
     .hero-btn { width: 100%; }
     .works-grid { grid-template-columns: 1fr; }
+    .work-modal { padding: 1rem; }
+    .work-modal-body { padding: 1.25rem; }
     .back-to-top { bottom: 1.2rem; right: 1.2rem; }
     .contact-form-footer { flex-direction: column; align-items: flex-start; }
   }
@@ -820,7 +964,13 @@
       <p class="works-note" data-i18n="works-note">掲載実績は一部です。用途や規模に応じた事例は、お打ち合わせ時にご案内しています。</p>
     </div>
     <div class="works-grid">
-      <div class="work-item reveal">
+      <div class="work-item reveal" role="button" tabindex="0"
+        data-detail-title="タクト設計オフィス"
+        data-detail-category="Office"
+        data-detail-year="掲載画像"
+        data-detail-location="那覇市"
+        data-detail-description="事務所外観の掲載画像です。実績写真はクリックすると拡大表示され、今後ほかの案件画像も同じ仕組みで追加できます。"
+        data-detail-image="takt-design-office.png">
         <img class="work-bg" src="takt-design-office.png" alt="タクト設計オフィス外観" loading="lazy">
         <div class="work-info">
           <span class="work-info-category">Office</span>
@@ -828,45 +978,105 @@
         </div>
         <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
       </div>
-      <div class="work-item reveal">
+      <div class="work-item reveal" role="button" tabindex="0"
+        data-detail-title="ひまわりっ童保育園"
+        data-detail-category="Nursery"
+        data-detail-year="平成22年完成"
+        data-detail-location="うるま市"
+        data-detail-description="保育園実績の代表案件です。詳細画像は準備できしだい追加可能で、現在は案件情報を先行掲載しています。">
         <div class="work-placeholder work-2-bg"></div>
         <div class="work-info">
-          <span class="work-info-category">Residence</span>
-          <span class="work-info-title" data-i18n="w2-title">T邸 ― 浦添市</span>
+          <span class="work-info-category">Nursery</span>
+          <span class="work-info-title">ひまわりっ童保育園 ― うるま市</span>
         </div>
         <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
       </div>
-      <div class="work-item reveal">
+      <div class="work-item reveal" role="button" tabindex="0"
+        data-detail-title="上間さつき保育園"
+        data-detail-category="Nursery"
+        data-detail-year="令和3年4月完成"
+        data-detail-location="那覇市"
+        data-detail-description="近年の保育施設実績です。園舎計画・運営動線・保育環境への配慮を重視した案件として掲載しています。">
         <div class="work-placeholder work-3-bg"></div>
         <div class="work-info">
-          <span class="work-info-category">Café</span>
-          <span class="work-info-title" data-i18n="w3-title">カフェ S ― 北谷町</span>
+          <span class="work-info-category">Nursery</span>
+          <span class="work-info-title">上間さつき保育園 ― 那覇市</span>
         </div>
         <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
       </div>
-      <div class="work-item reveal">
+      <div class="work-item reveal" role="button" tabindex="0"
+        data-detail-title="真嘉比東公園便所"
+        data-detail-category="Public"
+        data-detail-year="平成22年完成"
+        data-detail-location="那覇市"
+        data-detail-description="公共工事実績のひとつです。地域利用を前提とした施設計画として、使いやすさと維持管理性を重視しています。">
         <div class="work-placeholder work-4-bg"></div>
         <div class="work-info">
-          <span class="work-info-category">Residence</span>
-          <span class="work-info-title" data-i18n="w4-title">M邸 ― 宜野湾市</span>
+          <span class="work-info-category">Public</span>
+          <span class="work-info-title">真嘉比東公園便所 ― 那覇市</span>
         </div>
         <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
       </div>
-      <div class="work-item reveal">
+      <div class="work-item reveal" role="button" tabindex="0"
+        data-detail-title="（株）的エンタープライズ 本社"
+        data-detail-category="Office"
+        data-detail-year="平成18年完成"
+        data-detail-location="中城村"
+        data-detail-description="店舗・社屋設計実績として掲載しています。企業活動を支える機能性と、来客時の印象を両立させた計画です。">
         <div class="work-placeholder work-5-bg"></div>
         <div class="work-info">
           <span class="work-info-category">Office</span>
-          <span class="work-info-title" data-i18n="w5-title">オフィス K ― 那覇市</span>
+          <span class="work-info-title">（株）的エンタープライズ 本社 ― 中城村</span>
         </div>
         <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
       </div>
-      <div class="work-item reveal">
+      <div class="work-item reveal" role="button" tabindex="0"
+        data-detail-title="防災避難施設整備工事・設計監理"
+        data-detail-category="Public"
+        data-detail-year="平成25年完成"
+        data-detail-location="那覇市"
+        data-detail-description="防災機能を担う公共施設の設計監理実績です。地域の安全性と実用性を踏まえた計画・監理を行いました。">
         <div class="work-placeholder work-6-bg"></div>
         <div class="work-info">
-          <span class="work-info-category">Residence</span>
-          <span class="work-info-title" data-i18n="w6-title">Y邸 ― 南城市</span>
+          <span class="work-info-category">Public</span>
+          <span class="work-info-title">防災避難施設整備工事 ― 那覇市</span>
         </div>
         <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
+      </div>
+    </div>
+    <div class="works-archive">
+      <div class="works-archive-group reveal">
+        <h3>保育園実績</h3>
+        <ul>
+          <li><span class="works-project">しいの実保育園（本園）</span><span class="works-meta">平成13年完成・宜野湾市</span></li>
+          <li><span class="works-project">愛の園保育園</span><span class="works-meta">平成15年完成・浦添市</span></li>
+          <li><span class="works-project">しいの実保育園（分園）</span><span class="works-meta">平成19年完成・宜野湾市</span></li>
+          <li><span class="works-project">スカイマリン保育園（本園）</span><span class="works-meta">平成20年完成・那覇市</span></li>
+          <li><span class="works-project">さつき保育園</span><span class="works-meta">平成21年完成・宜野湾市</span></li>
+          <li><span class="works-project">ひらまつ保育園</span><span class="works-meta">平成21年完成・那覇市</span></li>
+          <li><span class="works-project">ひまわりっ童保育園</span><span class="works-meta">平成22年完成・うるま市</span></li>
+          <li><span class="works-project">おなが保育園</span><span class="works-meta">平成23年完成・豊見城市</span></li>
+          <li><span class="works-project">スカイマリン保育園（分園）</span><span class="works-meta">平成27年完成・那覇市</span></li>
+          <li><span class="works-project">メルシー保育園古島</span><span class="works-meta">平成29年完成・那覇市</span></li>
+          <li><span class="works-project">もりのこ保育園</span><span class="works-meta">平成30年完成・豊見城市</span></li>
+          <li><span class="works-project">座安こども園（厨房改修工事）</span><span class="works-meta">平成31年完成・豊見城市</span></li>
+          <li><span class="works-project">てんがんこどもえん増築工事</span><span class="works-meta">令和2年完成・うるま市</span></li>
+          <li><span class="works-project">上間さつき保育園</span><span class="works-meta">令和3年4月完成・那覇市</span></li>
+        </ul>
+      </div>
+      <div class="works-archive-group reveal">
+        <h3>公共工事実績</h3>
+        <ul>
+          <li><span class="works-project">真嘉比東公園便所</span><span class="works-meta">平成22年完成・那覇市</span></li>
+          <li><span class="works-project">若狭小学校園庭計画</span><span class="works-meta">平成23年完成・那覇市</span></li>
+          <li><span class="works-project">防災避難施設整備工事・設計監理</span><span class="works-meta">平成25年完成・那覇市</span></li>
+        </ul>
+      </div>
+      <div class="works-archive-group reveal">
+        <h3>店舗・社屋設計実績</h3>
+        <ul>
+          <li><span class="works-project">（株）的エンタープライズ 本社</span><span class="works-meta">平成18年完成・中城村</span></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -997,6 +1207,25 @@
 </section>
 
 </main>
+
+<div class="work-modal" id="workModal" aria-hidden="true">
+  <div class="work-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="workModalTitle">
+    <button class="work-modal-close" id="workModalClose" aria-label="閉じる">×</button>
+    <div class="work-modal-media">
+      <img id="workModalImage" src="" alt="" hidden>
+      <div class="work-modal-fallback" id="workModalFallback">詳細画像準備中</div>
+    </div>
+    <div class="work-modal-body">
+      <span class="work-modal-category" id="workModalCategory"></span>
+      <h3 class="work-modal-title" id="workModalTitle"></h3>
+      <div class="work-modal-meta">
+        <span class="work-modal-chip" id="workModalYear"></span>
+        <span class="work-modal-chip" id="workModalLocation"></span>
+      </div>
+      <p class="work-modal-description" id="workModalDescription"></p>
+    </div>
+  </div>
+</div>
 
 <!-- MAP -->
 <div class="map-section" aria-label="事務所の地図">
@@ -1237,6 +1466,64 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 revealEls.forEach(el => revealObserver.observe(el));
+
+/* ===== WORK MODAL ===== */
+const workModal = document.getElementById('workModal');
+const workModalClose = document.getElementById('workModalClose');
+const workModalImage = document.getElementById('workModalImage');
+const workModalFallback = document.getElementById('workModalFallback');
+const workModalCategory = document.getElementById('workModalCategory');
+const workModalTitle = document.getElementById('workModalTitle');
+const workModalYear = document.getElementById('workModalYear');
+const workModalLocation = document.getElementById('workModalLocation');
+const workModalDescription = document.getElementById('workModalDescription');
+
+function openWorkModal(el) {
+  workModalCategory.textContent = el.dataset.detailCategory || '';
+  workModalTitle.textContent = el.dataset.detailTitle || '';
+  workModalYear.textContent = el.dataset.detailYear || '';
+  workModalLocation.textContent = el.dataset.detailLocation || '';
+  workModalDescription.textContent = el.dataset.detailDescription || '';
+
+  if (el.dataset.detailImage) {
+    workModalImage.src = el.dataset.detailImage;
+    workModalImage.alt = el.dataset.detailTitle || '';
+    workModalImage.hidden = false;
+    workModalFallback.style.display = 'none';
+  } else {
+    workModalImage.hidden = true;
+    workModalImage.removeAttribute('src');
+    workModalFallback.style.display = 'flex';
+  }
+
+  workModal.classList.add('open');
+  workModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeWorkModal() {
+  workModal.classList.remove('open');
+  workModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.work-item').forEach((item) => {
+  item.addEventListener('click', () => openWorkModal(item));
+  item.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openWorkModal(item);
+    }
+  });
+});
+
+workModalClose.addEventListener('click', closeWorkModal);
+workModal.addEventListener('click', (e) => {
+  if (e.target === workModal) closeWorkModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && workModal.classList.contains('open')) closeWorkModal();
+});
 
 /* ===== BACK TO TOP ===== */
 const backToTop = document.getElementById('backToTop');
