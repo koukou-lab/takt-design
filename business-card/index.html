@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タクト設計 名刺 印刷用データ</title>
+    <!-- Google Fonts: 洗練された印象のNoto Sans JPを読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- 印刷・レイアウトの基本設定 --- */
+        :root {
+            /* 名刺サイズ 91mm x 55mm */
+            --card-width: 91mm;
+            --card-height: 55mm;
+            --bleed: 3mm; /* 塗り足し（裁断のズレを防ぐ余裕） */
+        }
+
+        @page {
+            /* PDF出力時の用紙サイズを名刺サイズ＋塗り足しに設定 */
+            size: 97mm 61mm;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f0f0f0; /* 作業時の背景色（印刷には出ません） */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* --- 名刺の枠組み --- */
+        .card-container {
+            /* 塗り足しを含めたサイズ */
+            width: calc(var(--card-width) + var(--bleed) * 2);
+            height: calc(var(--card-height) + var(--bleed) * 2);
+            position: relative;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* 実際の仕上がりサイズ（裁断される線）を示すガイド（作業用） */
+        .trim-mark {
+            position: absolute;
+            top: var(--bleed);
+            left: var(--bleed);
+            width: var(--card-width);
+            height: var(--card-height);
+            border: 1px dashed rgba(255, 0, 0, 0.5);
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        /* --- 表面 (Front) のデザイン --- */
+        .front {
+            background-color: #1e293b; /* ベースの暗色 */
+            color: white;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        /* 背景画像の設定 */
+        .bg-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* 実際の写真のパスに書き換えてください */
+            background-image: url('../images/takt-design-office.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4; /* 画像を暗くして文字を読みやすくする */
+            z-index: 1;
+        }
+
+        .front::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.78), rgba(30, 41, 59, 0.55));
+            z-index: 1;
+        }
+
+        .front-content {
+            position: absolute;
+            /* 塗り足し(3mm) ＋ デザイン上の余白(5mm) = 8mm内側にコンテンツを配置 */
+            top: 8mm; left: 8mm; right: 8mm; bottom: 8mm;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .company-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .license {
+            font-size: 6pt;
+            letter-spacing: 0.1em;
+            margin-bottom: 1mm;
+            font-weight: 300;
+        }
+
+        .company-name {
+            font-size: 14pt;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .logo-accent {
+            width: 12mm;
+            height: 12mm;
+            border: 1px solid rgba(255,255,255,0.45);
+            transform: rotate(45deg);
+            flex-shrink: 0;
+            margin-top: 1mm;
+        }
+
+        .person-info {
+            margin-top: auto;
+            margin-bottom: 6mm;
+        }
+
+        .title {
+            font-size: 6pt;
+            letter-spacing: 0.1em;
+            margin-bottom: 1mm;
+        }
+
+        .name {
+            font-size: 16pt;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+        }
+        .name span {
+            font-weight: 500;
+        }
+
+        .contact-info {
+            font-size: 5.5pt;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 4mm;
+            border-top: 0.5px solid rgba(255,255,255,0.3);
+            padding-top: 2mm;
+            line-height: 1.5;
+        }
+
+        /* --- 裏面 (Back) のデザイン --- */
+        .back {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-color: white;
+            color: #334155;
+        }
+
+        .back-accent {
+            position: absolute;
+            top: 8mm; bottom: 8mm; left: var(--bleed);
+            width: 2mm;
+            background-color: #1e293b;
+        }
+
+        .back-content {
+            position: absolute;
+            top: 8mm; left: 10mm; right: 8mm; bottom: 8mm;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .works-title {
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 4mm;
+            display: flex;
+            align-items: center;
+        }
+        .works-title::before {
+            content: '';
+            display: block;
+            width: 10mm;
+            height: 0.5px;
+            background-color: #1e293b;
+            margin-right: 2mm;
+        }
+
+        .works-grid {
+            display: flex;
+            gap: 4mm;
+            font-size: 5.2pt;
+            line-height: 1.45;
+            height: 100%;
+        }
+
+        .works-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category-title {
+            font-weight: 700;
+            border-bottom: 0.5px solid #cbd5e1;
+            padding-bottom: 1mm;
+            margin-bottom: 1.5mm;
+        }
+
+        .works-list {
+            list-style: none;
+        }
+        .works-list li {
+            margin-bottom: 0.7mm;
+        }
+
+        .message {
+            margin-top: auto;
+            background-color: #f8fafc;
+            padding: 2mm;
+            border-left: 1px solid #cbd5e1;
+            font-size: 4.8pt;
+            line-height: 1.5;
+            color: #64748b;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+                gap: 0;
+                display: block;
+            }
+
+            .card-container {
+                box-shadow: none;
+                page-break-after: always;
+            }
+
+            .card-container:last-child {
+                page-break-after: auto;
+            }
+
+            .trim-mark {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表面 -->
+    <div class="card-container">
+        <div class="trim-mark"></div>
+        <div class="front">
+            <!-- 名刺と同じフォルダにある building-photo.jpg を使用 -->
+            <div class="bg-image"></div>
+            
+            <div class="front-content">
+                <div class="company-info">
+                    <div>
+                        <p class="license">1級建築士事務所</p>
+                        <h1 class="company-name">タクト設計</h1>
+                    </div>
+                    <div class="logo-accent"></div>
+                </div>
+
+                <div class="person-info">
+                    <p class="title">代表者 一級建築士</p>
+                    <p class="name">羽地 <span>敏博</span></p>
+                </div>
+
+                <div class="contact-info">
+                    <div>
+                        <p>〒900-0004</p>
+                        <p>沖縄県那覇市銘苅3丁目19番1号</p>
+                    </div>
+                    <div style="text-align: right; white-space: nowrap;">
+                        <p>TEL 098-860-1227 / FAX 098-860-1228</p>
+                        <p>MOBILE 090-8290-6036</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 裏面 -->
+    <div class="card-container">
+        <div class="trim-mark"></div>
+        <div class="back">
+            <div class="back-accent"></div>
+            <div class="back-content">
+                <h2 class="works-title">WORKS - 主な設計実績</h2>
+                
+                <div class="works-grid">
+                    <div class="works-column">
+                        <h3 class="category-title">保育園・こども園</h3>
+                        <ul class="works-list">
+                            <li>しいの実保育園 (本園/分園)</li>
+                            <li>愛の園保育園</li>
+                            <li>スカイマリン保育園 (本園/分園)</li>
+                            <li>さつき保育園 / 上間さつき保育園</li>
+                            <li>ひらまつ保育園</li>
+                            <li>ひまわりっ童保育園</li>
+                            <li>おなが保育園</li>
+                            <li>メルシー保育園古島 / もりのこ保育園</li>
+                            <li>座安こども園 (厨房改修)</li>
+                            <li>てんがんこどもえん (増築)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="works-column">
+                        <div>
+                            <h3 class="category-title">公共工事・店舗・社屋</h3>
+                            <ul class="works-list">
+                                <li>真嘉比東公園便所</li>
+                                <li>若狭小学校園庭計画</li>
+                                <li>防災避難施設整備工事 (設計監理)</li>
+                                <li>(株)的エンタープライズ 本社</li>
+                            </ul>
+                        </div>
+                        <div class="message">
+                            保育施設を中心に、<br>地域に根ざした空間づくりに取り組んでいます。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
