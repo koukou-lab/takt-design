@@ -142,7 +142,7 @@
     inset: 0;
     background:
       linear-gradient(120deg, rgba(18, 17, 15, 0.62), rgba(32, 28, 23, 0.18)),
-      url("takt-design-office.png");
+      url("images/takt-design-office.png");
     background-size: cover;
     background-position: center 38%;
     filter: brightness(0.8);
@@ -547,6 +547,45 @@
     padding-top: 0;
     border-top: none;
   }
+  .work-archive-item {
+    cursor: pointer;
+    padding: 0.65rem 0.7rem;
+    margin: 0 -0.7rem;
+    border-radius: 8px;
+    transition: background 0.2s ease, transform 0.2s ease;
+    position: relative;
+  }
+  .work-archive-item:first-child { padding-top: 0.65rem; }
+  .works-archive-group li.work-archive-item {
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .works-archive-group li.work-archive-item:first-child {
+    border-top: none;
+  }
+  .work-archive-item:hover {
+    background: rgba(255,255,255,0.06);
+  }
+  .work-archive-item:focus-visible {
+    outline: 2px solid rgba(255,255,255,0.55);
+    outline-offset: 2px;
+    background: rgba(255,255,255,0.06);
+  }
+  .work-archive-item::after {
+    content: '›';
+    position: absolute;
+    right: 0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.35);
+    font-size: 1.1rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  .work-archive-item:hover::after,
+  .work-archive-item:focus-visible::after {
+    color: rgba(255,255,255,0.8);
+    transform: translateY(-50%) translateX(3px);
+  }
+  .work-archive-item .works-project { padding-right: 1.4rem; }
   .works-project {
     display: block;
     font-size: 0.88rem;
@@ -598,6 +637,7 @@
     z-index: 2;
   }
   .work-modal-media {
+    position: relative;
     aspect-ratio: 16/10;
     background: linear-gradient(145deg, #6b6054, #8b7b68, #5a5048);
     overflow: hidden;
@@ -617,6 +657,60 @@
     color: rgba(255,255,255,0.82);
     font-size: 0.92rem;
     letter-spacing: 0.08em;
+  }
+  .work-modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(20,16,12,0.55);
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    z-index: 2;
+  }
+  .work-modal-nav:hover { background: rgba(20,16,12,0.85); }
+  .work-modal-nav[hidden] { display: none; }
+  .work-modal-prev { left: 1rem; }
+  .work-modal-next { right: 1rem; }
+  .work-modal-thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.9rem 1.2rem 0;
+    background: #f6f2ec;
+  }
+  .work-modal-thumbs[hidden] { display: none; }
+  .work-modal-thumb {
+    width: 72px;
+    height: 54px;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    background: #d8cfc2;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.2s ease, opacity 0.2s ease;
+    opacity: 0.65;
+  }
+  .work-modal-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .work-modal-thumb:hover { opacity: 1; }
+  .work-modal-thumb.is-active {
+    border-color: var(--accent);
+    opacity: 1;
   }
   .work-modal-body {
     padding: 2rem;
@@ -786,6 +880,11 @@
     .works-grid { grid-template-columns: 1fr; }
     .work-modal { padding: 1rem; }
     .work-modal-body { padding: 1.25rem; }
+    .work-modal-nav { width: 36px; height: 36px; font-size: 1.3rem; }
+    .work-modal-prev { left: 0.5rem; }
+    .work-modal-next { right: 0.5rem; }
+    .work-modal-thumbs { padding: 0.7rem 0.9rem 0; gap: 0.4rem; }
+    .work-modal-thumb { width: 56px; height: 42px; }
     .back-to-top { bottom: 1.2rem; right: 1.2rem; }
     .contact-form-footer { flex-direction: column; align-items: flex-start; }
   }
@@ -879,7 +978,7 @@
       </div>
     </div>
     <div class="about-visual reveal">
-      <img src="takt-design-office.png" alt="タクト設計の設計事務所外観" loading="lazy">
+      <img src="images/takt-design-office.png" alt="タクト設計の設計事務所外観" loading="lazy">
       <div class="block-2">
         <strong data-i18n="about-block-title">タクト設計 事務所</strong>
         <span data-i18n="about-block-desc">那覇市銘苅を拠点に、住宅・店舗・公共施設の設計監理を行っています。</span>
@@ -970,8 +1069,8 @@
         data-detail-year="掲載画像"
         data-detail-location="那覇市"
         data-detail-description="事務所外観の掲載画像です。実績写真はクリックすると拡大表示され、今後ほかの案件画像も同じ仕組みで追加できます。"
-        data-detail-image="takt-design-office.png">
-        <img class="work-bg" src="takt-design-office.png" alt="タクト設計オフィス外観" loading="lazy">
+        data-detail-image="images/takt-design-office.png">
+        <img class="work-bg" src="images/takt-design-office.png" alt="タクト設計オフィス外観" loading="lazy">
         <div class="work-info">
           <span class="work-info-category">Office</span>
           <span class="work-info-title" data-i18n="w1-title">タクト設計オフィス ― 那覇市</span>
@@ -1009,8 +1108,10 @@
         data-detail-category="Public"
         data-detail-year="平成22年完成"
         data-detail-location="那覇市"
-        data-detail-description="公共工事実績のひとつです。地域利用を前提とした施設計画として、使いやすさと維持管理性を重視しています。">
-        <div class="work-placeholder work-4-bg"></div>
+        data-detail-description="公共工事実績のひとつです。地域利用を前提とした施設計画として、使いやすさと維持管理性を重視しています。"
+        data-detail-image="images/projects/makabihigashi-park-restroom/01-exterior.jpg"
+        data-detail-images="images/projects/makabihigashi-park-restroom/01-exterior.jpg,images/projects/makabihigashi-park-restroom/02-exterior-construction.jpg,images/projects/makabihigashi-park-restroom/03-aerial.jpg,images/projects/makabihigashi-park-restroom/04-canopy-cityscape.jpg,images/projects/makabihigashi-park-restroom/05-spiral-detail.jpg,images/projects/makabihigashi-park-restroom/06-spiral-detail-alt.jpg">
+        <img class="work-bg" src="images/projects/makabihigashi-park-restroom/01-exterior.jpg" alt="真嘉比東公園便所外観" loading="lazy">
         <div class="work-info">
           <span class="work-info-category">Public</span>
           <span class="work-info-title">真嘉比東公園便所 ― 那覇市</span>
@@ -1048,34 +1149,90 @@
       <div class="works-archive-group reveal">
         <h3>保育園実績</h3>
         <ul>
-          <li><span class="works-project">しいの実保育園（本園）</span><span class="works-meta">平成13年完成・宜野湾市</span></li>
-          <li><span class="works-project">愛の園保育園</span><span class="works-meta">平成15年完成・浦添市</span></li>
-          <li><span class="works-project">しいの実保育園（分園）</span><span class="works-meta">平成19年完成・宜野湾市</span></li>
-          <li><span class="works-project">スカイマリン保育園（本園）</span><span class="works-meta">平成20年完成・那覇市</span></li>
-          <li><span class="works-project">さつき保育園</span><span class="works-meta">平成21年完成・宜野湾市</span></li>
-          <li><span class="works-project">ひらまつ保育園</span><span class="works-meta">平成21年完成・那覇市</span></li>
-          <li><span class="works-project">ひまわりっ童保育園</span><span class="works-meta">平成22年完成・うるま市</span></li>
-          <li><span class="works-project">おなが保育園</span><span class="works-meta">平成23年完成・豊見城市</span></li>
-          <li><span class="works-project">スカイマリン保育園（分園）</span><span class="works-meta">平成27年完成・那覇市</span></li>
-          <li><span class="works-project">メルシー保育園古島</span><span class="works-meta">平成29年完成・那覇市</span></li>
-          <li><span class="works-project">もりのこ保育園</span><span class="works-meta">平成30年完成・豊見城市</span></li>
-          <li><span class="works-project">座安こども園（厨房改修工事）</span><span class="works-meta">平成31年完成・豊見城市</span></li>
-          <li><span class="works-project">てんがんこどもえん増築工事</span><span class="works-meta">令和2年完成・うるま市</span></li>
-          <li><span class="works-project">上間さつき保育園</span><span class="works-meta">令和3年4月完成・那覇市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="しいの実保育園（本園）" data-detail-category="Nursery"
+            data-detail-year="平成13年完成" data-detail-location="宜野湾市"
+            data-detail-description="宜野湾市の保育園実績。地域に根ざした保育環境づくりを目指して設計監理を行いました。"><span class="works-project">しいの実保育園（本園）</span><span class="works-meta">平成13年完成・宜野湾市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="愛の園保育園" data-detail-category="Nursery"
+            data-detail-year="平成15年完成" data-detail-location="浦添市"
+            data-detail-description="浦添市の保育園実績。安全性と保育動線への配慮を重視した計画です。"><span class="works-project">愛の園保育園</span><span class="works-meta">平成15年完成・浦添市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="しいの実保育園（分園）" data-detail-category="Nursery"
+            data-detail-year="平成19年完成" data-detail-location="宜野湾市"
+            data-detail-description="本園に続く分園計画。運営との連携を踏まえた施設設計を行いました。"><span class="works-project">しいの実保育園（分園）</span><span class="works-meta">平成19年完成・宜野湾市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="スカイマリン保育園（本園）" data-detail-category="Nursery"
+            data-detail-year="平成20年完成" data-detail-location="那覇市"
+            data-detail-description="那覇市の保育園実績。子どもたちの過ごしやすさを軸にした設計です。"><span class="works-project">スカイマリン保育園（本園）</span><span class="works-meta">平成20年完成・那覇市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="さつき保育園" data-detail-category="Nursery"
+            data-detail-year="平成21年完成" data-detail-location="宜野湾市"
+            data-detail-description="宜野湾市の保育園実績。日射・通風を活かした快適な保育環境を計画しました。"><span class="works-project">さつき保育園</span><span class="works-meta">平成21年完成・宜野湾市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="ひらまつ保育園" data-detail-category="Nursery"
+            data-detail-year="平成21年完成" data-detail-location="那覇市"
+            data-detail-description="那覇市の保育園実績。限られた敷地を活かした園舎計画を行いました。"><span class="works-project">ひらまつ保育園</span><span class="works-meta">平成21年完成・那覇市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="ひまわりっ童保育園" data-detail-category="Nursery"
+            data-detail-year="平成22年完成" data-detail-location="うるま市"
+            data-detail-description="保育園実績の代表案件です。詳細画像は準備できしだい追加可能で、現在は案件情報を先行掲載しています。"><span class="works-project">ひまわりっ童保育園</span><span class="works-meta">平成22年完成・うるま市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="おなが保育園" data-detail-category="Nursery"
+            data-detail-year="平成23年完成" data-detail-location="豊見城市"
+            data-detail-description="豊見城市の保育園実績。地域の暮らしと調和する園舎を目指しました。"><span class="works-project">おなが保育園</span><span class="works-meta">平成23年完成・豊見城市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="スカイマリン保育園（分園）" data-detail-category="Nursery"
+            data-detail-year="平成27年完成" data-detail-location="那覇市"
+            data-detail-description="本園に続く分園計画。運営との連携と保育環境の質を両立しました。"><span class="works-project">スカイマリン保育園（分園）</span><span class="works-meta">平成27年完成・那覇市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="メルシー保育園古島" data-detail-category="Nursery"
+            data-detail-year="平成29年完成" data-detail-location="那覇市"
+            data-detail-description="那覇市古島の保育園実績。動線と保育環境への配慮を重視した計画です。"><span class="works-project">メルシー保育園古島</span><span class="works-meta">平成29年完成・那覇市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="もりのこ保育園" data-detail-category="Nursery"
+            data-detail-year="平成30年完成" data-detail-location="豊見城市"
+            data-detail-description="豊見城市の保育園実績。緑と光を取り込む園舎を計画しました。"><span class="works-project">もりのこ保育園</span><span class="works-meta">平成30年完成・豊見城市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="座安こども園（厨房改修工事）" data-detail-category="Nursery"
+            data-detail-year="平成31年完成" data-detail-location="豊見城市"
+            data-detail-description="既存こども園の厨房改修。運営継続を前提とした工程設計と衛生計画を行いました。"><span class="works-project">座安こども園（厨房改修工事）</span><span class="works-meta">平成31年完成・豊見城市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="てんがんこどもえん増築工事" data-detail-category="Nursery"
+            data-detail-year="令和2年完成" data-detail-location="うるま市"
+            data-detail-description="既存園舎の増築計画。既存と新築のつながりと保育動線の整理に配慮しました。"><span class="works-project">てんがんこどもえん増築工事</span><span class="works-meta">令和2年完成・うるま市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="上間さつき保育園" data-detail-category="Nursery"
+            data-detail-year="令和3年4月完成" data-detail-location="那覇市"
+            data-detail-description="近年の保育施設実績です。園舎計画・運営動線・保育環境への配慮を重視した案件として掲載しています。"><span class="works-project">上間さつき保育園</span><span class="works-meta">令和3年4月完成・那覇市</span></li>
         </ul>
       </div>
       <div class="works-archive-group reveal">
         <h3>公共工事実績</h3>
         <ul>
-          <li><span class="works-project">真嘉比東公園便所</span><span class="works-meta">平成22年完成・那覇市</span></li>
-          <li><span class="works-project">若狭小学校園庭計画</span><span class="works-meta">平成23年完成・那覇市</span></li>
-          <li><span class="works-project">防災避難施設整備工事・設計監理</span><span class="works-meta">平成25年完成・那覇市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="真嘉比東公園便所" data-detail-category="Public"
+            data-detail-year="平成22年完成" data-detail-location="那覇市"
+            data-detail-description="公共工事実績のひとつです。地域利用を前提とした施設計画として、使いやすさと維持管理性を重視しています。"
+            data-detail-image="images/projects/makabihigashi-park-restroom/01-exterior.jpg"
+            data-detail-images="images/projects/makabihigashi-park-restroom/01-exterior.jpg,images/projects/makabihigashi-park-restroom/02-exterior-construction.jpg,images/projects/makabihigashi-park-restroom/03-aerial.jpg,images/projects/makabihigashi-park-restroom/04-canopy-cityscape.jpg,images/projects/makabihigashi-park-restroom/05-spiral-detail.jpg,images/projects/makabihigashi-park-restroom/06-spiral-detail-alt.jpg"><span class="works-project">真嘉比東公園便所</span><span class="works-meta">平成22年完成・那覇市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="若狭小学校園庭計画" data-detail-category="Public"
+            data-detail-year="平成23年完成" data-detail-location="那覇市"
+            data-detail-description="那覇市の公共工事実績。学校園庭の利用環境を整える計画を行いました。"><span class="works-project">若狭小学校園庭計画</span><span class="works-meta">平成23年完成・那覇市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="防災避難施設整備工事・設計監理" data-detail-category="Public"
+            data-detail-year="平成25年完成" data-detail-location="那覇市"
+            data-detail-description="防災機能を担う公共施設の設計監理実績です。地域の安全性と実用性を踏まえた計画・監理を行いました。"><span class="works-project">防災避難施設整備工事・設計監理</span><span class="works-meta">平成25年完成・那覇市</span></li>
         </ul>
       </div>
       <div class="works-archive-group reveal">
         <h3>店舗・社屋設計実績</h3>
         <ul>
-          <li><span class="works-project">（株）的エンタープライズ 本社</span><span class="works-meta">平成18年完成・中城村</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="（株）的エンタープライズ 本社" data-detail-category="Office"
+            data-detail-year="平成18年完成" data-detail-location="中城村"
+            data-detail-description="店舗・社屋設計実績として掲載しています。企業活動を支える機能性と、来客時の印象を両立させた計画です。"><span class="works-project">（株）的エンタープライズ 本社</span><span class="works-meta">平成18年完成・中城村</span></li>
         </ul>
       </div>
     </div>
@@ -1214,7 +1371,10 @@
     <div class="work-modal-media">
       <img id="workModalImage" src="" alt="" hidden>
       <div class="work-modal-fallback" id="workModalFallback">詳細画像準備中</div>
+      <button class="work-modal-nav work-modal-prev" id="workModalPrev" type="button" aria-label="前の画像" hidden>‹</button>
+      <button class="work-modal-nav work-modal-next" id="workModalNext" type="button" aria-label="次の画像" hidden>›</button>
     </div>
+    <div class="work-modal-thumbs" id="workModalThumbs" hidden></div>
     <div class="work-modal-body">
       <span class="work-modal-category" id="workModalCategory"></span>
       <h3 class="work-modal-title" id="workModalTitle"></h3>
@@ -1477,6 +1637,22 @@ const workModalTitle = document.getElementById('workModalTitle');
 const workModalYear = document.getElementById('workModalYear');
 const workModalLocation = document.getElementById('workModalLocation');
 const workModalDescription = document.getElementById('workModalDescription');
+const workModalPrev = document.getElementById('workModalPrev');
+const workModalNext = document.getElementById('workModalNext');
+const workModalThumbs = document.getElementById('workModalThumbs');
+
+let currentImages = [];
+let currentIndex = 0;
+let currentTitle = '';
+
+function renderModalImage() {
+  if (!currentImages.length) return;
+  workModalImage.src = currentImages[currentIndex];
+  workModalImage.alt = currentTitle ? currentTitle + ' ' + (currentIndex + 1) : '';
+  Array.from(workModalThumbs.children).forEach((btn, i) => {
+    btn.classList.toggle('is-active', i === currentIndex);
+  });
+}
 
 function openWorkModal(el) {
   workModalCategory.textContent = el.dataset.detailCategory || '';
@@ -1484,17 +1660,49 @@ function openWorkModal(el) {
   workModalYear.textContent = el.dataset.detailYear || '';
   workModalLocation.textContent = el.dataset.detailLocation || '';
   workModalDescription.textContent = el.dataset.detailDescription || '';
+  currentTitle = el.dataset.detailTitle || '';
 
-  if (el.dataset.detailImage) {
-    workModalImage.src = el.dataset.detailImage;
-    workModalImage.alt = el.dataset.detailTitle || '';
+  let images = [];
+  if (el.dataset.detailImages) {
+    images = el.dataset.detailImages.split(',').map(s => s.trim()).filter(Boolean);
+  } else if (el.dataset.detailImage) {
+    images = [el.dataset.detailImage];
+  }
+
+  currentImages = images;
+  currentIndex = 0;
+  workModalThumbs.innerHTML = '';
+
+  if (images.length) {
+    images.forEach((src, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'work-modal-thumb';
+      btn.setAttribute('aria-label', (i + 1) + ' / ' + images.length);
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = '';
+      img.loading = 'lazy';
+      btn.appendChild(img);
+      btn.addEventListener('click', () => {
+        currentIndex = i;
+        renderModalImage();
+      });
+      workModalThumbs.appendChild(btn);
+    });
     workModalImage.hidden = false;
     workModalFallback.style.display = 'none';
+    renderModalImage();
   } else {
     workModalImage.hidden = true;
     workModalImage.removeAttribute('src');
     workModalFallback.style.display = 'flex';
   }
+
+  const multi = images.length > 1;
+  workModalPrev.hidden = !multi;
+  workModalNext.hidden = !multi;
+  workModalThumbs.hidden = !multi;
 
   workModal.classList.add('open');
   workModal.setAttribute('aria-hidden', 'false');
@@ -1507,7 +1715,16 @@ function closeWorkModal() {
   document.body.style.overflow = '';
 }
 
-document.querySelectorAll('.work-item').forEach((item) => {
+function stepImage(delta) {
+  if (currentImages.length < 2) return;
+  currentIndex = (currentIndex + delta + currentImages.length) % currentImages.length;
+  renderModalImage();
+}
+
+workModalPrev.addEventListener('click', (e) => { e.stopPropagation(); stepImage(-1); });
+workModalNext.addEventListener('click', (e) => { e.stopPropagation(); stepImage(1); });
+
+document.querySelectorAll('.work-item, .work-archive-item').forEach((item) => {
   item.addEventListener('click', () => openWorkModal(item));
   item.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -1522,7 +1739,10 @@ workModal.addEventListener('click', (e) => {
   if (e.target === workModal) closeWorkModal();
 });
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && workModal.classList.contains('open')) closeWorkModal();
+  if (!workModal.classList.contains('open')) return;
+  if (e.key === 'Escape') closeWorkModal();
+  else if (e.key === 'ArrowLeft') stepImage(-1);
+  else if (e.key === 'ArrowRight') stepImage(1);
 });
 
 /* ===== BACK TO TOP ===== */
