@@ -11,13 +11,13 @@
 <meta property="og:title" content="タクト設計 | 一級建築士事務所 - 沖縄県那覇市">
 <meta property="og:description" content="1984年から建築実務に携わる一級建築士・羽地敏博が、1991年設立のタクト設計にて、沖縄県那覇市を拠点に住宅・店舗・公共施設の設計監理を手がけます。">
 <meta property="og:url" content="https://takt-design.jp/">
-<meta property="og:image" content="https://takt-design.jp/takt-design-office.png">
+<meta property="og:image" content="https://takt-design.jp/images/projects/takt-design-office/01.jpg">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:site_name" content="タクト設計">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="タクト設計 | 一級建築士事務所 - 沖縄県那覇市">
 <meta name="twitter:description" content="1984年からの建築実務、1991年設立。沖縄県那覇市の一級建築士事務所タクト設計。">
-<meta name="twitter:image" content="https://takt-design.jp/takt-design-office.png">
+<meta name="twitter:image" content="https://takt-design.jp/images/projects/takt-design-office/01.jpg">
 <link rel="canonical" href="https://takt-design.jp/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%238B7355'/><text x='16' y='22' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='bold' fill='white'>T</text></svg>">
 
@@ -35,7 +35,7 @@
   "alternateName": "タクト設計",
   "description": "沖縄県那覇市を拠点に、住宅・店舗・公共施設の設計監理を手がける一級建築士事務所",
   "url": "https://takt-design.jp/",
-  "image": "https://takt-design.jp/takt-design-office.png",
+  "image": "https://takt-design.jp/images/projects/takt-design-office/01.jpg",
   "telephone": "098-860-1227",
   "address": {
     "@type": "PostalAddress",
@@ -143,9 +143,9 @@
     inset: 0;
     background:
       linear-gradient(120deg, rgba(18, 17, 15, 0.62), rgba(32, 28, 23, 0.18)),
-      url("images/takt-design-office.png");
+      url("images/projects/takt-design-office/01.jpg");
     background-size: cover;
-    background-position: center 38%;
+    background-position: center 50%;
     filter: brightness(0.8);
     animation: kenBurns 20s ease-in-out infinite alternate;
   }
@@ -430,7 +430,7 @@
   #works .section-label { color: #BDB0A0; }
   #works .section-title { color: var(--white); }
   .works-inner { max-width: 1200px; margin: 0 auto; }
-  .works-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+  .works-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.75rem; margin-top: 3rem; }
 
   .work-item {
     position: relative;
@@ -441,7 +441,7 @@
     display: block;
     text-decoration: none;
   }
-  .work-item .work-bg { width: 100%; height: 100%; transition: transform 0.6s ease; display: block; object-fit: cover; }
+  .work-item .work-bg { width: 100%; height: 100%; transition: transform 0.6s ease; display: block; object-fit: cover; object-position: center 58%; }
   .work-item:hover .work-bg { transform: scale(1.06); }
   .work-item .work-placeholder { width: 100%; height: 100%; transition: transform 0.6s ease; }
   .work-item:hover .work-placeholder { transform: scale(1.04); }
@@ -456,13 +456,13 @@
     position: absolute;
     bottom: 0; left: 0; right: 0;
     padding: 1.2rem 1.5rem;
-    background: linear-gradient(0deg, rgba(0,0,0,0.72), transparent);
+    background: linear-gradient(0deg, rgba(0,0,0,0.78), transparent);
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
   }
   .work-info-category { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
-  .work-info-title { font-family: 'Noto Serif JP', serif; font-size: 0.9rem; font-weight: 300; letter-spacing: 0.05em; color: var(--white); }
+  .work-info-title { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 300; letter-spacing: 0.05em; color: var(--white); }
 
   .work-hover-detail {
     position: absolute; inset: 0;
@@ -834,20 +834,33 @@
     .footer-links { flex-direction: row; flex-wrap: wrap; gap: 0.6rem 1.4rem; }
   }
 
+  @media (max-width: 768px) {
+    .hero { min-height: 600px; }
+    .works-grid { grid-template-columns: 1fr 1fr; }
+    .work-archive-item { padding-top: 0.9rem; padding-bottom: 0.9rem; }
+    .lang-btn-wrap { top: 0.9rem; right: 1rem; }
+  }
+
   @media (max-width: 600px) {
-    .hero-content { width: calc(100% - 2rem); padding: 3rem 0 2.5rem; }
+    .hero { min-height: 0; padding-top: 5.5rem; padding-bottom: 3rem; }
+    .hero-content { width: calc(100% - 2rem); padding: 2rem 0 1.5rem; }
     .hero-actions { flex-direction: column; }
     .hero-btn { width: 100%; }
     .works-grid { grid-template-columns: 1fr; }
-    .work-modal { padding: 1rem; }
+    .work-modal { padding: 0.5rem; }
+    .work-modal-dialog { max-height: 94vh; border-radius: 14px; }
+    .work-modal-media { aspect-ratio: 4/3; max-height: 56vh; }
+    .work-modal-media img { object-fit: contain; background: #0d0b09; }
     .work-modal-body { padding: 1.25rem; }
-    .work-modal-nav { width: 36px; height: 36px; font-size: 1.3rem; }
-    .work-modal-prev { left: 0.5rem; }
-    .work-modal-next { right: 0.5rem; }
+    .work-modal-close { top: 0.6rem; right: 0.6rem; }
+    .work-modal-nav { width: 44px; height: 44px; font-size: 1.5rem; background: rgba(20,16,12,0.7); }
+    .work-modal-prev { left: 0.4rem; }
+    .work-modal-next { right: 0.4rem; }
     .work-modal-thumbs { padding: 0.7rem 0.9rem 0; gap: 0.4rem; }
     .work-modal-thumb { width: 56px; height: 42px; }
     .back-to-top { bottom: 1.2rem; right: 1.2rem; }
     .contact-form-footer { flex-direction: column; align-items: flex-start; }
+    .lang-btn-wrap { top: 0.8rem; right: 0.9rem; }
   }
 </style>
 </head>
@@ -907,7 +920,7 @@
       </div>
     </div>
     <div class="about-visual reveal">
-      <img src="images/takt-design-office.png" alt="タクト設計の設計事務所外観" loading="lazy">
+      <img src="images/projects/takt-design-office/01.jpg" alt="タクト設計の設計事務所外観" loading="lazy">
       <div class="block-2">
         <strong data-i18n="about-block-title">タクト設計 事務所</strong>
         <span data-i18n="about-block-desc">那覇市銘苅を拠点に、住宅・店舗・公共施設の設計監理を行っています。</span>
@@ -998,8 +1011,9 @@
         data-detail-year="掲載画像"
         data-detail-location="那覇市"
         data-detail-description="事務所外観の掲載画像です。実績写真はクリックすると拡大表示され、今後ほかの案件画像も同じ仕組みで追加できます。"
-        data-detail-image="images/takt-design-office.png">
-        <img class="work-bg" src="images/takt-design-office.png" alt="タクト設計オフィス外観" loading="lazy">
+        data-detail-image="images/projects/takt-design-office/01.jpg"
+        data-detail-images="images/projects/takt-design-office/01.jpg,images/projects/takt-design-office/02.jpg,images/projects/takt-design-office/03.jpg,images/projects/takt-design-office/04.jpg,images/projects/takt-design-office/05.jpg,images/projects/takt-design-office/06.jpg,images/projects/takt-design-office/07.jpg,images/projects/takt-design-office/08.jpg,images/projects/takt-design-office/09.jpg">
+        <img class="work-bg" src="images/projects/takt-design-office/01-w800.jpg" alt="タクト設計オフィス外観" loading="lazy">
         <div class="work-info">
           <span class="work-info-category">Office</span>
           <span class="work-info-title" data-i18n="w1-title">タクト設計オフィス ― 那覇市</span>
@@ -1040,7 +1054,7 @@
         data-detail-description="公共工事実績のひとつです。地域利用を前提とした施設計画として、使いやすさと維持管理性を重視しています。"
         data-detail-image="images/projects/makabihigashi-park-restroom/01-exterior.jpg"
         data-detail-images="images/projects/makabihigashi-park-restroom/01-exterior.jpg,images/projects/makabihigashi-park-restroom/02-exterior-construction.jpg,images/projects/makabihigashi-park-restroom/03-aerial.jpg,images/projects/makabihigashi-park-restroom/04-canopy-cityscape.jpg,images/projects/makabihigashi-park-restroom/05-spiral-detail.jpg,images/projects/makabihigashi-park-restroom/06-spiral-detail-alt.jpg">
-        <img class="work-bg" src="images/projects/makabihigashi-park-restroom/01-exterior.jpg" alt="真嘉比東公園便所外観" loading="lazy">
+        <img class="work-bg" src="images/projects/makabihigashi-park-restroom/01-exterior-w800.jpg" alt="真嘉比東公園便所外観" loading="lazy">
         <div class="work-info">
           <span class="work-info-category">Public</span>
           <span class="work-info-title" data-i18n="w4-title">真嘉比東公園便所 ― 那覇市</span>
@@ -1090,6 +1104,12 @@
             data-detail-title="K邸" data-detail-category="Residential"
             data-detail-year="掲載準備中" data-detail-location="南城市"
             data-detail-description="住宅設計実績のサンプル掲載です。混構造で海を望む住宅。詳細情報・写真は順次更新します。"><span class="works-project" data-i18n="ar-r3">K邸（混構造／海を望む住宅）</span><span class="works-meta" data-i18n="ar-r3-m">掲載準備中・南城市</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="つきしろの住宅" data-detail-category="Residential"
+            data-detail-year="掲載準備中" data-detail-location="沖縄県"
+            data-detail-description="住宅設計実績のひとつです。敷地条件と暮らし方に寄り添った住宅計画を行いました。"
+            data-detail-image="images/projects/tsukishiro-residence/01.jpg"
+            data-detail-images="images/projects/tsukishiro-residence/01.jpg,images/projects/tsukishiro-residence/02.jpg,images/projects/tsukishiro-residence/03.jpg,images/projects/tsukishiro-residence/04.jpg"><span class="works-project" data-i18n="ar-r4">つきしろの住宅</span><span class="works-meta" data-i18n="ar-r4-m">掲載準備中・沖縄県</span></li>
         </ul>
       </div>
       <div class="works-archive-group reveal">
@@ -1098,7 +1118,9 @@
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="しいの実保育園（本園）" data-detail-category="Nursery"
             data-detail-year="平成13年完成" data-detail-location="宜野湾市"
-            data-detail-description="宜野湾市の保育園実績。地域に根ざした保育環境づくりを目指して設計監理を行いました。"><span class="works-project" data-i18n="ar-n1">しいの実保育園（本園）</span><span class="works-meta" data-i18n="ar-n1-m">平成13年完成・宜野湾市</span></li>
+            data-detail-description="宜野湾市の保育園実績。地域に根ざした保育環境づくりを目指して設計監理を行いました。"
+            data-detail-image="images/projects/shiinomi-nursery-main/01.jpg"
+            data-detail-images="images/projects/shiinomi-nursery-main/01.jpg,images/projects/shiinomi-nursery-main/02.jpg,images/projects/shiinomi-nursery-main/03.jpg,images/projects/shiinomi-nursery-main/04.jpg,images/projects/shiinomi-nursery-main/05.jpg,images/projects/shiinomi-nursery-main/06.jpg,images/projects/shiinomi-nursery-main/07.jpg,images/projects/shiinomi-nursery-main/08.jpg,images/projects/shiinomi-nursery-main/09.jpg"><span class="works-project" data-i18n="ar-n1">しいの実保育園（本園）</span><span class="works-meta" data-i18n="ar-n1-m">平成13年完成・宜野湾市</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="愛の園保育園" data-detail-category="Nursery"
             data-detail-year="平成15年完成" data-detail-location="浦添市"
@@ -1106,7 +1128,9 @@
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="しいの実保育園（分園）" data-detail-category="Nursery"
             data-detail-year="平成19年完成" data-detail-location="宜野湾市"
-            data-detail-description="本園に続く分園計画。運営との連携を踏まえた施設設計を行いました。"><span class="works-project" data-i18n="ar-n3">しいの実保育園（分園）</span><span class="works-meta" data-i18n="ar-n3-m">平成19年完成・宜野湾市</span></li>
+            data-detail-description="本園に続く分園計画。運営との連携を踏まえた施設設計を行いました。"
+            data-detail-image="images/projects/shiinomi-nursery-branch/01.jpg"
+            data-detail-images="images/projects/shiinomi-nursery-branch/01.jpg,images/projects/shiinomi-nursery-branch/02.jpg,images/projects/shiinomi-nursery-branch/03.jpg,images/projects/shiinomi-nursery-branch/04.jpg"><span class="works-project" data-i18n="ar-n3">しいの実保育園（分園）</span><span class="works-meta" data-i18n="ar-n3-m">平成19年完成・宜野湾市</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="スカイマリン保育園（本園）" data-detail-category="Nursery"
             data-detail-year="平成20年完成" data-detail-location="那覇市"
@@ -1118,7 +1142,9 @@
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="ひらまつ保育園" data-detail-category="Nursery"
             data-detail-year="平成21年完成" data-detail-location="那覇市"
-            data-detail-description="那覇市の保育園実績。限られた敷地を活かした園舎計画を行いました。"><span class="works-project" data-i18n="ar-n6">ひらまつ保育園</span><span class="works-meta" data-i18n="ar-n6-m">平成21年完成・那覇市</span></li>
+            data-detail-description="那覇市の保育園実績。限られた敷地を活かした園舎計画を行いました。"
+            data-detail-image="images/projects/hiramatsu-nursery/01.jpg"
+            data-detail-images="images/projects/hiramatsu-nursery/01.jpg,images/projects/hiramatsu-nursery/02.jpg"><span class="works-project" data-i18n="ar-n6">ひらまつ保育園</span><span class="works-meta" data-i18n="ar-n6-m">平成21年完成・那覇市</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="ひまわりっ童保育園" data-detail-category="Nursery"
             data-detail-year="平成22年完成" data-detail-location="うるま市"
@@ -1146,7 +1172,9 @@
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="てんがんこどもえん増築工事" data-detail-category="Nursery"
             data-detail-year="令和2年完成" data-detail-location="うるま市"
-            data-detail-description="既存園舎の増築計画。既存と新築のつながりと保育動線の整理に配慮しました。"><span class="works-project" data-i18n="ar-n13">てんがんこどもえん増築工事</span><span class="works-meta" data-i18n="ar-n13-m">令和2年完成・うるま市</span></li>
+            data-detail-description="既存園舎の増築計画。既存と新築のつながりと保育動線の整理に配慮しました。"
+            data-detail-image="images/projects/tengan-kodomoen-extension/01.jpg"
+            data-detail-images="images/projects/tengan-kodomoen-extension/01.jpg,images/projects/tengan-kodomoen-extension/02.jpg,images/projects/tengan-kodomoen-extension/03.jpg,images/projects/tengan-kodomoen-extension/04.jpg,images/projects/tengan-kodomoen-extension/05.jpg,images/projects/tengan-kodomoen-extension/06.jpg,images/projects/tengan-kodomoen-extension/07.jpg,images/projects/tengan-kodomoen-extension/08.jpg"><span class="works-project" data-i18n="ar-n13">てんがんこどもえん増築工事</span><span class="works-meta" data-i18n="ar-n13-m">令和2年完成・うるま市</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="上間さつき保育園" data-detail-category="Nursery"
             data-detail-year="令和3年4月完成" data-detail-location="那覇市"
@@ -1165,7 +1193,9 @@
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="若狭小学校園庭計画" data-detail-category="Public"
             data-detail-year="平成23年完成" data-detail-location="那覇市"
-            data-detail-description="那覇市の公共工事実績。学校園庭の利用環境を整える計画を行いました。"><span class="works-project" data-i18n="ar-p2">若狭小学校園庭計画</span><span class="works-meta" data-i18n="ar-p2-m">平成23年完成・那覇市</span></li>
+            data-detail-description="那覇市の公共工事実績。学校園庭の利用環境を整える計画を行いました。"
+            data-detail-image="images/projects/wakasa-elementary-schoolyard/01.jpg"
+            data-detail-images="images/projects/wakasa-elementary-schoolyard/01.jpg,images/projects/wakasa-elementary-schoolyard/02.jpg,images/projects/wakasa-elementary-schoolyard/03.jpg,images/projects/wakasa-elementary-schoolyard/04.jpg,images/projects/wakasa-elementary-schoolyard/05.jpg,images/projects/wakasa-elementary-schoolyard/06.jpg"><span class="works-project" data-i18n="ar-p2">若狭小学校園庭計画</span><span class="works-meta" data-i18n="ar-p2-m">平成23年完成・那覇市</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="防災避難施設整備工事・設計監理" data-detail-category="Public"
             data-detail-year="平成25年完成" data-detail-location="那覇市"
@@ -1179,6 +1209,12 @@
             data-detail-title="（株）的エンタープライズ 本社" data-detail-category="Office"
             data-detail-year="平成18年完成" data-detail-location="中城村"
             data-detail-description="店舗・社屋設計実績として掲載しています。企業活動を支える機能性と、来客時の印象を両立させた計画です。"><span class="works-project" data-i18n="ar-o1">（株）的エンタープライズ 本社</span><span class="works-meta" data-i18n="ar-o1-m">平成18年完成・中城村</span></li>
+          <li class="work-archive-item" role="button" tabindex="0"
+            data-detail-title="立津工芸社（宮古の事務所兼住宅）" data-detail-category="Office"
+            data-detail-year="掲載準備中" data-detail-location="宮古島市"
+            data-detail-description="宮古島での事務所兼住宅の設計実績です。職住一体の機能と居住性を両立した計画を行いました。"
+            data-detail-image="images/projects/miyako-office-residence/01.jpg"
+            data-detail-images="images/projects/miyako-office-residence/01.jpg,images/projects/miyako-office-residence/02.jpg,images/projects/miyako-office-residence/03.jpg,images/projects/miyako-office-residence/04.jpg"><span class="works-project" data-i18n="ar-o2">立津工芸社（宮古の事務所兼住宅）</span><span class="works-meta" data-i18n="ar-o2-m">掲載準備中・宮古島市</span></li>
         </ul>
       </div>
     </div>
@@ -1404,6 +1440,7 @@ const i18n = {
     'ar-r1':'H邸（木造／二世帯住宅）','ar-r1-m':'掲載準備中・那覇市',
     'ar-r2':'N邸（RC造／中庭住宅）','ar-r2-m':'掲載準備中・浦添市',
     'ar-r3':'K邸（混構造／海を望む住宅）','ar-r3-m':'掲載準備中・南城市',
+    'ar-r4':'つきしろの住宅','ar-r4-m':'掲載準備中・沖縄県',
     'ar-n1':'しいの実保育園（本園）','ar-n1-m':'平成13年完成・宜野湾市',
     'ar-n2':'愛の園保育園','ar-n2-m':'平成15年完成・浦添市',
     'ar-n3':'しいの実保育園（分園）','ar-n3-m':'平成19年完成・宜野湾市',
@@ -1422,6 +1459,7 @@ const i18n = {
     'ar-p2':'若狭小学校園庭計画','ar-p2-m':'平成23年完成・那覇市',
     'ar-p3':'防災避難施設整備工事・設計監理','ar-p3-m':'平成25年完成・那覇市',
     'ar-o1':'（株）的エンタープライズ 本社','ar-o1-m':'平成18年完成・中城村',
+    'ar-o2':'立津工芸社（宮古の事務所兼住宅）','ar-o2-m':'掲載準備中・宮古島市',
     'about-block-title':'タクト設計 事務所','about-block-desc':'那覇市銘苅を拠点に、住宅・店舗・公共施設の設計監理を行っています。',
     'phil-label':'Philosophy','phil-title':'設計理念',
     'phil-quote':'暮らしの中に、<br>沖縄の自然と時間が<br>穏やかに流れる建築を。',
@@ -1490,6 +1528,7 @@ const i18n = {
     'ar-r1':'Residence H (Timber / Two-Generation)','ar-r1-m':'Forthcoming · Naha',
     'ar-r2':'Residence N (RC / Courtyard House)','ar-r2-m':'Forthcoming · Urasoe',
     'ar-r3':'Residence K (Hybrid / Ocean View)','ar-r3-m':'Forthcoming · Nanjo',
+    'ar-r4':'Tsukishiro Residence','ar-r4-m':'Forthcoming · Okinawa',
     'ar-n1':'Shiinomi Nursery (Main)','ar-n1-m':'Completed 2001 · Ginowan',
     'ar-n2':'Ai-no-Sono Nursery','ar-n2-m':'Completed 2003 · Urasoe',
     'ar-n3':'Shiinomi Nursery (Branch)','ar-n3-m':'Completed 2007 · Ginowan',
@@ -1508,6 +1547,7 @@ const i18n = {
     'ar-p2':'Wakasa Elementary Schoolyard Plan','ar-p2-m':'Completed 2011 · Naha',
     'ar-p3':'Disaster Shelter Facility · Supervision','ar-p3-m':'Completed 2013 · Naha',
     'ar-o1':'Mato Enterprise Headquarters','ar-o1-m':'Completed 2006 · Nakagusuku',
+    'ar-o2':'Tatsutsu Crafts (Miyako Office & Residence)','ar-o2-m':'Forthcoming · Miyakojima',
     'about-block-title':'TAKT DESIGN Office','about-block-desc':'Based in Mekaru, Naha — residential, commercial and public building design.',
     'phil-label':'Philosophy','phil-title':'Design Philosophy',
     'phil-quote':'Architecture where the nature<br>and rhythms of Okinawa<br>flow gently through daily life.',
@@ -1647,11 +1687,16 @@ const workModalThumbs = document.getElementById('workModalThumbs');
 
 let currentImages = [];
 let currentIndex = 0;
+
+/* Map a full-res image path to a lighter generated derivative (-w800 / -w1600). */
+function imgVariant(path, suffix) {
+  return path.replace(/(\.[a-zA-Z]+)$/, '-' + suffix + '$1');
+}
 let currentTitle = '';
 
 function renderModalImage() {
   if (!currentImages.length) return;
-  workModalImage.src = currentImages[currentIndex];
+  workModalImage.src = imgVariant(currentImages[currentIndex], 'w1600');
   workModalImage.alt = currentTitle ? currentTitle + ' ' + (currentIndex + 1) : '';
   Array.from(workModalThumbs.children).forEach((btn, i) => {
     btn.classList.toggle('is-active', i === currentIndex);
@@ -1684,7 +1729,7 @@ function openWorkModal(el) {
       btn.className = 'work-modal-thumb';
       btn.setAttribute('aria-label', (i + 1) + ' / ' + images.length);
       const img = document.createElement('img');
-      img.src = src;
+      img.src = imgVariant(src, 'w800');
       img.alt = '';
       img.loading = 'lazy';
       btn.appendChild(img);
@@ -1727,6 +1772,23 @@ function stepImage(delta) {
 
 workModalPrev.addEventListener('click', (e) => { e.stopPropagation(); stepImage(-1); });
 workModalNext.addEventListener('click', (e) => { e.stopPropagation(); stepImage(1); });
+
+/* Swipe navigation for touch devices */
+const workModalMedia = document.querySelector('.work-modal-media');
+if (workModalMedia) {
+  let touchStartX = 0, touchStartY = 0;
+  workModalMedia.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }, { passive: true });
+  workModalMedia.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      stepImage(dx < 0 ? 1 : -1);
+    }
+  }, { passive: true });
+}
 
 document.querySelectorAll('.work-item, .work-archive-item').forEach((item) => {
   item.addEventListener('click', () => openWorkModal(item));
