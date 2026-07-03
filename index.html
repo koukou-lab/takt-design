@@ -92,49 +92,6 @@
 
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
-  /* ===== LANG BUTTON ===== */
-  .lang-btn-wrap {
-    position: fixed;
-    top: 1.2rem;
-    right: 1.5rem;
-    z-index: 1000;
-  }
-
-  .lang-btn {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.85);
-    background: rgba(0,0,0,0.22);
-    border: 1px solid rgba(255,255,255,0.35);
-    border-radius: 3px;
-    padding: 0.32rem 0.85rem;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    transition: color var(--transition), border-color var(--transition), background var(--transition);
-  }
-
-  .lang-btn:hover {
-    color: var(--white);
-    border-color: rgba(255,255,255,0.7);
-    background: rgba(0,0,0,0.35);
-  }
-
-  .lang-btn-wrap.on-light .lang-btn {
-    color: var(--text-light);
-    background: rgba(245,242,237,0.9);
-    border-color: var(--border);
-    backdrop-filter: blur(10px);
-  }
-
-  .lang-btn-wrap.on-light .lang-btn:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-    background: rgba(245,242,237,1);
-  }
-
   /* ===== HERO ===== */
   .hero {
     position: relative;
@@ -862,7 +819,6 @@
     .hero { min-height: 600px; }
     .works-grid { grid-template-columns: 1fr 1fr; }
     .work-archive-item { padding-top: 0.9rem; padding-bottom: 0.9rem; }
-    .lang-btn-wrap { top: 0.9rem; right: 1rem; }
   }
 
   @media (max-width: 600px) {
@@ -886,17 +842,12 @@
     .work-modal-thumb { width: 56px; height: 42px; }
     .back-to-top { bottom: 1.2rem; right: 1.2rem; }
     .contact-form-footer { flex-direction: column; align-items: flex-start; }
-    .lang-btn-wrap { top: 0.8rem; right: 0.9rem; }
   }
 </style>
 </head>
 <body>
 
 <!-- LANG TOGGLE -->
-<div class="lang-btn-wrap" id="langWrap">
-  <button class="lang-btn" id="langToggle" aria-label="Switch language / 言語切替">EN</button>
-</div>
-
 <main id="main-content">
 
 <!-- HERO -->
@@ -904,23 +855,23 @@
   <div class="hero-bg" role="img" aria-label="タクト設計事務所外観"></div>
   <div class="hero-content">
     <div class="hero-copy">
-      <h1 data-i18n-html="hero-h1"><span class="h1-a">一級建築士事務所</span><span class="h1-b">タクト設計</span></h1>
-      <p class="hero-en" data-i18n="hero-en">TAKT DESIGN — Architects</p>
-      <p class="subtitle" data-i18n="hero-subtitle">沖縄の風土に寄り添う建築</p>
-      <p class="hero-description" data-i18n="hero-desc">
+      <h1><span class="h1-a">一級建築士事務所</span><span class="h1-b">タクト設計</span></h1>
+      <p class="hero-en">TAKT DESIGN — Architects</p>
+      <p class="subtitle">沖縄の風土に寄り添う建築</p>
+      <p class="hero-description">
         1984年からの建築実務、1991年のタクト設計設立を経て、住宅・店舗・公共施設まで那覇を拠点に手がけています。光・風・敷地の個性を読み解きながら、長く愛される建築を丁寧な対話と確かな設計監理でかたちにします。
       </p>
       <div class="hero-actions">
-        <a class="hero-btn primary" href="#contact" data-i18n="hero-btn-primary">無料相談をする</a>
-        <a class="hero-btn secondary" href="#works"  data-i18n="hero-btn-secondary">実績を見る</a>
+        <a class="hero-btn primary" href="#contact">無料相談をする</a>
+        <a class="hero-btn secondary" href="#works">実績を見る</a>
       </div>
     </div>
     <aside class="hero-panel" aria-label="設計の特徴">
-      <div class="hero-panel-title" data-i18n="hero-panel-title">Design Focus</div>
+      <div class="hero-panel-title">Design Focus</div>
       <ul>
-        <li><strong data-i18n="hp1-title">沖縄の気候に応える設計</strong><span data-i18n="hp1-desc">日射・通風・陰影を活かす計画</span></li>
-        <li><strong data-i18n="hp2-title">対話を重ねるプロセス</strong><span data-i18n="hp2-desc">要望整理から完成後まで伴走</span></li>
-        <li><strong data-i18n="hp3-title">住宅から施設まで対応</strong><span data-i18n="hp3-desc">用途と規模に応じた設計監理</span></li>
+        <li><strong>沖縄の気候に応える設計</strong><span>日射・通風・陰影を活かす計画</span></li>
+        <li><strong>対話を重ねるプロセス</strong><span>要望整理から完成後まで伴走</span></li>
+        <li><strong>住宅から施設まで対応</strong><span>用途と規模に応じた設計監理</span></li>
       </ul>
     </aside>
   </div>
@@ -931,25 +882,25 @@
 <section id="about">
   <div class="about">
     <div class="about-text reveal">
-      <span class="section-label" data-i18n="about-label">About Us</span>
-      <h2 class="section-title" data-i18n-html="about-title">沖縄の光と風を<br>建築に込めて</h2>
-      <p data-i18n="about-p1">一級建築士事務所タクト設計は、沖縄県那覇市を拠点に、住宅・店舗・公共施設など幅広い建築の設計監理を手がけています。</p>
-      <p data-i18n="about-p2">「タクト」とは、指揮者が振る指揮棒のこと。お客様の想いを汲み取り、沖縄の豊かな自然環境と調和する建築を、確かな技術と丁寧な対話で形にしていきます。</p>
-      <p data-i18n="about-p3">1984年に建築の道へ進んだ一級建築士・羽地敏博は、1991年に一級建築士事務所タクト設計を設立。以来30年以上にわたり、亜熱帯の気候風土を熟知した設計で、快適で長く愛される空間をご提案しています。お客様一人ひとりの想いに向き合い、土地の個性を活かした建築を丁寧に設計します。</p>
+      <span class="section-label">About Us</span>
+      <h2 class="section-title">沖縄の光と風を<br>建築に込めて</h2>
+      <p>一級建築士事務所タクト設計は、沖縄県那覇市を拠点に、住宅・店舗・公共施設など幅広い建築の設計監理を手がけています。</p>
+      <p>「タクト」とは、指揮者が振る指揮棒のこと。お客様の想いを汲み取り、沖縄の豊かな自然環境と調和する建築を、確かな技術と丁寧な対話で形にしていきます。</p>
+      <p>1984年に建築の道へ進んだ一級建築士・羽地敏博は、1991年に一級建築士事務所タクト設計を設立。以来30年以上にわたり、亜熱帯の気候風土を熟知した設計で、快適で長く愛される空間をご提案しています。お客様一人ひとりの想いに向き合い、土地の個性を活かした建築を丁寧に設計します。</p>
       <div class="about-credentials">
-        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span data-i18n="badge5">一級建築士の実務 1984年〜</span></span>
-        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span data-i18n="badge6">タクト設計 1991年設立</span></span>
-        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span data-i18n="badge1">一級建築士事務所登録</span></span>
-        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span data-i18n="badge2">新築・リノベーション対応</span></span>
-        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span data-i18n="badge3">無料初回相談</span></span>
-        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span data-i18n="badge4">沖縄県内全域対応</span></span>
+        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span>一級建築士の実務 1984年〜</span></span>
+        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span>タクト設計 1991年設立</span></span>
+        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span>一級建築士事務所登録</span></span>
+        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span>新築・リノベーション対応</span></span>
+        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span>無料初回相談</span></span>
+        <span class="credential-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg><span>沖縄県内全域対応</span></span>
       </div>
     </div>
     <div class="about-visual reveal">
       <img src="images/projects/takt-design-office/01.jpg" alt="タクト設計の設計事務所外観" loading="lazy">
       <div class="block-2">
-        <strong data-i18n="about-block-title">タクト設計 事務所</strong>
-        <span data-i18n="about-block-desc">那覇市銘苅を拠点に、住宅・店舗・公共施設の設計監理を行っています。</span>
+        <strong>タクト設計 事務所</strong>
+        <span>那覇市銘苅を拠点に、住宅・店舗・公共施設の設計監理を行っています。</span>
       </div>
       <div class="line-accent"></div>
     </div>
@@ -959,12 +910,12 @@
 <!-- PHILOSOPHY -->
 <section>
   <div class="philosophy reveal">
-    <span class="section-label" data-i18n="phil-label">Philosophy</span>
-    <h2 class="section-title" data-i18n="phil-title">設計理念</h2>
-    <div class="philosophy-quote" data-i18n-html="phil-quote">
+    <span class="section-label">Philosophy</span>
+    <h2 class="section-title">設計理念</h2>
+    <div class="philosophy-quote">
       暮らしの中に、<br>沖縄の自然と時間が<br>穏やかに流れる建築を。
     </div>
-    <p data-i18n="phil-p">私たちは、建築は風景の一部であると考えています。沖縄の強い日差し、心地よい風、豊かな緑――この土地の持つ力を活かし、住まう人の生活に寄り添いながら、美しく機能的な空間を設計します。構造の安全性、環境への配慮、そして細部にまで宿る美意識。すべてが調和した建築を目指しています。</p>
+    <p>私たちは、建築は風景の一部であると考えています。沖縄の強い日差し、心地よい風、豊かな緑――この土地の持つ力を活かし、住まう人の生活に寄り添いながら、美しく機能的な空間を設計します。構造の安全性、環境への配慮、そして細部にまで宿る美意識。すべてが調和した建築を目指しています。</p>
   </div>
 </section>
 
@@ -972,8 +923,8 @@
 <section id="services">
   <div class="services-inner">
     <div class="reveal">
-      <span class="section-label" data-i18n="svc-label">Services</span>
-      <h2 class="section-title" data-i18n="svc-title">業務内容</h2>
+      <span class="section-label">Services</span>
+      <h2 class="section-title">業務内容</h2>
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
@@ -981,13 +932,13 @@
           <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
         </div>
         <span class="service-number">01</span>
-        <h3 data-i18n="svc1-title">住宅設計</h3>
-        <p data-i18n="svc1-desc">沖縄の気候風土に適した住宅を設計します。RC造・木造・鉄骨造など、敷地条件やご要望に最適な構造をご提案。新築からリノベーションまで対応いたします。</p>
+        <h3>住宅設計</h3>
+        <p>沖縄の気候風土に適した住宅を設計します。RC造・木造・鉄骨造など、敷地条件やご要望に最適な構造をご提案。新築からリノベーションまで対応いたします。</p>
         <div class="service-tag-list">
-          <span class="service-tag" data-i18n="svc1-t1">新築</span>
-          <span class="service-tag" data-i18n="svc1-t2">リノベーション</span>
-          <span class="service-tag" data-i18n="svc1-t3">RC造・木造</span>
-          <span class="service-tag" data-i18n="svc1-t4">二世帯住宅</span>
+          <span class="service-tag">新築</span>
+          <span class="service-tag">リノベーション</span>
+          <span class="service-tag">RC造・木造</span>
+          <span class="service-tag">二世帯住宅</span>
         </div>
       </div>
       <div class="service-card reveal">
@@ -995,13 +946,13 @@
           <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
         </div>
         <span class="service-number">02</span>
-        <h3 data-i18n="svc2-title">店舗・商業施設設計</h3>
-        <p data-i18n="svc2-desc">飲食店、物販店、オフィスなど、事業のコンセプトを空間として表現します。集客力と機能性を兼ね備えた設計で、お客様のビジネスを支えます。</p>
+        <h3>店舗・商業施設設計</h3>
+        <p>飲食店、物販店、オフィスなど、事業のコンセプトを空間として表現します。集客力と機能性を兼ね備えた設計で、お客様のビジネスを支えます。</p>
         <div class="service-tag-list">
-          <span class="service-tag" data-i18n="svc2-t1">飲食店</span>
-          <span class="service-tag" data-i18n="svc2-t2">物販</span>
-          <span class="service-tag" data-i18n="svc2-t3">オフィス</span>
-          <span class="service-tag" data-i18n="svc2-t4">用途変更</span>
+          <span class="service-tag">飲食店</span>
+          <span class="service-tag">物販</span>
+          <span class="service-tag">オフィス</span>
+          <span class="service-tag">用途変更</span>
         </div>
       </div>
       <div class="service-card reveal">
@@ -1009,13 +960,13 @@
           <svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V10l8-8 8 8v10"/><path d="M9 20v-5h6v5"/></svg>
         </div>
         <span class="service-number">03</span>
-        <h3 data-i18n="svc3-title">設計監理・公共施設</h3>
-        <p data-i18n="svc3-desc">設計図通りに施工が行われているか、品質・工程・コストを管理します。公共施設や福祉施設など、規模を問わず対応。お客様に代わって現場をチェックします。</p>
+        <h3>設計監理・公共施設</h3>
+        <p>設計図通りに施工が行われているか、品質・工程・コストを管理します。公共施設や福祉施設など、規模を問わず対応。お客様に代わって現場をチェックします。</p>
         <div class="service-tag-list">
-          <span class="service-tag" data-i18n="svc3-t1">工事監理</span>
-          <span class="service-tag" data-i18n="svc3-t2">公共施設</span>
-          <span class="service-tag" data-i18n="svc3-t3">確認申請</span>
-          <span class="service-tag" data-i18n="svc3-t4">事業計画</span>
+          <span class="service-tag">工事監理</span>
+          <span class="service-tag">公共施設</span>
+          <span class="service-tag">確認申請</span>
+          <span class="service-tag">事業計画</span>
         </div>
       </div>
     </div>
@@ -1026,9 +977,9 @@
 <section id="works">
   <div class="works-inner">
     <div class="reveal">
-      <span class="section-label" data-i18n="works-label">Works</span>
-      <h2 class="section-title" data-i18n="works-title">設計実績</h2>
-      <p class="works-note" data-i18n="works-note">掲載実績は一部です。用途や規模に応じた事例は、お打ち合わせ時にご案内しています。</p>
+      <span class="section-label">Works</span>
+      <h2 class="section-title">設計実績</h2>
+      <p class="works-note">掲載実績は一部です。用途や規模に応じた事例は、お打ち合わせ時にご案内しています。</p>
     </div>
     <div class="works-grid">
       <div class="work-item reveal" role="button" tabindex="0"
@@ -1042,9 +993,9 @@
         <img class="work-bg" src="images/projects/takt-design-office/01-w800.jpg" alt="タクト設計オフィス外観" loading="lazy">
         <div class="work-info">
           <span class="work-info-category">Office</span>
-          <span class="work-info-title" data-i18n="w1">タクト設計オフィス ― 那覇市</span>
+          <span class="work-info-title">タクト設計オフィス ― 那覇市</span>
         </div>
-        <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
+        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
       </div>
       <div class="work-item reveal" role="button" tabindex="0"
         data-detail-title="しいの実保育園（本園）"
@@ -1057,9 +1008,9 @@
         <img class="work-bg" src="images/projects/shiinomi-nursery-main/01-w800.jpg" alt="しいの実保育園（本園）" loading="lazy">
         <div class="work-info">
           <span class="work-info-category">Nursery</span>
-          <span class="work-info-title" data-i18n="w2">しいの実保育園（本園）― 宜野湾市</span>
+          <span class="work-info-title">しいの実保育園（本園）― 宜野湾市</span>
         </div>
-        <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
+        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
       </div>
       <div class="work-item reveal" role="button" tabindex="0"
         data-detail-title="てんがんこどもえん増築工事"
@@ -1072,9 +1023,9 @@
         <img class="work-bg" src="images/projects/tengan-kodomoen-extension/01-w800.jpg" alt="てんがんこどもえん増築工事" loading="lazy">
         <div class="work-info">
           <span class="work-info-category">Nursery</span>
-          <span class="work-info-title" data-i18n="w3">てんがんこどもえん増築工事 ― うるま市</span>
+          <span class="work-info-title">てんがんこどもえん増築工事 ― うるま市</span>
         </div>
-        <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
+        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
       </div>
       <div class="work-item reveal" role="button" tabindex="0"
         data-detail-title="真嘉比東公園便所"
@@ -1087,9 +1038,9 @@
         <img class="work-bg" src="images/projects/makabihigashi-park-restroom/01-exterior-w800.jpg" alt="真嘉比東公園便所外観" loading="lazy">
         <div class="work-info">
           <span class="work-info-category">Public</span>
-          <span class="work-info-title" data-i18n="w4">真嘉比東公園便所 ― 那覇市</span>
+          <span class="work-info-title">真嘉比東公園便所 ― 那覇市</span>
         </div>
-        <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
+        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
       </div>
       <div class="work-item reveal" role="button" tabindex="0"
         data-detail-title="若狭小学校園庭計画"
@@ -1102,9 +1053,9 @@
         <img class="work-bg" src="images/projects/wakasa-elementary-schoolyard/01-w800.jpg" alt="若狭小学校園庭計画" loading="lazy">
         <div class="work-info">
           <span class="work-info-category">Public</span>
-          <span class="work-info-title" data-i18n="w5">若狭小学校園庭計画 ― 那覇市</span>
+          <span class="work-info-title">若狭小学校園庭計画 ― 那覇市</span>
         </div>
-        <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
+        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
       </div>
       <div class="work-item reveal" role="button" tabindex="0"
         data-detail-title="つきしろの住宅"
@@ -1117,9 +1068,9 @@
         <img class="work-bg" src="images/projects/tsukishiro-residence/01-w800.jpg" alt="つきしろの住宅" loading="lazy">
         <div class="work-info">
           <span class="work-info-category">Residential</span>
-          <span class="work-info-title" data-i18n="w6">つきしろの住宅 ― 沖縄県</span>
+          <span class="work-info-title">つきしろの住宅 ― 沖縄県</span>
         </div>
-        <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
+        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
       </div>
       <div class="work-item reveal" role="button" tabindex="0"
         data-detail-title="しいの実保育園（分園）"
@@ -1132,9 +1083,9 @@
         <img class="work-bg" src="images/projects/shiinomi-nursery-branch/01-w800.jpg" alt="しいの実保育園（分園）" loading="lazy">
         <div class="work-info">
           <span class="work-info-category">Nursery</span>
-          <span class="work-info-title" data-i18n="w7">しいの実保育園（分園）― 宜野湾市</span>
+          <span class="work-info-title">しいの実保育園（分園）― 宜野湾市</span>
         </div>
-        <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
+        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
       </div>
       <div class="work-item reveal" role="button" tabindex="0"
         data-detail-title="立津工芸社（宮古の事務所兼住宅）"
@@ -1147,9 +1098,9 @@
         <img class="work-bg" src="images/projects/miyako-office-residence/01-w800.jpg" alt="立津工芸社（宮古の事務所兼住宅）" loading="lazy">
         <div class="work-info">
           <span class="work-info-category">Office</span>
-          <span class="work-info-title" data-i18n="w8">立津工芸社（宮古の事務所兼住宅）― 宮古島市</span>
+          <span class="work-info-title">立津工芸社（宮古の事務所兼住宅）― 宮古島市</span>
         </div>
-        <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
+        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
       </div>
       <div class="work-item reveal" role="button" tabindex="0"
         data-detail-title="ひらまつ保育園"
@@ -1162,138 +1113,138 @@
         <img class="work-bg" src="images/projects/hiramatsu-nursery/01-w800.jpg" alt="ひらまつ保育園" loading="lazy">
         <div class="work-info">
           <span class="work-info-category">Nursery</span>
-          <span class="work-info-title" data-i18n="w9">ひらまつ保育園 ― 那覇市</span>
+          <span class="work-info-title">ひらまつ保育園 ― 那覇市</span>
         </div>
-        <div class="work-hover-detail" aria-hidden="true"><span data-i18n="work-view">View Project</span></div>
+        <div class="work-hover-detail" aria-hidden="true"><span>View Project</span></div>
       </div>
     </div>
     <div class="works-archive">
       <div class="works-archive-group reveal">
-        <h3 data-i18n="arch-residential-title">住宅設計実績</h3>
+        <h3>住宅設計実績</h3>
         <ul>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="H邸" data-detail-category="Residential"
             data-detail-year="掲載準備中" data-detail-location="那覇市"
-            data-detail-description="住宅設計実績のサンプル掲載です。木造二世帯住宅。詳細情報・写真は順次更新します。"><span class="works-project" data-i18n="ar-r1">H邸（木造／二世帯住宅）</span><span class="works-meta" data-i18n="ar-r1-m">那覇市</span><span class="works-badge" data-i18n="badge-prep">準備中</span></li>
+            data-detail-description="住宅設計実績のサンプル掲載です。木造二世帯住宅。詳細情報・写真は順次更新します。"><span class="works-project">H邸（木造／二世帯住宅）</span><span class="works-meta">那覇市</span><span class="works-badge">準備中</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="N邸" data-detail-category="Residential"
             data-detail-year="掲載準備中" data-detail-location="浦添市"
-            data-detail-description="住宅設計実績のサンプル掲載です。RC造の中庭住宅。詳細情報・写真は順次更新します。"><span class="works-project" data-i18n="ar-r2">N邸（RC造／中庭住宅）</span><span class="works-meta" data-i18n="ar-r2-m">浦添市</span><span class="works-badge" data-i18n="badge-prep">準備中</span></li>
+            data-detail-description="住宅設計実績のサンプル掲載です。RC造の中庭住宅。詳細情報・写真は順次更新します。"><span class="works-project">N邸（RC造／中庭住宅）</span><span class="works-meta">浦添市</span><span class="works-badge">準備中</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="K邸" data-detail-category="Residential"
             data-detail-year="掲載準備中" data-detail-location="南城市"
-            data-detail-description="住宅設計実績のサンプル掲載です。混構造で海を望む住宅。詳細情報・写真は順次更新します。"><span class="works-project" data-i18n="ar-r3">K邸（混構造／海を望む住宅）</span><span class="works-meta" data-i18n="ar-r3-m">南城市</span><span class="works-badge" data-i18n="badge-prep">準備中</span></li>
+            data-detail-description="住宅設計実績のサンプル掲載です。混構造で海を望む住宅。詳細情報・写真は順次更新します。"><span class="works-project">K邸（混構造／海を望む住宅）</span><span class="works-meta">南城市</span><span class="works-badge">準備中</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="つきしろの住宅" data-detail-category="Residential"
             data-detail-year="沖縄県" data-detail-location="沖縄県"
             data-detail-description="住宅設計実績のひとつです。敷地条件と暮らし方に寄り添った住宅計画を行いました。"
             data-detail-image="images/projects/tsukishiro-residence/01.jpg"
-            data-detail-images="images/projects/tsukishiro-residence/01.jpg,images/projects/tsukishiro-residence/02.jpg,images/projects/tsukishiro-residence/03.jpg,images/projects/tsukishiro-residence/04.jpg"><span class="works-project" data-i18n="ar-r4">つきしろの住宅</span><span class="works-meta" data-i18n="ar-r4-m">沖縄県</span></li>
+            data-detail-images="images/projects/tsukishiro-residence/01.jpg,images/projects/tsukishiro-residence/02.jpg,images/projects/tsukishiro-residence/03.jpg,images/projects/tsukishiro-residence/04.jpg"><span class="works-project">つきしろの住宅</span><span class="works-meta">沖縄県</span></li>
         </ul>
       </div>
       <div class="works-archive-group reveal">
-        <h3 data-i18n="arch-nursery-title">保育園実績</h3>
+        <h3>保育園実績</h3>
         <ul>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="しいの実保育園（本園）" data-detail-category="Nursery"
             data-detail-year="平成13年完成" data-detail-location="宜野湾市"
             data-detail-description="宜野湾市の保育園実績。地域に根ざした保育環境づくりを目指して設計監理を行いました。"
             data-detail-image="images/projects/shiinomi-nursery-main/01.jpg"
-            data-detail-images="images/projects/shiinomi-nursery-main/01.jpg,images/projects/shiinomi-nursery-main/02.jpg,images/projects/shiinomi-nursery-main/03.jpg,images/projects/shiinomi-nursery-main/04.jpg,images/projects/shiinomi-nursery-main/05.jpg,images/projects/shiinomi-nursery-main/06.jpg,images/projects/shiinomi-nursery-main/07.jpg,images/projects/shiinomi-nursery-main/08.jpg,images/projects/shiinomi-nursery-main/09.jpg"><span class="works-project" data-i18n="ar-n1">しいの実保育園（本園）</span><span class="works-meta" data-i18n="ar-n1-m">平成13年完成・宜野湾市</span></li>
+            data-detail-images="images/projects/shiinomi-nursery-main/01.jpg,images/projects/shiinomi-nursery-main/02.jpg,images/projects/shiinomi-nursery-main/03.jpg,images/projects/shiinomi-nursery-main/04.jpg,images/projects/shiinomi-nursery-main/05.jpg,images/projects/shiinomi-nursery-main/06.jpg,images/projects/shiinomi-nursery-main/07.jpg,images/projects/shiinomi-nursery-main/08.jpg,images/projects/shiinomi-nursery-main/09.jpg"><span class="works-project">しいの実保育園（本園）</span><span class="works-meta">平成13年完成・宜野湾市</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="愛の園保育園" data-detail-category="Nursery"
             data-detail-year="平成15年完成" data-detail-location="浦添市"
-            data-detail-description="浦添市の保育園実績。安全性と保育動線への配慮を重視した計画です。"><span class="works-project" data-i18n="ar-n2">愛の園保育園</span><span class="works-meta" data-i18n="ar-n2-m">平成15年完成・浦添市</span><span class="works-badge" data-i18n="badge-prep">準備中</span></li>
+            data-detail-description="浦添市の保育園実績。安全性と保育動線への配慮を重視した計画です。"><span class="works-project">愛の園保育園</span><span class="works-meta">平成15年完成・浦添市</span><span class="works-badge">準備中</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="しいの実保育園（分園）" data-detail-category="Nursery"
             data-detail-year="平成19年完成" data-detail-location="宜野湾市"
             data-detail-description="本園に続く分園計画。運営との連携を踏まえた施設設計を行いました。"
             data-detail-image="images/projects/shiinomi-nursery-branch/01.jpg"
-            data-detail-images="images/projects/shiinomi-nursery-branch/01.jpg,images/projects/shiinomi-nursery-branch/02.jpg,images/projects/shiinomi-nursery-branch/03.jpg,images/projects/shiinomi-nursery-branch/04.jpg"><span class="works-project" data-i18n="ar-n3">しいの実保育園（分園）</span><span class="works-meta" data-i18n="ar-n3-m">平成19年完成・宜野湾市</span></li>
+            data-detail-images="images/projects/shiinomi-nursery-branch/01.jpg,images/projects/shiinomi-nursery-branch/02.jpg,images/projects/shiinomi-nursery-branch/03.jpg,images/projects/shiinomi-nursery-branch/04.jpg"><span class="works-project">しいの実保育園（分園）</span><span class="works-meta">平成19年完成・宜野湾市</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="スカイマリン保育園（本園）" data-detail-category="Nursery"
             data-detail-year="平成20年完成" data-detail-location="那覇市"
-            data-detail-description="那覇市の保育園実績。子どもたちの過ごしやすさを軸にした設計です。"><span class="works-project" data-i18n="ar-n4">スカイマリン保育園（本園）</span><span class="works-meta" data-i18n="ar-n4-m">平成20年完成・那覇市</span><span class="works-badge" data-i18n="badge-prep">準備中</span></li>
+            data-detail-description="那覇市の保育園実績。子どもたちの過ごしやすさを軸にした設計です。"><span class="works-project">スカイマリン保育園（本園）</span><span class="works-meta">平成20年完成・那覇市</span><span class="works-badge">準備中</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="さつき保育園" data-detail-category="Nursery"
             data-detail-year="平成21年完成" data-detail-location="宜野湾市"
-            data-detail-description="宜野湾市の保育園実績。日射・通風を活かした快適な保育環境を計画しました。"><span class="works-project" data-i18n="ar-n5">さつき保育園</span><span class="works-meta" data-i18n="ar-n5-m">平成21年完成・宜野湾市</span><span class="works-badge" data-i18n="badge-prep">準備中</span></li>
+            data-detail-description="宜野湾市の保育園実績。日射・通風を活かした快適な保育環境を計画しました。"><span class="works-project">さつき保育園</span><span class="works-meta">平成21年完成・宜野湾市</span><span class="works-badge">準備中</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="ひらまつ保育園" data-detail-category="Nursery"
             data-detail-year="平成21年完成" data-detail-location="那覇市"
             data-detail-description="那覇市の保育園実績。限られた敷地を活かした園舎計画を行いました。"
             data-detail-image="images/projects/hiramatsu-nursery/01.jpg"
-            data-detail-images="images/projects/hiramatsu-nursery/01.jpg,images/projects/hiramatsu-nursery/02.jpg"><span class="works-project" data-i18n="ar-n6">ひらまつ保育園</span><span class="works-meta" data-i18n="ar-n6-m">平成21年完成・那覇市</span></li>
+            data-detail-images="images/projects/hiramatsu-nursery/01.jpg,images/projects/hiramatsu-nursery/02.jpg"><span class="works-project">ひらまつ保育園</span><span class="works-meta">平成21年完成・那覇市</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="ひまわりっ童保育園" data-detail-category="Nursery"
             data-detail-year="平成22年完成" data-detail-location="うるま市"
-            data-detail-description="保育園実績の代表案件です。詳細画像は準備できしだい追加可能で、現在は案件情報を先行掲載しています。"><span class="works-project" data-i18n="ar-n7">ひまわりっ童保育園</span><span class="works-meta" data-i18n="ar-n7-m">平成22年完成・うるま市</span><span class="works-badge" data-i18n="badge-prep">準備中</span></li>
+            data-detail-description="保育園実績の代表案件です。詳細画像は準備できしだい追加可能で、現在は案件情報を先行掲載しています。"><span class="works-project">ひまわりっ童保育園</span><span class="works-meta">平成22年完成・うるま市</span><span class="works-badge">準備中</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="おなが保育園" data-detail-category="Nursery"
             data-detail-year="平成23年完成" data-detail-location="豊見城市"
-            data-detail-description="豊見城市の保育園実績。地域の暮らしと調和する園舎を目指しました。"><span class="works-project" data-i18n="ar-n8">おなが保育園</span><span class="works-meta" data-i18n="ar-n8-m">平成23年完成・豊見城市</span><span class="works-badge" data-i18n="badge-prep">準備中</span></li>
+            data-detail-description="豊見城市の保育園実績。地域の暮らしと調和する園舎を目指しました。"><span class="works-project">おなが保育園</span><span class="works-meta">平成23年完成・豊見城市</span><span class="works-badge">準備中</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="スカイマリン保育園（分園）" data-detail-category="Nursery"
             data-detail-year="平成27年完成" data-detail-location="那覇市"
-            data-detail-description="本園に続く分園計画。運営との連携と保育環境の質を両立しました。"><span class="works-project" data-i18n="ar-n9">スカイマリン保育園（分園）</span><span class="works-meta" data-i18n="ar-n9-m">平成27年完成・那覇市</span><span class="works-badge" data-i18n="badge-prep">準備中</span></li>
+            data-detail-description="本園に続く分園計画。運営との連携と保育環境の質を両立しました。"><span class="works-project">スカイマリン保育園（分園）</span><span class="works-meta">平成27年完成・那覇市</span><span class="works-badge">準備中</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="メルシー保育園古島" data-detail-category="Nursery"
             data-detail-year="平成29年完成" data-detail-location="那覇市"
-            data-detail-description="那覇市古島の保育園実績。動線と保育環境への配慮を重視した計画です。"><span class="works-project" data-i18n="ar-n10">メルシー保育園古島</span><span class="works-meta" data-i18n="ar-n10-m">平成29年完成・那覇市</span><span class="works-badge" data-i18n="badge-prep">準備中</span></li>
+            data-detail-description="那覇市古島の保育園実績。動線と保育環境への配慮を重視した計画です。"><span class="works-project">メルシー保育園古島</span><span class="works-meta">平成29年完成・那覇市</span><span class="works-badge">準備中</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="もりのこ保育園" data-detail-category="Nursery"
             data-detail-year="平成30年完成" data-detail-location="豊見城市"
-            data-detail-description="豊見城市の保育園実績。緑と光を取り込む園舎を計画しました。"><span class="works-project" data-i18n="ar-n11">もりのこ保育園</span><span class="works-meta" data-i18n="ar-n11-m">平成30年完成・豊見城市</span><span class="works-badge" data-i18n="badge-prep">準備中</span></li>
+            data-detail-description="豊見城市の保育園実績。緑と光を取り込む園舎を計画しました。"><span class="works-project">もりのこ保育園</span><span class="works-meta">平成30年完成・豊見城市</span><span class="works-badge">準備中</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="座安こども園（厨房改修工事）" data-detail-category="Nursery"
             data-detail-year="平成31年完成" data-detail-location="豊見城市"
-            data-detail-description="既存こども園の厨房改修。運営継続を前提とした工程設計と衛生計画を行いました。"><span class="works-project" data-i18n="ar-n12">座安こども園（厨房改修工事）</span><span class="works-meta" data-i18n="ar-n12-m">平成31年完成・豊見城市</span><span class="works-badge" data-i18n="badge-prep">準備中</span></li>
+            data-detail-description="既存こども園の厨房改修。運営継続を前提とした工程設計と衛生計画を行いました。"><span class="works-project">座安こども園（厨房改修工事）</span><span class="works-meta">平成31年完成・豊見城市</span><span class="works-badge">準備中</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="てんがんこどもえん増築工事" data-detail-category="Nursery"
             data-detail-year="令和2年完成" data-detail-location="うるま市"
             data-detail-description="既存園舎の増築計画。既存と新築のつながりと保育動線の整理に配慮しました。"
             data-detail-image="images/projects/tengan-kodomoen-extension/01.jpg"
-            data-detail-images="images/projects/tengan-kodomoen-extension/01.jpg,images/projects/tengan-kodomoen-extension/02.jpg,images/projects/tengan-kodomoen-extension/03.jpg,images/projects/tengan-kodomoen-extension/04.jpg,images/projects/tengan-kodomoen-extension/05.jpg,images/projects/tengan-kodomoen-extension/06.jpg,images/projects/tengan-kodomoen-extension/07.jpg,images/projects/tengan-kodomoen-extension/08.jpg"><span class="works-project" data-i18n="ar-n13">てんがんこどもえん増築工事</span><span class="works-meta" data-i18n="ar-n13-m">令和2年完成・うるま市</span></li>
+            data-detail-images="images/projects/tengan-kodomoen-extension/01.jpg,images/projects/tengan-kodomoen-extension/02.jpg,images/projects/tengan-kodomoen-extension/03.jpg,images/projects/tengan-kodomoen-extension/04.jpg,images/projects/tengan-kodomoen-extension/05.jpg,images/projects/tengan-kodomoen-extension/06.jpg,images/projects/tengan-kodomoen-extension/07.jpg,images/projects/tengan-kodomoen-extension/08.jpg"><span class="works-project">てんがんこどもえん増築工事</span><span class="works-meta">令和2年完成・うるま市</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="上間さつき保育園" data-detail-category="Nursery"
             data-detail-year="令和3年4月完成" data-detail-location="那覇市"
-            data-detail-description="近年の保育施設実績です。園舎計画・運営動線・保育環境への配慮を重視した案件として掲載しています。"><span class="works-project" data-i18n="ar-n14">上間さつき保育園</span><span class="works-meta" data-i18n="ar-n14-m">令和3年4月完成・那覇市</span><span class="works-badge" data-i18n="badge-prep">準備中</span></li>
+            data-detail-description="近年の保育施設実績です。園舎計画・運営動線・保育環境への配慮を重視した案件として掲載しています。"><span class="works-project">上間さつき保育園</span><span class="works-meta">令和3年4月完成・那覇市</span><span class="works-badge">準備中</span></li>
         </ul>
       </div>
       <div class="works-archive-group reveal">
-        <h3 data-i18n="arch-public-title">公共工事実績</h3>
+        <h3>公共工事実績</h3>
         <ul>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="真嘉比東公園便所" data-detail-category="Public"
             data-detail-year="平成22年完成" data-detail-location="那覇市"
             data-detail-description="公共工事実績のひとつです。地域利用を前提とした施設計画として、使いやすさと維持管理性を重視しています。"
             data-detail-image="images/projects/makabihigashi-park-restroom/01-exterior.jpg"
-            data-detail-images="images/projects/makabihigashi-park-restroom/01-exterior.jpg,images/projects/makabihigashi-park-restroom/02-exterior-construction.jpg,images/projects/makabihigashi-park-restroom/03-aerial.jpg,images/projects/makabihigashi-park-restroom/04-canopy-cityscape.jpg,images/projects/makabihigashi-park-restroom/05-spiral-detail.jpg,images/projects/makabihigashi-park-restroom/06-spiral-detail-alt.jpg"><span class="works-project" data-i18n="ar-p1">真嘉比東公園便所</span><span class="works-meta" data-i18n="ar-p1-m">平成22年完成・那覇市</span></li>
+            data-detail-images="images/projects/makabihigashi-park-restroom/01-exterior.jpg,images/projects/makabihigashi-park-restroom/02-exterior-construction.jpg,images/projects/makabihigashi-park-restroom/03-aerial.jpg,images/projects/makabihigashi-park-restroom/04-canopy-cityscape.jpg,images/projects/makabihigashi-park-restroom/05-spiral-detail.jpg,images/projects/makabihigashi-park-restroom/06-spiral-detail-alt.jpg"><span class="works-project">真嘉比東公園便所</span><span class="works-meta">平成22年完成・那覇市</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="若狭小学校園庭計画" data-detail-category="Public"
             data-detail-year="平成23年完成" data-detail-location="那覇市"
             data-detail-description="那覇市の公共工事実績。学校園庭の利用環境を整える計画を行いました。"
             data-detail-image="images/projects/wakasa-elementary-schoolyard/01.jpg"
-            data-detail-images="images/projects/wakasa-elementary-schoolyard/01.jpg,images/projects/wakasa-elementary-schoolyard/02.jpg,images/projects/wakasa-elementary-schoolyard/03.jpg,images/projects/wakasa-elementary-schoolyard/04.jpg,images/projects/wakasa-elementary-schoolyard/05.jpg,images/projects/wakasa-elementary-schoolyard/06.jpg"><span class="works-project" data-i18n="ar-p2">若狭小学校園庭計画</span><span class="works-meta" data-i18n="ar-p2-m">平成23年完成・那覇市</span></li>
+            data-detail-images="images/projects/wakasa-elementary-schoolyard/01.jpg,images/projects/wakasa-elementary-schoolyard/02.jpg,images/projects/wakasa-elementary-schoolyard/03.jpg,images/projects/wakasa-elementary-schoolyard/04.jpg,images/projects/wakasa-elementary-schoolyard/05.jpg,images/projects/wakasa-elementary-schoolyard/06.jpg"><span class="works-project">若狭小学校園庭計画</span><span class="works-meta">平成23年完成・那覇市</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="防災避難施設整備工事・設計監理" data-detail-category="Public"
             data-detail-year="平成25年完成" data-detail-location="那覇市"
-            data-detail-description="防災機能を担う公共施設の設計監理実績です。地域の安全性と実用性を踏まえた計画・監理を行いました。"><span class="works-project" data-i18n="ar-p3">防災避難施設整備工事・設計監理</span><span class="works-meta" data-i18n="ar-p3-m">平成25年完成・那覇市</span><span class="works-badge" data-i18n="badge-prep">準備中</span></li>
+            data-detail-description="防災機能を担う公共施設の設計監理実績です。地域の安全性と実用性を踏まえた計画・監理を行いました。"><span class="works-project">防災避難施設整備工事・設計監理</span><span class="works-meta">平成25年完成・那覇市</span><span class="works-badge">準備中</span></li>
         </ul>
       </div>
       <div class="works-archive-group reveal">
-        <h3 data-i18n="arch-office-title">店舗・社屋設計実績</h3>
+        <h3>店舗・社屋設計実績</h3>
         <ul>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="（株）的エンタープライズ 本社" data-detail-category="Office"
             data-detail-year="平成18年完成" data-detail-location="中城村"
-            data-detail-description="店舗・社屋設計実績として掲載しています。企業活動を支える機能性と、来客時の印象を両立させた計画です。"><span class="works-project" data-i18n="ar-o1">（株）的エンタープライズ 本社</span><span class="works-meta" data-i18n="ar-o1-m">平成18年完成・中城村</span><span class="works-badge" data-i18n="badge-prep">準備中</span></li>
+            data-detail-description="店舗・社屋設計実績として掲載しています。企業活動を支える機能性と、来客時の印象を両立させた計画です。"><span class="works-project">（株）的エンタープライズ 本社</span><span class="works-meta">平成18年完成・中城村</span><span class="works-badge">準備中</span></li>
           <li class="work-archive-item" role="button" tabindex="0"
             data-detail-title="立津工芸社（宮古の事務所兼住宅）" data-detail-category="Office"
             data-detail-year="宮古島市" data-detail-location="宮古島市"
             data-detail-description="宮古島での事務所兼住宅の設計実績です。職住一体の機能と居住性を両立した計画を行いました。"
             data-detail-image="images/projects/miyako-office-residence/01.jpg"
-            data-detail-images="images/projects/miyako-office-residence/01.jpg,images/projects/miyako-office-residence/02.jpg,images/projects/miyako-office-residence/03.jpg,images/projects/miyako-office-residence/04.jpg"><span class="works-project" data-i18n="ar-o2">立津工芸社（宮古の事務所兼住宅）</span><span class="works-meta" data-i18n="ar-o2-m">宮古島市</span></li>
+            data-detail-images="images/projects/miyako-office-residence/01.jpg,images/projects/miyako-office-residence/02.jpg,images/projects/miyako-office-residence/03.jpg,images/projects/miyako-office-residence/04.jpg"><span class="works-project">立津工芸社（宮古の事務所兼住宅）</span><span class="works-meta">宮古島市</span></li>
         </ul>
       </div>
     </div>
@@ -1304,52 +1255,52 @@
 <section id="flow">
   <div class="flow-inner">
     <div class="reveal">
-      <span class="section-label" data-i18n="flow-label">Flow</span>
-      <h2 class="section-title" data-i18n="flow-title">ご依頼の流れ</h2>
+      <span class="section-label">Flow</span>
+      <h2 class="section-title">ご依頼の流れ</h2>
     </div>
     <div class="flow-steps">
       <div class="flow-step reveal">
         <div class="flow-step-num" aria-hidden="true">01</div>
         <div>
-          <h3 data-i18n="f1-title">お問い合わせ・ご相談</h3>
-          <p data-i18n="f1-desc">まずはお電話またはお問い合わせフォームからご連絡ください。ご相談は無料です。建築に関するお悩みやご要望をお聞かせください。</p>
-          <span class="flow-tag" data-i18n="f1-tag">無料相談</span>
+          <h3>お問い合わせ・ご相談</h3>
+          <p>まずはお電話またはお問い合わせフォームからご連絡ください。ご相談は無料です。建築に関するお悩みやご要望をお聞かせください。</p>
+          <span class="flow-tag">無料相談</span>
         </div>
       </div>
       <div class="flow-step reveal">
         <div class="flow-step-num" aria-hidden="true">02</div>
         <div>
-          <h3 data-i18n="f2-title">ヒアリング・敷地調査</h3>
-          <p data-i18n="f2-desc">ご家族の暮らし方やご予算、敷地の条件を丁寧にお伺いし、現地調査を行います。</p>
+          <h3>ヒアリング・敷地調査</h3>
+          <p>ご家族の暮らし方やご予算、敷地の条件を丁寧にお伺いし、現地調査を行います。</p>
         </div>
       </div>
       <div class="flow-step reveal">
         <div class="flow-step-num" aria-hidden="true">03</div>
         <div>
-          <h3 data-i18n="f3-title">基本設計・プラン提案</h3>
-          <p data-i18n="f3-desc">ヒアリング内容をもとに、間取りや外観のプランをご提案。納得いただけるまで何度でも打ち合わせを重ねます。</p>
+          <h3>基本設計・プラン提案</h3>
+          <p>ヒアリング内容をもとに、間取りや外観のプランをご提案。納得いただけるまで何度でも打ち合わせを重ねます。</p>
         </div>
       </div>
       <div class="flow-step reveal">
         <div class="flow-step-num" aria-hidden="true">04</div>
         <div>
-          <h3 data-i18n="f4-title">実施設計・確認申請</h3>
-          <p data-i18n="f4-desc">詳細な設計図面を作成し、建築確認申請の手続きを行います。</p>
+          <h3>実施設計・確認申請</h3>
+          <p>詳細な設計図面を作成し、建築確認申請の手続きを行います。</p>
         </div>
       </div>
       <div class="flow-step reveal">
         <div class="flow-step-num" aria-hidden="true">05</div>
         <div>
-          <h3 data-i18n="f5-title">施工・工事監理</h3>
-          <p data-i18n="f5-desc">信頼できる施工会社と連携し、設計意図が現場に正確に反映されるよう監理を行います。</p>
+          <h3>施工・工事監理</h3>
+          <p>信頼できる施工会社と連携し、設計意図が現場に正確に反映されるよう監理を行います。</p>
         </div>
       </div>
       <div class="flow-step reveal">
         <div class="flow-step-num" aria-hidden="true">06</div>
         <div>
-          <h3 data-i18n="f6-title">竣工・お引き渡し</h3>
-          <p data-i18n="f6-desc">完成検査を経て、お引き渡し。その後もメンテナンスや増改築のご相談に対応いたします。</p>
-          <span class="flow-tag" data-i18n="f6-tag">アフターフォロー</span>
+          <h3>竣工・お引き渡し</h3>
+          <p>完成検査を経て、お引き渡し。その後もメンテナンスや増改築のご相談に対応いたします。</p>
+          <span class="flow-tag">アフターフォロー</span>
         </div>
       </div>
     </div>
@@ -1360,29 +1311,29 @@
 <section id="contact">
   <div class="contact-inner">
     <div class="contact-info reveal">
-      <span class="section-label" data-i18n="ct-label">Contact</span>
-      <h2 class="section-title" data-i18n="ct-title">お問い合わせ</h2>
-      <h3 data-i18n="ct-sub">まずはお気軽にご相談ください</h3>
+      <span class="section-label">Contact</span>
+      <h2 class="section-title">お問い合わせ</h2>
+      <h3>まずはお気軽にご相談ください</h3>
 
       <div class="contact-detail">
-        <div class="detail-label" data-i18n="ct-office-label">Office</div>
-        <div class="detail-value" data-i18n="ct-office-val">一級建築士事務所タクト設計</div>
+        <div class="detail-label">Office</div>
+        <div class="detail-value">一級建築士事務所タクト設計</div>
       </div>
       <div class="contact-detail">
-        <div class="detail-label" data-i18n="ct-arch-label">Architect</div>
-        <div class="detail-value" data-i18n="ct-arch-val">一級建築士　羽地敏博</div>
+        <div class="detail-label">Architect</div>
+        <div class="detail-value">一級建築士　羽地敏博</div>
       </div>
       <div class="contact-detail">
-        <div class="detail-label" data-i18n="ct-addr-label">Address</div>
-        <div class="detail-value" data-i18n-html="ct-addr-val">〒900-0004<br>沖縄県那覇市銘苅３丁目１９−１</div>
+        <div class="detail-label">Address</div>
+        <div class="detail-value">〒900-0004<br>沖縄県那覇市銘苅３丁目１９−１</div>
       </div>
       <div class="contact-detail">
         <div class="detail-label">Tel</div>
         <div class="detail-value"><a href="tel:098-860-1227">098-860-1227</a></div>
       </div>
       <div class="contact-detail">
-        <div class="detail-label" data-i18n="ct-hours-label">Business Hours</div>
-        <div class="detail-value" data-i18n-html="ct-hours-val">月〜金 9:00 ― 18:00<br><span style="font-size:0.82rem;color:var(--text-light)">※土日祝は事前予約にて対応</span></div>
+        <div class="detail-label">Business Hours</div>
+        <div class="detail-value">月〜金 9:00 ― 18:00<br><span style="font-size:0.82rem;color:var(--text-light)">※土日祝は事前予約にて対応</span></div>
       </div>
     </div>
 
@@ -1396,27 +1347,27 @@
         <input type="hidden" name="_subject" value="ウェブサイトからのお問い合わせ">
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-        <label for="name"><span data-i18n="lbl-name">お名前</span><span class="required-mark" aria-label="必須">*</span></label>
-        <input type="text" id="name" name="name" required autocomplete="name" data-i18n-placeholder="ph-name" placeholder="比嘉 太郎">
-        <span class="field-error" id="nameError" role="alert" data-i18n="err-name">お名前を入力してください</span>
+        <label for="name"><span>お名前</span><span class="required-mark" aria-label="必須">*</span></label>
+        <input type="text" id="name" name="name" required autocomplete="name" placeholder="比嘉 太郎">
+        <span class="field-error" id="nameError" role="alert">お名前を入力してください</span>
 
-        <label for="email"><span data-i18n="lbl-email">メールアドレス</span><span class="required-mark" aria-label="必須">*</span></label>
+        <label for="email"><span>メールアドレス</span><span class="required-mark" aria-label="必須">*</span></label>
         <input type="email" id="email" name="email" required autocomplete="email" placeholder="example@mail.com">
-        <span class="field-error" id="emailError" role="alert" data-i18n="err-email">正しいメールアドレスを入力してください</span>
+        <span class="field-error" id="emailError" role="alert">正しいメールアドレスを入力してください</span>
 
-        <label for="phone"><span data-i18n="lbl-phone">電話番号</span></label>
-        <input type="tel" id="phone" name="phone" autocomplete="tel" data-i18n-placeholder="ph-phone" placeholder="098-000-0000">
+        <label for="phone"><span>電話番号</span></label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="098-000-0000">
 
-        <label for="message"><span data-i18n="lbl-msg">ご相談内容</span><span class="required-mark" aria-label="必須">*</span></label>
-        <textarea id="message" name="message" required data-i18n-placeholder="ph-msg" placeholder="ご相談内容をお書きください（例：那覇市内で住宅の新築を検討しています）"></textarea>
-        <span class="field-error" id="messageError" role="alert" data-i18n="err-msg">ご相談内容を入力してください</span>
+        <label for="message"><span>ご相談内容</span><span class="required-mark" aria-label="必須">*</span></label>
+        <textarea id="message" name="message" required placeholder="ご相談内容をお書きください（例：那覇市内で住宅の新築を検討しています）"></textarea>
+        <span class="field-error" id="messageError" role="alert">ご相談内容を入力してください</span>
 
         <div class="contact-form-footer">
-          <p class="contact-privacy" data-i18n="ct-privacy">送信いただいた情報は、お問い合わせへの返答のみに使用します。</p>
+          <p class="contact-privacy">送信いただいた情報は、お問い合わせへの返答のみに使用します。</p>
           <button type="submit" class="contact-btn" id="submitBtn">
             <div class="btn-spinner" aria-hidden="true"></div>
             <svg class="btn-arrow" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
-            <span data-i18n="btn-submit">送信する</span>
+            <span>送信する</span>
           </button>
         </div>
         <div class="form-result" id="formResult" role="alert" aria-live="polite"></div>
@@ -1432,7 +1383,7 @@
     <button class="work-modal-close" id="workModalClose" aria-label="閉じる">×</button>
     <div class="work-modal-media">
       <img id="workModalImage" src="" alt="" hidden>
-      <div class="work-modal-fallback" id="workModalFallback" data-i18n="modal-fallback">詳細画像準備中</div>
+      <div class="work-modal-fallback" id="workModalFallback">詳細画像準備中</div>
       <button class="work-modal-nav work-modal-prev" id="workModalPrev" type="button" aria-label="前の画像" hidden>‹</button>
       <button class="work-modal-nav work-modal-next" id="workModalNext" type="button" aria-label="次の画像" hidden>›</button>
     </div>
@@ -1464,28 +1415,28 @@
 <footer role="contentinfo">
   <div class="footer-inner">
     <div>
-      <div class="footer-brand" data-i18n="footer-brand">タクト設計</div>
+      <div class="footer-brand">タクト設計</div>
       <span class="footer-brand-en">TAKT DESIGN</span>
       <div class="footer-sub">
-        <span data-i18n="footer-office">一級建築士事務所タクト設計</span><br>
+        <span>一級建築士事務所タクト設計</span><br>
         〒900-0004 沖縄県那覇市銘苅３丁目１９−１<br>
         TEL <a href="tel:098-860-1227">098-860-1227</a><br>
-        <span data-i18n="footer-hours">月〜金 9:00 ― 18:00（土日祝は事前予約にて対応）</span>
-        <span class="footer-registration" data-i18n="footer-reg">沖縄県知事登録 一級建築士事務所</span>
+        <span>月〜金 9:00 ― 18:00（土日祝は事前予約にて対応）</span>
+        <span class="footer-registration">沖縄県知事登録 一級建築士事務所</span>
       </div>
     </div>
     <nav class="footer-nav" aria-label="フッターナビゲーション">
       <h4>Navigation</h4>
       <ul class="footer-links">
-        <li><a href="#about"    data-i18n="nav-about">事務所紹介</a></li>
-        <li><a href="#services" data-i18n="nav-services">業務内容</a></li>
-        <li><a href="#works"    data-i18n="nav-works">実績</a></li>
-        <li><a href="#flow"     data-i18n="nav-flow">ご依頼の流れ</a></li>
-        <li><a href="#contact"  data-i18n="nav-contact">お問い合わせ</a></li>
+        <li><a href="#about">事務所紹介</a></li>
+        <li><a href="#services">業務内容</a></li>
+        <li><a href="#works">実績</a></li>
+        <li><a href="#flow">ご依頼の流れ</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
       </ul>
     </nav>
   </div>
-  <div class="footer-copy" data-i18n="footer-copy">&copy; 2026 一級建築士事務所タクト設計 All Rights Reserved.</div>
+  <div class="footer-copy">&copy; 2026 一級建築士事務所タクト設計 All Rights Reserved.</div>
 </footer>
 
 <!-- BACK TO TOP -->
@@ -1494,248 +1445,6 @@
 </button>
 
 <script>
-/* ===== i18n ===== */
-const i18n = {
-  ja: {
-    'nav-logo':'タクト設計',
-    'nav-about':'事務所紹介','nav-services':'業務内容','nav-works':'実績','nav-flow':'ご依頼の流れ','nav-contact':'お問い合わせ',
-    'hero-h1':'<span class="h1-a">一級建築士事務所</span><span class="h1-b">タクト設計</span>','hero-en':'TAKT DESIGN — Architects',
-    'hero-subtitle':'沖縄の風土に寄り添う建築',
-    'hero-desc':'1984年からの建築実務、1991年のタクト設計設立を経て、住宅・店舗・公共施設まで那覇を拠点に手がけています。光・風・敷地の個性を読み解きながら、長く愛される建築を丁寧な対話と確かな設計監理でかたちにします。',
-    'hero-btn-primary':'無料相談をする','hero-btn-secondary':'実績を見る',
-    'hero-panel-title':'Design Focus',
-    'hp1-title':'沖縄の気候に応える設計','hp1-desc':'日射・通風・陰影を活かす計画',
-    'hp2-title':'対話を重ねるプロセス','hp2-desc':'要望整理から完成後まで伴走',
-    'hp3-title':'住宅から施設まで対応','hp3-desc':'用途と規模に応じた設計監理',
-    'ic1-title':'沖縄に根ざした設計','ic1-desc':'地域の風土と暮らし方を踏まえ、過ごしやすさと美しさを両立します。',
-    'ic2-title':'一級建築士による一貫対応','ic2-desc':'初回相談から設計監理まで、意図がぶれない体制で進めます。',
-    'ic3-title':'相談しやすい設計事務所','ic3-desc':'新築、改修、用途変更、事業計画の相談まで幅広く対応します。',
-    'about-label':'About Us','about-title':'沖縄の光と風を<br>建築に込めて',
-    'about-p1':'一級建築士事務所タクト設計は、沖縄県那覇市を拠点に、住宅・店舗・公共施設など幅広い建築の設計監理を手がけています。',
-    'about-p2':'「タクト」とは、指揮者が振る指揮棒のこと。お客様の想いを汲み取り、沖縄の豊かな自然環境と調和する建築を、確かな技術と丁寧な対話で形にしていきます。',
-    'about-p3':'1984年に建築の道へ進んだ一級建築士・羽地敏博は、1991年に一級建築士事務所タクト設計を設立。以来30年以上にわたり、亜熱帯の気候風土を熟知した設計で、快適で長く愛される空間をご提案しています。お客様一人ひとりの想いに向き合い、土地の個性を活かした建築を丁寧に設計します。',
-    'badge1':'一級建築士事務所登録','badge2':'新築・リノベーション対応','badge3':'無料初回相談','badge4':'沖縄県内全域対応',
-    'badge5':'一級建築士の実務 1984年〜','badge6':'タクト設計 1991年設立',
-    'arch-residential-title':'住宅設計実績','arch-nursery-title':'保育園実績','arch-public-title':'公共工事実績','arch-office-title':'店舗・社屋設計実績',
-    'ar-r1':'H邸（木造／二世帯住宅）','ar-r1-m':'那覇市',
-    'ar-r2':'N邸（RC造／中庭住宅）','ar-r2-m':'浦添市',
-    'ar-r3':'K邸（混構造／海を望む住宅）','ar-r3-m':'南城市',
-    'ar-r4':'つきしろの住宅','ar-r4-m':'沖縄県',
-    'ar-n1':'しいの実保育園（本園）','ar-n1-m':'平成13年完成・宜野湾市',
-    'ar-n2':'愛の園保育園','ar-n2-m':'平成15年完成・浦添市',
-    'ar-n3':'しいの実保育園（分園）','ar-n3-m':'平成19年完成・宜野湾市',
-    'ar-n4':'スカイマリン保育園（本園）','ar-n4-m':'平成20年完成・那覇市',
-    'ar-n5':'さつき保育園','ar-n5-m':'平成21年完成・宜野湾市',
-    'ar-n6':'ひらまつ保育園','ar-n6-m':'平成21年完成・那覇市',
-    'ar-n7':'ひまわりっ童保育園','ar-n7-m':'平成22年完成・うるま市',
-    'ar-n8':'おなが保育園','ar-n8-m':'平成23年完成・豊見城市',
-    'ar-n9':'スカイマリン保育園（分園）','ar-n9-m':'平成27年完成・那覇市',
-    'ar-n10':'メルシー保育園古島','ar-n10-m':'平成29年完成・那覇市',
-    'ar-n11':'もりのこ保育園','ar-n11-m':'平成30年完成・豊見城市',
-    'ar-n12':'座安こども園（厨房改修工事）','ar-n12-m':'平成31年完成・豊見城市',
-    'ar-n13':'てんがんこどもえん増築工事','ar-n13-m':'令和2年完成・うるま市',
-    'ar-n14':'上間さつき保育園','ar-n14-m':'令和3年4月完成・那覇市',
-    'ar-p1':'真嘉比東公園便所','ar-p1-m':'平成22年完成・那覇市',
-    'ar-p2':'若狭小学校園庭計画','ar-p2-m':'平成23年完成・那覇市',
-    'ar-p3':'防災避難施設整備工事・設計監理','ar-p3-m':'平成25年完成・那覇市',
-    'ar-o1':'（株）的エンタープライズ 本社','ar-o1-m':'平成18年完成・中城村',
-    'ar-o2':'立津工芸社（宮古の事務所兼住宅）','ar-o2-m':'宮古島市',
-    'about-block-title':'タクト設計 事務所','about-block-desc':'那覇市銘苅を拠点に、住宅・店舗・公共施設の設計監理を行っています。',
-    'phil-label':'Philosophy','phil-title':'設計理念',
-    'phil-quote':'暮らしの中に、<br>沖縄の自然と時間が<br>穏やかに流れる建築を。',
-    'phil-p':'私たちは、建築は風景の一部であると考えています。沖縄の強い日差し、心地よい風、豊かな緑――この土地の持つ力を活かし、住まう人の生活に寄り添いながら、美しく機能的な空間を設計します。構造の安全性、環境への配慮、そして細部にまで宿る美意識。すべてが調和した建築を目指しています。',
-    'svc-label':'Services','svc-title':'業務内容',
-    'svc1-title':'住宅設計','svc1-desc':'沖縄の気候風土に適した住宅を設計します。RC造・木造・鉄骨造など、敷地条件やご要望に最適な構造をご提案。新築からリノベーションまで対応いたします。',
-    'svc1-t1':'新築','svc1-t2':'リノベーション','svc1-t3':'RC造・木造','svc1-t4':'二世帯住宅',
-    'svc2-title':'店舗・商業施設設計','svc2-desc':'飲食店、物販店、オフィスなど、事業のコンセプトを空間として表現します。集客力と機能性を兼ね備えた設計で、お客様のビジネスを支えます。',
-    'svc2-t1':'飲食店','svc2-t2':'物販','svc2-t3':'オフィス','svc2-t4':'用途変更',
-    'svc3-title':'設計監理・公共施設','svc3-desc':'設計図通りに施工が行われているか、品質・工程・コストを管理します。公共施設や福祉施設など、規模を問わず対応。お客様に代わって現場をチェックします。',
-    'svc3-t1':'工事監理','svc3-t2':'公共施設','svc3-t3':'確認申請','svc3-t4':'事業計画',
-    'works-label':'Works','works-title':'設計実績','works-note':'掲載実績は一部です。用途や規模に応じた事例は、お打ち合わせ時にご案内しています。',
-    'w1':'タクト設計オフィス ― 那覇市',
-    'w2':'しいの実保育園（本園）― 宜野湾市',
-    'w3':'てんがんこどもえん増築工事 ― うるま市',
-    'w4':'真嘉比東公園便所 ― 那覇市',
-    'w5':'若狭小学校園庭計画 ― 那覇市',
-    'w6':'つきしろの住宅 ― 沖縄県',
-    'w7':'しいの実保育園（分園）― 宜野湾市',
-    'w8':'立津工芸社（宮古の事務所兼住宅）― 宮古島市',
-    'w9':'ひらまつ保育園 ― 那覇市',
-    'badge-prep':'準備中',
-    'work-view':'View Project',
-    'flow-label':'Flow','flow-title':'ご依頼の流れ',
-    'f1-title':'お問い合わせ・ご相談','f1-desc':'まずはお電話またはお問い合わせフォームからご連絡ください。ご相談は無料です。建築に関するお悩みやご要望をお聞かせください。','f1-tag':'無料相談',
-    'f2-title':'ヒアリング・敷地調査','f2-desc':'ご家族の暮らし方やご予算、敷地の条件を丁寧にお伺いし、現地調査を行います。',
-    'f3-title':'基本設計・プラン提案','f3-desc':'ヒアリング内容をもとに、間取りや外観のプランをご提案。納得いただけるまで何度でも打ち合わせを重ねます。',
-    'f4-title':'実施設計・確認申請','f4-desc':'詳細な設計図面を作成し、建築確認申請の手続きを行います。',
-    'f5-title':'施工・工事監理','f5-desc':'信頼できる施工会社と連携し、設計意図が現場に正確に反映されるよう監理を行います。',
-    'f6-title':'竣工・お引き渡し','f6-desc':'完成検査を経て、お引き渡し。その後もメンテナンスや増改築のご相談に対応いたします。','f6-tag':'アフターフォロー',
-    'ct-label':'Contact','ct-title':'お問い合わせ','ct-sub':'まずはお気軽にご相談ください',
-    'ct-office-label':'Office','ct-office-val':'一級建築士事務所タクト設計',
-    'ct-arch-label':'Architect','ct-arch-val':'一級建築士　羽地敏博',
-    'ct-addr-label':'Address','ct-addr-val':'〒900-0004<br>沖縄県那覇市銘苅３丁目１９−１',
-    'ct-hours-label':'Business Hours','ct-hours-val':'月〜金 9:00 ― 18:00<br><span style="font-size:0.82rem;color:var(--text-light)">※土日祝は事前予約にて対応</span>',
-    'lbl-name':'お名前','lbl-email':'メールアドレス','lbl-phone':'電話番号','lbl-msg':'ご相談内容',
-    'ph-name':'比嘉 太郎','ph-phone':'098-000-0000','ph-msg':'ご相談内容をお書きください（例：那覇市内で住宅の新築を検討しています）',
-    'ct-privacy':'送信いただいた情報は、お問い合わせへの返答のみに使用します。',
-    'btn-submit':'送信する',
-    'err-name':'お名前を入力してください','err-email':'正しいメールアドレスを入力してください','err-msg':'ご相談内容を入力してください',
-    'success-msg':'✓ &nbsp;お問い合わせありがとうございます。<br>担当者より2営業日以内にご連絡いたします。',
-    'error-msg':'送信に失敗しました。お手数ですが、お電話（098-860-1227）にてご連絡ください。',
-    'footer-brand':'タクト設計','footer-office':'一級建築士事務所タクト設計',
-    'footer-hours':'月〜金 9:00 ― 18:00（土日祝は事前予約にて対応）',
-    'footer-reg':'沖縄県知事登録 一級建築士事務所',
-    'footer-copy':'© 2026 一級建築士事務所タクト設計 All Rights Reserved.',
-    'modal-fallback':'詳細画像準備中',
-  },
-  en: {
-    'nav-logo':'タクト設計',
-    'nav-about':'About','nav-services':'Services','nav-works':'Works','nav-flow':'Process','nav-contact':'Contact',
-    'hero-h1':'<span class="h1-a">Licensed Architect Office</span><span class="h1-b">TAKT DESIGN</span>','hero-en':'TAKT DESIGN — Architects',
-    'hero-subtitle':'Architecture of Okinawa',
-    'hero-desc':'Building on architectural practice since 1984 and the founding of TAKT DESIGN in 1991, we work on residences, commercial spaces and public facilities from our Naha studio. We read the light, wind and character of each site to craft enduring architecture — through careful dialogue and precise construction oversight.',
-    'hero-btn-primary':'Free Consultation','hero-btn-secondary':'View Works',
-    'hero-panel-title':'Design Focus',
-    'hp1-title':'Okinawa Climate Design','hp1-desc':'Planning with sun, wind and shade',
-    'hp2-title':'Dialogue-Driven Process','hp2-desc':'Brief to handover — by your side',
-    'hp3-title':'Homes to Public Buildings','hp3-desc':'Design & supervision at any scale',
-    'ic1-title':'Rooted in Okinawa','ic1-desc':'We balance livability and beauty through deep understanding of regional climate and lifestyle.',
-    'ic2-title':'End-to-End by a Licensed Architect','ic2-desc':'From initial consultation to construction oversight — consistent vision throughout.',
-    'ic3-title':'An Approachable Office','ic3-desc':'New builds, renovations, change of use, project planning — we cover it all.',
-    'about-label':'About Us','about-title':'Light and Wind of<br>Okinawa in Architecture',
-    'about-p1':'TAKT DESIGN is a licensed architectural firm based in Naha, Okinawa, specialising in residential, commercial and public building design and construction supervision.',
-    'about-p2':'"Takt" is the conductor\'s baton. We orchestrate your vision with Okinawa\'s rich natural environment — through technical expertise and thoughtful dialogue.',
-    'about-p3':'Principal architect Toshihiro Haneji began his architectural practice in 1984 and founded TAKT DESIGN in 1991. For more than 30 years since, with deep knowledge of the subtropical climate, we have proposed comfortable spaces loved for generations — giving personal attention to every client and every site.',
-    'badge1':'Registered Architect Office','badge2':'New Builds & Renovations','badge3':'Free Initial Consultation','badge4':'Serving All of Okinawa',
-    'badge5':'Architectural practice since 1984','badge6':'TAKT DESIGN founded 1991',
-    'arch-residential-title':'Residential Projects','arch-nursery-title':'Nursery Projects','arch-public-title':'Public Works','arch-office-title':'Commercial & Office Projects',
-    'ar-r1':'Residence H (Timber / Two-Generation)','ar-r1-m':'Naha',
-    'ar-r2':'Residence N (RC / Courtyard House)','ar-r2-m':'Urasoe',
-    'ar-r3':'Residence K (Hybrid / Ocean View)','ar-r3-m':'Nanjo',
-    'ar-r4':'Tsukishiro Residence','ar-r4-m':'Okinawa',
-    'ar-n1':'Shiinomi Nursery (Main)','ar-n1-m':'Completed 2001 · Ginowan',
-    'ar-n2':'Ai-no-Sono Nursery','ar-n2-m':'Completed 2003 · Urasoe',
-    'ar-n3':'Shiinomi Nursery (Branch)','ar-n3-m':'Completed 2007 · Ginowan',
-    'ar-n4':'Sky Marine Nursery (Main)','ar-n4-m':'Completed 2008 · Naha',
-    'ar-n5':'Satsuki Nursery','ar-n5-m':'Completed 2009 · Ginowan',
-    'ar-n6':'Hiramatsu Nursery','ar-n6-m':'Completed 2009 · Naha',
-    'ar-n7':'Himawarikkido Nursery','ar-n7-m':'Completed 2010 · Uruma',
-    'ar-n8':'Onaga Nursery','ar-n8-m':'Completed 2011 · Tomigusuku',
-    'ar-n9':'Sky Marine Nursery (Branch)','ar-n9-m':'Completed 2015 · Naha',
-    'ar-n10':'Mercy Nursery Furujima','ar-n10-m':'Completed 2017 · Naha',
-    'ar-n11':'Morinoko Nursery','ar-n11-m':'Completed 2018 · Tomigusuku',
-    'ar-n12':'Zayasu Children\'s Center (Kitchen Renovation)','ar-n12-m':'Completed 2019 · Tomigusuku',
-    'ar-n13':'Tengan Children\'s Center (Extension)','ar-n13-m':'Completed 2020 · Uruma',
-    'ar-n14':'Uema-Satsuki Nursery','ar-n14-m':'Completed Apr 2021 · Naha',
-    'ar-p1':'Makabihigashi Park Restroom','ar-p1-m':'Completed 2010 · Naha',
-    'ar-p2':'Wakasa Elementary Schoolyard Plan','ar-p2-m':'Completed 2011 · Naha',
-    'ar-p3':'Disaster Shelter Facility · Supervision','ar-p3-m':'Completed 2013 · Naha',
-    'ar-o1':'Mato Enterprise Headquarters','ar-o1-m':'Completed 2006 · Nakagusuku',
-    'ar-o2':'Tatsutsu Crafts (Miyako Office & Residence)','ar-o2-m':'Miyakojima',
-    'about-block-title':'TAKT DESIGN Office','about-block-desc':'Based in Mekaru, Naha — residential, commercial and public building design.',
-    'phil-label':'Philosophy','phil-title':'Design Philosophy',
-    'phil-quote':'Architecture where the nature<br>and rhythms of Okinawa<br>flow gently through daily life.',
-    'phil-p':'We believe architecture is part of the landscape. Drawing on Okinawa\'s strong sunlight, gentle breezes and lush greenery, we design spaces that are beautiful, functional and in harmony with the lives of those who inhabit them — safety, environmental care and refined aesthetics in balance.',
-    'svc-label':'Services','svc-title':'Our Services',
-    'svc1-title':'Residential Design','svc1-desc':'We design homes suited to Okinawa\'s climate — RC, timber or steel frame, whichever best fits the site and your needs. New builds and renovations welcome.',
-    'svc1-t1':'New Build','svc1-t2':'Renovation','svc1-t3':'RC / Timber','svc1-t4':'Multi-generational',
-    'svc2-title':'Commercial Design','svc2-desc':'Restaurants, retail, offices — we translate your business concept into space. Designs that attract customers while delivering practical functionality.',
-    'svc2-t1':'Restaurant','svc2-t2':'Retail','svc2-t3':'Office','svc2-t4':'Change of Use',
-    'svc3-title':'Supervision & Public Buildings','svc3-desc':'We verify that work on site matches the design: quality, schedule and cost. We represent your interests at every stage of the build.',
-    'svc3-t1':'Site Supervision','svc3-t2':'Public Buildings','svc3-t3':'Building Permit','svc3-t4':'Project Planning',
-    'works-label':'Works','works-title':'Selected Projects','works-note':'A selection of our work is shown here. Further case studies are available on request.',
-    'w1':'TAKT DESIGN Office — Naha',
-    'w2':'Shiinomi Nursery (Main) — Ginowan',
-    'w3':'Tengan Children\'s Center (Extension) — Uruma',
-    'w4':'Makabihigashi Park Restroom — Naha',
-    'w5':'Wakasa Elementary Schoolyard Plan — Naha',
-    'w6':'Tsukishiro Residence — Okinawa',
-    'w7':'Shiinomi Nursery (Branch) — Ginowan',
-    'w8':'Tatsutsu Crafts (Miyako Office & Residence) — Miyakojima',
-    'w9':'Hiramatsu Nursery — Naha',
-    'badge-prep':'Coming soon',
-    'work-view':'View Project',
-    'flow-label':'Flow','flow-title':'How We Work',
-    'f1-title':'Enquiry & Consultation','f1-desc':'Contact us by phone or the enquiry form. Initial consultation is free. Tell us about your project and any questions you have.','f1-tag':'Free Consultation',
-    'f2-title':'Brief & Site Survey','f2-desc':'We take time to understand your lifestyle, budget and site conditions, and carry out a thorough site survey.',
-    'f3-title':'Schematic Design','f3-desc':'We present layout and exterior proposals based on the brief, and refine them through as many meetings as needed.',
-    'f4-title':'Design Development & Permit','f4-desc':'We prepare detailed drawings and handle all building permit applications.',
-    'f5-title':'Construction & Supervision','f5-desc':'Working with trusted contractors, we supervise the build to ensure design intent is faithfully realised on site.',
-    'f6-title':'Completion & Handover','f6-desc':'After final inspection we hand over the completed building. We remain available for maintenance and future alterations.','f6-tag':'After-sales Support',
-    'ct-label':'Contact','ct-title':'Get in Touch','ct-sub':'Feel free to reach out anytime',
-    'ct-office-label':'Office','ct-office-val':'TAKT DESIGN — Licensed Architect Office',
-    'ct-arch-label':'Architect','ct-arch-val':'Toshihiro Haneji, Architect',
-    'ct-addr-label':'Address','ct-addr-val':'3-19-1 Mekaru, Naha, Okinawa<br>900-0004 Japan',
-    'ct-hours-label':'Business Hours','ct-hours-val':'Mon–Fri 9:00–18:00<br><span style="font-size:0.82rem;color:var(--text-light)">Sat/Sun/Holidays by appointment</span>',
-    'lbl-name':'Your Name','lbl-email':'Email Address','lbl-phone':'Phone Number','lbl-msg':'Message',
-    'ph-name':'John Smith','ph-phone':'+81-98-000-0000','ph-msg':'e.g. I am considering building a new home in Naha.',
-    'ct-privacy':'Your information will only be used to respond to your enquiry.',
-    'btn-submit':'Send Message',
-    'err-name':'Please enter your name','err-email':'Please enter a valid email address','err-msg':'Please enter your message',
-    'success-msg':'✓ &nbsp;Thank you for your enquiry.<br>We will be in touch within 2 business days.',
-    'error-msg':'Submission failed. Please contact us by phone: 098-860-1227',
-    'footer-brand':'タクト設計','footer-office':'TAKT DESIGN — Licensed Architect Office',
-    'footer-hours':'Mon–Fri 9:00–18:00 (Sat/Sun/Holidays by appointment)',
-    'footer-reg':'Okinawa Governor Registered Architect Office',
-    'footer-copy':'© 2026 TAKT DESIGN — Licensed Architect Office. All Rights Reserved.',
-    'modal-fallback':'Image coming soon',
-  }
-};
-
-let currentLang = localStorage.getItem('lang') || 'ja';
-
-function applyLang(lang) {
-  currentLang = lang;
-  document.documentElement.lang = lang === 'en' ? 'en' : 'ja';
-
-  // textContent
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (i18n[lang][key] !== undefined) el.textContent = i18n[lang][key];
-  });
-
-  // innerHTML (for <br> etc.)
-  document.querySelectorAll('[data-i18n-html]').forEach(el => {
-    const key = el.getAttribute('data-i18n-html');
-    if (i18n[lang][key] !== undefined) el.innerHTML = i18n[lang][key];
-  });
-
-  // placeholders
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    if (i18n[lang][key] !== undefined) el.placeholder = i18n[lang][key];
-  });
-
-  // lang toggle labels
-  const label = lang === 'ja' ? 'EN' : 'JP';
-  document.getElementById('langToggle').textContent = label;
-  const mob = document.getElementById('langToggleMobile');
-  if (mob) mob.textContent = label;
-
-  // title & meta
-  if (lang === 'en') {
-    document.title = 'タクト設計 | Architect Office — Naha, Okinawa';
-  } else {
-    document.title = 'タクト設計 | 一級建築士事務所 - 沖縄県那覇市';
-  }
-
-  localStorage.setItem('lang', lang);
-}
-
-/* ===== Lang button: switch style when not over hero ===== */
-const langWrap = document.getElementById('langWrap');
-const heroEl = document.querySelector('.hero');
-window.addEventListener('scroll', () => {
-  const heroBottom = heroEl ? heroEl.getBoundingClientRect().bottom : 0;
-  langWrap.classList.toggle('on-light', heroBottom < 60);
-}, { passive: true });
-
-/* ===== Language toggle ===== */
-function toggleLang() {
-  applyLang(currentLang === 'ja' ? 'en' : 'ja');
-}
-document.getElementById('langToggle').addEventListener('click', toggleLang);
-
 /* ===== SMOOTH SCROLL ===== */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
@@ -1907,6 +1616,8 @@ window.addEventListener('scroll', () => {
 backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 /* ===== CONTACT FORM ===== */
+const FORM_SUCCESS_MSG = '✓ &nbsp;お問い合わせありがとうございます。<br>担当者より2営業日以内にご連絡いたします。';
+const FORM_ERROR_MSG = '送信に失敗しました。お手数ですが、お電話（098-860-1227）にてご連絡ください。';
 const form = document.getElementById('contactForm');
 const submitBtn = document.getElementById('submitBtn');
 const formResult = document.getElementById('formResult');
@@ -1935,12 +1646,6 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault();
   if (!validateForm()) return;
   const action = form.getAttribute('action');
-  if (!action || action.includes('YOUR_FORM_ID')) {
-    formResult.className = 'form-result success';
-    formResult.innerHTML = i18n[currentLang]['success-msg'] + '<br><small style="opacity:0.7">※Formspree IDを設定すると実際にメールが届きます。</small>';
-    formResult.style.display = 'block';
-    form.reset(); return;
-  }
   submitBtn.classList.add('loading');
   submitBtn.disabled = true;
   formResult.style.display = 'none';
@@ -1948,15 +1653,15 @@ form.addEventListener('submit', async (e) => {
     const res = await fetch(action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
     if (res.ok) {
       formResult.className = 'form-result success';
-      formResult.innerHTML = i18n[currentLang]['success-msg'];
+      formResult.innerHTML = FORM_SUCCESS_MSG;
       form.reset();
     } else {
       formResult.className = 'form-result error';
-      formResult.innerHTML = i18n[currentLang]['error-msg'];
+      formResult.innerHTML = FORM_ERROR_MSG;
     }
   } catch {
     formResult.className = 'form-result error';
-    formResult.innerHTML = i18n[currentLang]['error-msg'];
+    formResult.innerHTML = FORM_ERROR_MSG;
   } finally {
     submitBtn.classList.remove('loading');
     submitBtn.disabled = false;
@@ -1965,8 +1670,6 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
-/* ===== INIT ===== */
-applyLang(currentLang);
 </script>
 
 </body>
