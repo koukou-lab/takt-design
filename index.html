@@ -1052,8 +1052,11 @@
     .header-cta { display: none; }
     .hero h1 { font-size: clamp(1.75rem, 8vw, 2.2rem); }
     .hero-actions .btn { width: 100%; }
-    .hero-media { padding: 1rem 0 2rem 1rem; }
-    .hero-photo-sub { width: 48%; }
+    .hero-media { padding: 0; display: grid; gap: 0.8rem; }
+    .hana-screen { display: none; }
+    .hero-photo-main { margin-left: 0; }
+    .hero-photo-sub { position: relative; width: 58%; justify-self: end; border-width: 4px; }
+    .section-art::after { display: none; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
     .stat { padding: 1.2rem 0.6rem; }
     .stat:nth-child(3) { border-left: none; }
