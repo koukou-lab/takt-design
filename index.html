@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>タクト設計｜那覇市の一級建築士事務所（保育園・こども園・住宅の設計）</title>
+<title>一級建築士事務所タクト設計｜沖縄・那覇市（保育園・こども園・住宅の設計）</title>
 <meta name="description" content="沖縄県那覇市の一級建築士事務所タクト設計。保育園・こども園の設計実績14件、住宅・店舗・公共施設まで設計実績23件以上。1984年から沖縄の建築実務に携わる一級建築士が、設計から工事監理まで一貫して対応します。初回相談無料。">
 <meta name="theme-color" content="#1E3E5F">
 
@@ -18,7 +18,7 @@
 
 <!-- OGP -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="タクト設計｜那覇市の一級建築士事務所（保育園・こども園・住宅の設計）">
+<meta property="og:title" content="一級建築士事務所タクト設計｜沖縄・那覇市（保育園・こども園・住宅の設計）">
 <meta property="og:description" content="保育園・こども園14件、住宅・店舗・公共施設まで設計実績23件以上。1984年から沖縄の建築実務に携わる一級建築士が設計から工事監理まで一貫対応。初回相談無料。">
 <meta property="og:url" content="https://takt-sekkei.com/">
 <meta property="og:image" content="https://takt-sekkei.com/images/projects/takt-design-office/01-w1600.jpg">
@@ -223,17 +223,6 @@
     border-radius: var(--radius);
     box-shadow: var(--shadow-soft);
   }
-  .section-art::after {
-    content: '';
-    position: absolute;
-    inset: auto -0.9rem -0.9rem auto;
-    width: 46%; height: 46%;
-    background: var(--hana);
-    background-size: 42px 42px;
-    border-radius: var(--radius-sm);
-    z-index: -1;
-    opacity: 0.7;
-  }
 
   /* 事務所紹介の横長バナー */
   .about-banner {
@@ -313,7 +302,7 @@
   .brand-mark { width: 38px; height: 38px; flex-shrink: 0; }
   .brand-text { display: flex; flex-direction: column; line-height: 1.25; }
   .brand-name { font-family: var(--font-display); font-size: 1.28rem; font-weight: 700; letter-spacing: 0.1em; }
-  .brand-sub { font-size: 0.7rem; letter-spacing: 0.08em; color: var(--ink-soft); }
+  .brand-sub { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.12em; color: var(--sora); }
 
   .site-nav { margin-left: auto; flex-shrink: 0; }
   .site-nav ul { display: flex; gap: 0.2rem; list-style: none; }
@@ -378,6 +367,7 @@
     align-items: center;
   }
   .hero-copy { animation: rise 0.8s ease both; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.4rem; }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
     padding: 0.3rem 0.9rem 0.3rem 0.5rem;
@@ -385,7 +375,11 @@
     background: var(--white);
     border: 1px solid var(--line);
     font-size: 0.85rem; font-weight: 700; color: var(--ai);
-    margin-bottom: 1.4rem;
+  }
+  .hero-badge--office {
+    padding: 0.35rem 1rem;
+    background: var(--ai); border-color: var(--ai); color: #fff;
+    font-size: 0.9rem; letter-spacing: 0.06em;
   }
   .hero-badge i {
     display: inline-block; width: 22px; height: 22px; border-radius: 50%;
@@ -410,7 +404,7 @@
 
   .hero-media {
     position: relative;
-    padding: 1.5rem 0 2.5rem 2.5rem;
+    padding: 1.5rem 0 0 2.5rem;
     animation: rise 0.9s 0.15s ease both;
   }
   .hana-screen {
@@ -423,36 +417,33 @@
     mask-image: linear-gradient(200deg, #000 30%, transparent 85%);
     pointer-events: none;
   }
-  .hero-photo-main {
+  .hero-person {
     position: relative;
     z-index: 1;
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow);
-    margin-left: 6%;
+    background: var(--ai-tint);
   }
-  .hero-photo-main img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-  .hero-photo-sub {
-    position: absolute;
-    z-index: 2;
-    left: 0; bottom: 0;
-    width: 44%;
+  .hero-person img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; }
+  .hero-person-card {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.9rem;
+    align-items: baseline;
+    margin-top: 0.9rem;
+    padding: 0.85rem 1.2rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--deigo);
     border-radius: var(--radius-sm);
-    overflow: hidden;
-    border: 5px solid var(--white);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-soft);
   }
-  .hero-photo-sub img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-  .hero-photo-label {
-    position: absolute;
-    left: 0.8rem; bottom: 0.8rem;
-    padding: 0.2rem 0.7rem;
-    font-size: 0.78rem; font-weight: 700;
-    background: rgba(255,255,255,0.92);
-    color: var(--ai);
-    border-radius: 999px;
-  }
-  .hero-photo-main .hero-photo-label { left: 1rem; bottom: 1rem; }
+  .hero-person-role { font-size: 0.8rem; font-weight: 700; color: var(--deigo-deep); letter-spacing: 0.08em; }
+  .hero-person-name { font-family: var(--font-display); font-size: 1.35rem; color: var(--ai); letter-spacing: 0.08em; }
+  .hero-person-note { grid-column: 1 / -1; font-size: 0.85rem; color: var(--ink-soft); margin-top: 0.2rem; }
 
   @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 
@@ -996,7 +987,6 @@
   }
   @media (max-width: 1480px) {
     .site-nav a { padding: 0.5rem 0.55rem; font-size: 0.9rem; }
-    .brand-sub { display: none; }
   }
 
   @media (max-width: 1100px) {
@@ -1048,15 +1038,12 @@
     :root { --header-h: 64px; }
     .brand-mark { width: 32px; height: 32px; }
     .brand-name { font-size: 1.12rem; }
-    .brand-sub { font-size: 0.64rem; }
+    .brand-sub { font-size: 0.62rem; letter-spacing: 0.08em; }
     .header-cta { display: none; }
     .hero h1 { font-size: clamp(1.75rem, 8vw, 2.2rem); }
     .hero-actions .btn { width: 100%; }
-    .hero-media { padding: 0; display: grid; gap: 0.8rem; }
+    .hero-media { padding: 0; }
     .hana-screen { display: none; }
-    .hero-photo-main { margin-left: 0; }
-    .hero-photo-sub { position: relative; width: 58%; justify-self: end; border-width: 4px; }
-    .section-art::after { display: none; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
     .stat { padding: 1.2rem 0.6rem; }
     .stat:nth-child(3) { border-left: none; }
@@ -1091,8 +1078,8 @@
     <a class="brand" href="#top" aria-label="タクト設計 トップへ">
       <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#1E3E5F"/><circle cx="16" cy="10" r="5" fill="#fff"/><circle cx="22" cy="16" r="5" fill="#fff"/><circle cx="16" cy="22" r="5" fill="#fff"/><circle cx="10" cy="16" r="5" fill="#fff"/><circle cx="16" cy="16" r="2.6" fill="#1E3E5F"/></svg>
       <span class="brand-text">
+        <span class="brand-sub">一級建築士事務所</span>
         <span class="brand-name">タクト設計</span>
-        <span class="brand-sub">一級建築士事務所｜沖縄県那覇市</span>
       </span>
     </a>
     <button type="button" class="nav-toggle" id="navToggle" aria-controls="siteNav" aria-expanded="false" aria-label="メニューを開く">
@@ -1124,7 +1111,10 @@
 <section class="hero" id="top">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <span class="hero-badge"><i>無</i>初回相談無料・沖縄県内全域対応</span>
+      <div class="hero-badges">
+        <span class="hero-badge hero-badge--office">沖縄県知事登録 一級建築士事務所</span>
+        <span class="hero-badge"><i>無</i>初回相談無料・沖縄県内全域対応</span>
+      </div>
       <h1><span class="h1-line">沖縄の光と風を読み、</span><span class="h1-line">長く愛される建築を。</span></h1>
       <p class="hero-desc">保育園・こども園から住宅、公共施設まで。1984年から沖縄の建築実務に携わる一級建築士が、設計から工事監理まで一貫して伴走します。</p>
       <div class="hero-actions">
@@ -1138,13 +1128,13 @@
     </div>
     <div class="hero-media">
       <div class="hana-screen" aria-hidden="true"></div>
-      <div class="hero-photo-main">
-        <img src="images/projects/shiinomi-nursery-main/01-w1600.jpg" srcset="images/projects/shiinomi-nursery-main/01-w800.jpg 800w, images/projects/shiinomi-nursery-main/01-w1600.jpg 1600w" sizes="(max-width: 960px) 100vw, 560px" alt="しいの実保育園（本園）の外観。黄色い外壁と青空" fetchpriority="high" width="1600" height="1200">
-        <span class="hero-photo-label">しいの実保育園（宜野湾市）</span>
+      <div class="hero-person">
+        <img src="images/illust/architect-864.jpg" srcset="images/illust/architect-480.jpg 480w, images/illust/architect-864.jpg 864w" sizes="(max-width: 960px) 100vw, 560px" alt="代表・一級建築士 羽地敏博のイラスト。花ブロックの前で図面と模型を手に笑顔で立つ" fetchpriority="high" width="864" height="1080">
       </div>
-      <div class="hero-photo-sub">
-        <img src="images/projects/tsukishiro-residence/03-w800.jpg" alt="つきしろの住宅の外観" loading="lazy" width="800" height="600">
-        <span class="hero-photo-label">つきしろの住宅</span>
+      <div class="hero-person-card">
+        <span class="hero-person-role">代表・一級建築士</span>
+        <strong class="hero-person-name">羽地 敏博</strong>
+        <span class="hero-person-note">1984年から沖縄の建築実務に従事。設計から工事監理までご自身が担当します。</span>
       </div>
     </div>
   </div>
